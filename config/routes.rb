@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  get 'profiles/index'
+  get 'profiles/show'
+  get 'votes/create'
+  get 'votes/index'
+  get 'votes/new'
+  get 'players/create'
+  get 'players/edit'
+  get 'players/update'
+  get 'challenges/new'
+  get 'challenges/show'
+  get 'challenges/create'
+  get 'challenges/accepted'
+  get 'challenges/destroy'
   devise_for :users
   root to: 'challenges#index'
   resources :challenges, except: [:update, :edit] do
