@@ -12,7 +12,7 @@ class ChallengesController < ApplicationController
   def create
   end
 
-  def accepted
+  def accepted?
   end
 
   def destroy
