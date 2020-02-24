@@ -1,4 +1,5 @@
 class ChallengesController < ApplicationController
+  before_action :set_challenge, only: %i[show]
   def index
 
   end
@@ -16,5 +17,11 @@ class ChallengesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def set_challenge
+    @challenge = Challenge.find(params[:id])
   end
 end

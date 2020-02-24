@@ -1,2 +1,45 @@
-<h1>Challenges#show</h1>
-<p>Find me in app/views/challenges/show.html.erb</p>
+<html>
+<head>
+  <script>
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('txt').innerHTML =
+      h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+
+  <div id="txt"></div>
+
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-12">
+        <h1> Beat <%= @challenge.opponent.user.username %>! </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="avatar">
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="btn btn-purple text-center mx-6">
+      <h3>Finished - Ready To Serve!</h3>
+    </div>
+  </div>
+</body>
+</html>
