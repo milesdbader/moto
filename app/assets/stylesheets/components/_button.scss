@@ -1,0 +1,12 @@
+.btn-purple {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $purple;
+  transition: background 0.3s ease;
+}
+
+.btn-purple:hover {
+  background: $dark-purple;
+  color: white;
+}
