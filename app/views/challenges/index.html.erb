@@ -1,2 +1,25 @@
-<h1>Challenges#index</h1>
-<p>Find me in app/views/challenges/index.html.erb</p>
+<div style="width: 100vw">
+  <div id="dashboard-layout" class="container">
+
+    <div class="top-logo">
+      <%= image_tag "moto_logo.png", alt: "Moto", width: 150, class: "logo-on-top" %>
+    </div>
+
+    <div id="dashboard-contents">
+      <h1>CHALLENGE STUFS GO HERE</h1>
+    </div>
+
+    <div id="dashboard-nav">
+      <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
+
+      <%= link_to new_challenge_path do %>
+        <%= image_tag "cook_off_button.png", alt: "Creaoto", width: 100 %>
+      <% end %>
+
+      <%= link_to profile_path(current_user.id) do %>
+        <%= image_tag "vote_page_button.png", alt: "Profiloto", width: 60, height: 60 %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
