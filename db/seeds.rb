@@ -98,4 +98,16 @@ Challenge.build!(miles, david, attributes = {accepted: true, expiration: Time.ne
 
 Challenge.build!(eyal, tamara, attributes = {accepted: true, expiration: Time.new(2020, 02, 26), voting_end: Time.new(2020, 02, 28), mode: 'classic' })
 
+
+def generate_challenges
+  # mode, challenger, opponent
+  future = Date.new(2021, 1, 1)
+  miles = User.find_by(username: 'milesdbader')
+  eyal = User.find_by(username: 'eyalcohen2524')
+  c = Challenge.build!(miles, eyal, mode: 'classic', accepted: true, expiration: future)
+
+end
+
+generate_challenges
 puts "#{Challenge.count} created"
+
