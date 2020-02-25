@@ -34,15 +34,15 @@
 <div class="row justify-content-center">
   <div class="radio-toolbar d-flex">
     <div class="justify-content-center">
-      <input hidden='true' type="checkbox" id="radioBanana" name="radioFruit" value="">
-      <label for="radioBanana">
+      <input hidden='true' type="radio" id="classic" name="RadioFruit" value="classicStuff">
+      <label for="classic">
         <i class="fas fa-utensils"></i>
       </label>
       <h5><strong>Classic</strong></h5>
     </div>
     <div class="justify-content-center">
-      <input hidden='true' type="checkbox" id="radioApple" name="radioFruit" value="">
-      <label for="radioApple">
+      <input hidden='true' type="radio" id="creative" name="RadioFruit" value="creativeStuff">
+      <label for="creative">
         <i class="fas fa-carrot"></i>
       </label>
       <h5><strong>Creative</strong></h5>
@@ -50,12 +50,12 @@
   </div>
 </div>
 
-    <div class="btn btn-primary">
+    <div class="btn btn-primary" id="selector">
     Get Cookin'
     </div>
 
 
-
+<%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn" %>
 
   <script>
     function displayName(opponent) {
@@ -76,7 +76,24 @@
           displayName(data.user[0])
         }
       });
-
     })
+
+    let submitButton = document.querySelector("#selector")
+
+    submitButton.addEventListener('click', () => {
+      handleChallenge()
+    })
+
+    let handleChallenge = () => {
+      let challenger = <%= current_user.id %>;
+      let opponent = document.getElementById("opponent");
+      opponent = opponent.dataset.user;
+      let isChecked = document.getElementById('classic').checked;
+      mode = isChecked ? 'classic' : 'creative';
+      let ninja = `/challenges?challenger=${challenger}&opponent=${opponent}&mode=${mode}`
+      let target = document.querySelector('.sneaky-btn')
+      target.href = ninja;
+      target.click()
+    }
 
   </script>

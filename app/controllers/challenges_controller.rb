@@ -11,6 +11,10 @@ class ChallengesController < ApplicationController
   end
 
   def create
+    raise
+    my_hash = JSON.parse(params)
+    puts my_hash
+    render :new
   end
 
   def accepted?

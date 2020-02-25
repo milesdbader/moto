@@ -36,8 +36,10 @@
   // background-color: #dfd;
 }
 
-.radio-toolbar input[type="radio"]:focus + label {
-    // border: 2px dashed #444;
+.radio-toolbar input[type="radio"] + label {
+    i {
+      color: black;
+    }
 }
 
 .radio-toolbar input[type="radio"]:checked + label {
@@ -45,3 +47,4 @@
       color: blue;
     }
 }
+
