@@ -22,6 +22,17 @@ class ChallengesController < ApplicationController
   def take_user
 
     opponent = User.where(username: params['q'])
-    render json: {ok: true, user: opponent}
+    if opponent.empty?
+      render json: {ok: false}
+    else
+      render json: {ok: true, user: opponent}
+    end
+
+  end
+
+  private
+
+  def challenge_params
+    params.require(:challenge).permit(:challenger, :opponent, :mode)
   end
 end

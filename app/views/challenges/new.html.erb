@@ -1,54 +1,82 @@
 <div class="row justify-content-center">
-    <h1 style="color:blue">New Challenge</h1>
+  <a href="http://localhost:3000/challenges"><i class="fas fa-chevron-left back"></i></a>
+  <h1 style="color:blue">New Challenge</h1>
 </div>
 <br>
 <div class="d-flex justify-content-center">
-    <div id="challenger" class="mx-5">
-      <h5>Gen</h5>
-      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
-    </div>
-    <h2 class="my-4">VS</h2>
-    <div id="opponent" class="mx-5">
-      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
-      <h5 id="opponent">Opponent</h5>
-    </div>.
+  <div id="challenger" class="mx-5">
+    <h5>Gen</h5>
+    <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
   </div>
+  <h2 class="my-5">VS</h2>
+  <div class="mx-5">
+    <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
+    <h5 id="opponent" data-user=''>Opponent</h5>
+  </div>.
+</div>
 </div>
 <div class="row">
   <div class="offset-1 col-2">
     <div class="numberCircle"><strong>1.</strong></div>
   </div>
-  <h2>Choose your Opponent</h2>
-
-  <%= text_field_tag(:search, params[:search]) %>
-  <%= submit_tag("search", id: 'search-users') %>
+  <div>
+    <h2>Choose your Opponent</h2>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag("search", id: 'search-users') %>
+  </div>
 </div>
 <div class="row">
   <div class="offset-1 col-2">
-<div class="numberCircle"><strong>2.</strong></div>
+    <div class="numberCircle"><strong>2.</strong></div>
   </div>
-<h2>Choose your Mode</h2>
-<div class="d-flex" id="icons">
-
+  <h2>Choose your Mode</h2>
 </div>
+<div class="row justify-content-center">
+  <div class="radio-toolbar d-flex">
+    <div class="justify-content-center">
+      <input hidden='true' type="checkbox" id="radioBanana" name="radioFruit" value="">
+      <label for="radioBanana">
+        <i class="fas fa-utensils"></i>
+      </label>
+      <h5><strong>Classic</strong></h5>
+    </div>
+    <div class="justify-content-center">
+      <input hidden='true' type="checkbox" id="radioApple" name="radioFruit" value="">
+      <label for="radioApple">
+        <i class="fas fa-carrot"></i>
+      </label>
+      <h5><strong>Creative</strong></h5>
+    </div>
+  </div>
 </div>
 
+    <div class="btn btn-primary">
+    Get Cookin'
+    </div>
 
 
 
 
-<script>
-  function displayName(opponent) {
-    document.getElementById("opponent").innerHTML = opponent;
-  }
+  <script>
+    function displayName(opponent) {
+      let otherGuy = document.getElementById("opponent");
 
-  let searchButton = document.querySelector('#search-users');
+      otherGuy.innerHTML = opponent.username;
+      otherGuy.dataset.user =  opponent.id
+    }
 
-  searchButton.addEventListener('click', () => {
-  let query = document.querySelector('#search');
-    fetch('http://localhost:3000/take_user' + '?q=' + query.value)
-    .then(res => res.json())
-    .then(data =>  displayName(data.user[0].username));
+    let searchButton = document.querySelector('#search-users');
 
-  })
-</script>
+    searchButton.addEventListener('click', () => {
+      let query = document.querySelector('#search');
+      fetch('http://localhost:3000/take_user' + '?q=' + query.value)
+      .then(res => res.json())
+      .then((data) =>  {
+        if(data.ok){
+          displayName(data.user[0])
+        }
+      });
+
+    })
+
+  </script>
