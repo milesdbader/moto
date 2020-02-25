@@ -1,0 +1,26 @@
+.top-logo {
+  display: flex;
+  justify-content: center;
+}
+
+#dashboard-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-on-top {
+  margin: 16px 0;
+}
+
+#dashboard-contents {
+  flex-grow: 1;
+}
+
+#dashboard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+}
