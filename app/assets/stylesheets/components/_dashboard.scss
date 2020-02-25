@@ -1,0 +1,47 @@
+.top-logo {
+  display: flex;
+  justify-content: center;
+}
+
+#dashboard-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-on-top {
+  margin: 16px 0;
+}
+
+#dashboard-contents {
+  flex-grow: 1;
+  margin-top: 32px;
+}
+
+#dashboard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+}
+
+#challenge-header {
+  font-size: 24px;
+  text-align: center;
+  color: $light-gray;
+}
+
+.challenge-roller-box h2 {
+  margin-top: 16px;
+  font-size: 20px;
+}
+
+.card-list {
+  overflow-x: scroll;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  background-color: #e5e5e5;
+  border-radius: 8px;
+}

@@ -32,21 +32,32 @@ miles = User.new(
   password: '123456789',
   username: 'milesdbader'
 )
+image = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582649852/zgx0i2maxdfapypnnjnb.png')
+miles.photo.attach(io: image, filename: 'seed')
+
 eyal = User.new(
   email: 'eyalcohen2524@gmail.com',
   password: '123456789',
   username: 'eyalcohen2524'
 )
+image1 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582649834/jbobeqwfhroeb98b90dl.jpg')
+eyal.photo.attach(io: image1, filename: 'seed')
+
 tamara = User.new(
   email: 'tara_art@live.com',
   password: '123456789',
   username: 'tara_art'
 )
+image2 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582649798/djrvmuhn41pxpdcsqekd.jpg')
+tamara.photo.attach(io: image2, filename: 'seed')
+
 david = User.new(
   email: 'david.stranders@gmail.com',
   password: '123456789',
   username: 'davidstranders'
   )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582627158/Z9JySKnsW8qJkaCyPrtDvzZU.jpg')
+david.photo.attach(io: image3, filename: 'seed')
 
 miles.save!
 eyal.save!
