@@ -1,0 +1,56 @@
+html, body {
+  width: 100vw;
+}
+
+.page-new-vote {
+  width: 100vw;
+  height: 100vh;
+}
+
+.light-bulb-icon {
+  width: 60px;
+  color: #092EFF;
+  margin-top: 5%;
+}
+
+.ingredient-row {
+  margin-top: 3%;
+  font-size: 25px;
+  align-items: flex-end;
+  height: 90px;
+}
+
+.ingredient-icon {
+  font-size: 30px;
+  margin-left: 30px;
+  color: #798EF0;
+}
+
+.ingredient-name {
+  text-align: center;
+  margin-left: -30px;
+  font-size: 20px;
+}
+
+.ingredient-underline-row {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px blue solid;
+  border-radius: 8px;
+  color: #092EFF;
+}
+
+.creative-vote-footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.creative-vote-footer > div {
+  flex-grow: 1;
+  border: solid 3px $dark-purple;
+  text-align: center;
+  margin: 0px;
+  height: 50px;
+}
