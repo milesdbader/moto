@@ -1,0 +1,9 @@
+<%= simple_form_for(@player) do |f| %>
+    <%= f.input :caption %>
+    <%= f.input :photo, as: :file, required: true %>
+
+      <br>
+      <br>
+
+      <%= f.submit 'Serve', class: 'btn btn-purple col-6 offset-3' %>
+<% end %>

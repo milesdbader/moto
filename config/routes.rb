@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'challenges#index'
   resources :challenges, except: [:update, :edit] do
     resources :votes, only: [:create, :new, :index]
+    get 'serve', to: "challenges#serve", as: :serve
   end
   put 'challenges', to: "challenges#accepted?", as: :accept
 
