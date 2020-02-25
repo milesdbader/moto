@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   put 'challenges', to: "challenges#accepted?", as: :accept
 
   resources :players, only: [:create, :edit, :update]
-  resources :profile, only: [:index, :show]
+  resources :profiles, only: [:show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
