@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <h1 style="color:blue">New Challenge</h1>
+</div>
+<br>
+<div class="d-flex justify-content-center">
+    <div id="challenger" class="mx-5">
+      <h5>Gen</h5>
+      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
+    </div>
+    <h2 class="my-4">VS</h2>
+    <div id="opponent" class="mx-5">
+      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
+      <h5 id="opponent">Opponent</h5>
+    </div>.
+  </div>
+</div>
+<div class="row">
+  <div class="offset-1 col-2">
+    <div class="numberCircle"><strong>1.</strong></div>
+  </div>
+  <h2>Choose your Opponent</h2>
+
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag("search", id: 'search-users') %>
+</div>
+<div class="row">
+  <div class="offset-1 col-2">
+<div class="numberCircle"><strong>2.</strong></div>
+  </div>
+<h2>Choose your Mode</h2>
+<div class="d-flex" id="icons">
+
+</div>
+</div>
+
+
+
+
+
+<script>
+  function displayName(opponent) {
+    document.getElementById("opponent").innerHTML = opponent;
+  }
+
+  let searchButton = document.querySelector('#search-users');
+
+  searchButton.addEventListener('click', () => {
+  let query = document.querySelector('#search');
+    fetch('http://localhost:3000/take_user' + '?q=' + query.value)
+    .then(res => res.json())
+    .then(data =>  displayName(data.user[0].username));
+
+  })
+</script>
