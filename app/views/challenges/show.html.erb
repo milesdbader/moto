@@ -1,46 +1,88 @@
-<html>
-<head>
-  <script>
-    function startTime() {
-      var today = new Date();
-      var h = today.getHours();
-      var m = today.getMinutes();
-      var s = today.getSeconds();
-      m = checkTime(m);
-      s = checkTime(s);
-      document.getElementById('txt').innerHTML =
-      h + ":" + m + ":" + s;
-      var t = setTimeout(startTime, 500);
-    }
-    function checkTime(i) {
-  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-  return i;
-}
-</script>
-</head>
 
-<body onload="startTime()">
-
-<div class="row justify-content-center m-3">
-  <div id="txt" ></div>
+<h1>Countdown Clock</h1>
+<div id="clockdiv">
+  <div>
+    <span class="days"></span>
+    <div class="smalltext">Days</div>
+  </div>
+  <div>
+    <span class="hours"></span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="minutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
 </div>
 
-  <div class="container">
-    <div class="row text-center m-3">
-      <div class="col-12">
-        <h1> Beat <%= @challenge.opponent.user.username %>! </h1>
-      </div>
+
+<div class="container">
+  <div class="row text-center m-3">
+    <div class="col-12">
+      <h1> Beat <%= @challenge.opponent.user.username %>! </h1>
     </div>
   </div>
+</div>
 
-  <div class="row text-center">
-    <img class="challenge-avatar mx-auto d-block"  src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
-  </div>
+<div class="row text-center">
+  <img class="challenge-avatar mx-auto d-block"  src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+</div>
 
-  <div class="row justify-content-center">
-    <div class="btn btn-purple text-center mx-6">
-      <h3>Finished - Ready To Serve!</h3>
-    </div>
+<div class="row justify-content-center">
+  <div class="btn btn-purple text-center mx-6">
+    <p>Finished - Ready To Serve!</p>
   </div>
-</body>
+</div>
+<!-- </body>
 </html>
+-->
+<script>
+
+  function getTimeRemaining(endtime) {
+    let t = Date.parse(endtime) - Date.parse(new Date());
+    let seconds = Math.floor((t / 1000) % 60);
+    let minutes = Math.floor((t / 1000 / 60) % 60);
+    let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+    let days = Math.floor(t / (1000 * 60 * 60 * 24));
+    return {
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
+  }
+
+  function initializeClock(id, endtime) {
+    let clock = document.getElementById(id);
+    let daysSpan = clock.querySelector('.days');
+    let hoursSpan = clock.querySelector('.hours');
+    let minutesSpan = clock.querySelector('.minutes');
+    let secondsSpan = clock.querySelector('.seconds');
+
+    function updateClock() {
+      let t = getTimeRemaining(endtime);
+
+      daysSpan.innerHTML = t.days;
+      hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+      minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+      secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+    }
+
+    updateClock();
+    let timeinterval = setInterval(updateClock, 1000);
+  }
+
+ // let deadline = <%#= (@challenge.expiration)  %>  ;
+  let deadline = new Date(<%= (@challenge.expiration).strftime('%Q') %>);
+  initializeClock('clockdiv', deadline);
+</script>
+  <!-- let deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000); -->
