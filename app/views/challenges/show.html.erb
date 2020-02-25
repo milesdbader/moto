@@ -21,19 +21,20 @@
 
 <body onload="startTime()">
 
-  <div id="txt"></div>
+<div class="row justify-content-center m-3">
+  <div id="txt" ></div>
+</div>
 
   <div class="container">
-    <div class="row text-center">
+    <div class="row text-center m-3">
       <div class="col-12">
         <h1> Beat <%= @challenge.opponent.user.username %>! </h1>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="avatar">
-    </div>
+  <div class="row text-center">
+    <img class="challenge-avatar mx-auto d-block"  src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
   </div>
 
   <div class="row justify-content-center">
