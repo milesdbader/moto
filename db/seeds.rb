@@ -18,6 +18,9 @@ puts 'Cleaning the database'
 
 Ingredient.destroy_all
 Recipe.destroy_all
+ChallengeIngredient.destroy_all
+Challenge.destroy_all
+Player.destroy_all
 User.destroy_all
 
 puts 'Database empty'
@@ -98,3 +101,18 @@ dairy_ingredients.each do |ingredient|
 end
 
 puts "Created #{Ingredient.count} ingredients"
+
+
+def generate_challenges
+  # mode, challenger, opponent
+  future = Date.new(2021, 1, 1)
+  miles = User.find_by(username: 'milesdbader')
+  eyal = User.find_by(username: 'eyalcohen2524')
+  c = Challenge.build!(miles, eyal, mode: 'classic', accepted: true, expiration: future)
+
+end
+
+generate_challenges
+
+
+
