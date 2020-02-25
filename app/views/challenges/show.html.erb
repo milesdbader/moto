@@ -1,5 +1,9 @@
+<div class="col-12 mt-3">
+  <%= image_tag("idea.png", size: "48x48") %>
+</div>
 
-<h1>Countdown Clock</h1>
+<h1><%= @challenge.mode.capitalize %> Mode</h1>
+
 <div id="clockdiv">
   <div>
     <span class="days"></span>
@@ -33,8 +37,9 @@
 </div>
 
 <div class="row justify-content-center">
-  <div class="btn btn-purple text-center mx-6">
-    <p>Finished - Ready To Serve!</p>
+  <!-- <div class="btn btn-purple text-center mx-6"> -->
+          <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn btn-purple'  %>
+    <!-- <p>Finished - Ready To Serve!</p> -->
   </div>
 </div>
 <!-- </body>
@@ -81,8 +86,6 @@
     let timeinterval = setInterval(updateClock, 1000);
   }
 
- // let deadline = <%#= (@challenge.expiration)  %>  ;
   let deadline = new Date(<%= (@challenge.expiration).strftime('%Q') %>);
   initializeClock('clockdiv', deadline);
 </script>
-  <!-- let deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000); -->

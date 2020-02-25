@@ -17,7 +17,8 @@ class ChallengesController < ApplicationController
   end
 
   def serve
-
+    @challenge = Challenge.find(params[:challenge_id])
+    @player = Player.find(current_user.id)
   end
 
   def destroy
@@ -28,4 +29,8 @@ class ChallengesController < ApplicationController
   def set_challenge
     @challenge = Challenge.find(params[:id])
   end
+
+  # def challenge_params
+  #   params.require(:challenge).permit(:content, :photo)
+  # end
 end

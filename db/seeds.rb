@@ -92,6 +92,10 @@ end
 
 puts "Created #{Ingredient.count} ingredients"
 
-puts "creating a challenge"
+puts "creating challenges"
+
 Challenge.build!(miles, david, attributes = {accepted: true, expiration: Time.new(2020, 03, 05), voting_end: Time.new(2020, 03, 10), mode: 'creative' })
+
+Challenge.build!(eyal, tamara, attributes = {accepted: true, expiration: Time.new(2020, 02, 26), voting_end: Time.new(2020, 02, 28), mode: 'classic' })
+
 puts "#{Challenge.count} created"
