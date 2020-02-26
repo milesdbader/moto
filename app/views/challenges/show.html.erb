@@ -3,25 +3,28 @@
 </div>
 
 <div class="row m-3 justify-content-center">
-  <h1><%= @challenge.mode.capitalize %> Mode</h1>
+  <h1><strong> <%= @challenge.mode.capitalize %> Mode </strong></h1>
 </div>
-<div class="container my-6">
-  <div id="clockdiv">
-    <div>
-      <span class="days"></span>
-      <div class="smalltext">Days</div>
-    </div>
-    <div>
-      <span class="hours"></span>
-      <div class="smalltext">Hours</div>
-    </div>
-    <div>
-      <span class="minutes"></span>
-      <div class="smalltext">Minutes</div>
-    </div>
-    <div>
-      <span class="seconds"></span>
-      <div class="smalltext">Seconds</div>
+
+<div class="row text-center">
+  <div class="container my-6">
+    <div id="clockdiv">
+      <div>
+        <span class="days"></span>
+        <div class="smalltext">Days</div>
+      </div>
+      <div>
+        <span class="hours"></span>
+        <div class="smalltext">Hours</div>
+      </div>
+      <div>
+        <span class="minutes"></span>
+        <div class="smalltext">Minutes</div>
+      </div>
+      <div>
+        <span class="seconds"></span>
+        <div class="smalltext">Seconds</div>
+      </div>
     </div>
   </div>
 </div>
@@ -44,7 +47,7 @@
 <br>
 
 <div class="row justify-content-center">
-  <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn btn-purple'  %>
+  <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn btn-purple' , style:'font-weight: bold; font-size: 21px;' %>
 </div>
 
 <script>
