@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
-  before_action :set_challenge, only: %i[show]
+  before_action :set_challenge, only: %i[show destroy]
   def index
+    @user = current_user
     @active_challenges = current_user.active_challenges
     @pending_challenges = current_user.pending_challenges
   end
@@ -28,6 +29,8 @@ class ChallengesController < ApplicationController
   end
 
   def destroy
+    @challenge.destroy
+    redirect_to challenges_path
   end
 
   private
