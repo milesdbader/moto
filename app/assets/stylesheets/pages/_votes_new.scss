@@ -54,3 +54,21 @@ html, body {
   margin: 0px;
   height: 100px;
 }
+
+.user-one-photo {
+  width: 100%;
+  margin-top: 20%;
+}.comment-row {
+  background-color: #EEEEEE;
+  width: 70%;
+  border-radius: 10px;
+  display: flex;
+  margin: 20px;
+  padding: 16px;
+  text-align: center;
+  p {
+    margin: 0;  }
+}.checkmark-row {
+  font-size: 60px;
+  color: #092EFF;
+  }.new-vote-nav {}
