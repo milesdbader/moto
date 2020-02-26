@@ -3,7 +3,7 @@
 </div>
 
 <div class="row m-3 justify-content-center">
-  <h1><%= @challenge.mode.capitalize %> Mode</h1>
+  <h1><strong> <%= @challenge.mode.capitalize %> Mode </strong></h1>
 </div>
 
 <div class="row text-center">
@@ -47,7 +47,7 @@
 <br>
 
 <div class="row justify-content-center">
-  <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn btn-purple'  %>
+  <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn btn-purple' , style:'font-weight: bold; font-size: 21px;' %>
 </div>
 
 <script>
