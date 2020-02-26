@@ -55,7 +55,14 @@
       <% end %>
 
       <%= link_to profile_path(current_user.id) do %>
-        <%= image_tag "vote_page_button.png", alt: "Profiloto", width: 60, height: 60 %>
+        <%= cl_image_tag @user.photo.key, alt: "Profiloto",
+            width: 60,
+            height: 60,
+            gravity: "face",
+            crop: "thumb",
+            cloud_name: "dtrwqimx6",
+            class: 'dash-avatar'
+        %>
       <% end %>
 
     </div>
