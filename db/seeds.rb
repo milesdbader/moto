@@ -105,20 +105,14 @@ puts "Created #{Ingredient.count} ingredients"
 
 puts "creating challenges"
 
-Challenge.build!(miles, david, attributes = {accepted: true, expiration: Time.new(2020, 03, 05), voting_end: Time.new(2020, 03, 10), mode: 'creative' })
+# these ones are active
+Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'creative' )
+Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 02, 26), mode: 'classic' )
+Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 02, 27), mode: 'classic' )
 
-Challenge.build!(eyal, tamara, attributes = {accepted: true, expiration: Time.new(2020, 02, 26), voting_end: Time.new(2020, 02, 28), mode: 'classic' })
+# these ones are pending
+Challenge.build!(miles, tamara, accepted: false, mode: 'creative' )
+Challenge.build!(david, miles, accepted: false, mode: 'classic' )
 
-
-def generate_challenges
-  # mode, challenger, opponent
-  future = Date.new(2021, 1, 1)
-  miles = User.find_by(username: 'milesdbader')
-  eyal = User.find_by(username: 'eyalcohen2524')
-  c = Challenge.build!(miles, eyal, mode: 'classic', accepted: true, expiration: future)
-
-end
-
-generate_challenges
 puts "#{Challenge.count} created"
 
