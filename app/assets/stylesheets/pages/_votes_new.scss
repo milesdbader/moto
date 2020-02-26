@@ -45,6 +45,7 @@ html, body {
   position: fixed;
   bottom: 0;
   width: 100%;
+  justify-content: space-evenly;
 }
 
 .creative-vote-footer > div {
@@ -55,10 +56,12 @@ html, body {
   height: 100px;
 }
 
-.user-one-photo {
+.user-photo {
   width: 100%;
   margin-top: 20%;
-}.comment-row {
+}
+
+.comment-row {
   background-color: #EEEEEE;
   width: 70%;
   border-radius: 10px;
@@ -68,7 +71,14 @@ html, body {
   text-align: center;
   p {
     margin: 0;  }
-}.checkmark-row {
-  font-size: 60px;
-  color: #092EFF;
-  }.new-vote-nav {}
+  }
+
+  .checkmark-row {
+    font-size: 60px;
+    color: #092EFF;
+  }
+
+  .nav-challenge-info {
+    display: flex;
+    position: fixed;
+  }
