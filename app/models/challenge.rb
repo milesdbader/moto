@@ -24,12 +24,13 @@ class Challenge < ApplicationRecord
     attributes.delete(:vegetable)
     attributes[:challenger] = challenger
     attributes[:opponent] = opponent
-    Challenge.create!(attributes)
+    boolean = Challenge.create!(attributes)
     if attributes[:mode] == 'creative'
       ingredients.each do |ingredient|
         ChallengeIngredient.create!(challenge: Challenge.all.last, ingredient: ingredient)
       end
     end
+    boolean
   end
 
   def players

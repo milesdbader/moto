@@ -16,13 +16,12 @@ class ChallengesController < ApplicationController
     @opponent = User.find(params[:opponent])
     @challenger = User.find(params[:challenger])
     @recipe = nil
+    @protein = Ingredient.find(params[:protein])
+    @vegetable = Ingredient.find(params[:vegetable])
+    @grain = Ingredient.find(params[:grain])
+    @dairy = Ingredient.find(params[:dairy])
     if params[:mode] == 'classic'
       @recipe = Recipe.find(params[:recipe]).id
-    elsif params[:mode] == 'creative'
-      @protein = Ingredient.find(params[:protein])
-      @vegetable = Ingredient.find(params[:vegetable])
-      @grain = Ingredient.find(params[:grain])
-      @dairy = Ingredient.find(params[:dairy])
     end
     if Challenge.build!(@opponent, @challenger, mode: params[:mode], recipe_id: @recipe, protein: @protein, dairy: @dairy, grain: @grain, vegetable: @vegetable)
       redirect_to challenges_path
