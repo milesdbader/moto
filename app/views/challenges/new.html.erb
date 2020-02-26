@@ -5,12 +5,12 @@
 </div>
 <br>
 <div class="d-flex justify-content-center">
-  <div id="challenger" class="mx-5">
+  <div id="challenger" class="mx-5 d-flex flex-column justify-content-between">
     <h5>Gen</h5>
     <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
   </div>
   <h2 class="my-5">VS</h2>
-  <div class="mx-5">
+  <div class="mx-5 d-flex flex-column justify-content-between">
     <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
     <h5 id="opponent" data-user=''>Opponent</h5>
   </div>.
@@ -51,11 +51,17 @@
   </div>
 </div>
 
-    <div class="btn btn-primary" id="selector">
+    <div class="justify-content-center btn btn-primary" id="selector">
     Get Cookin'
     </div>
 
+<div class="row">
+  <div class="col-3">
+    <p> <%= Ingredient.all.sample%> </p>
+  </div>
+</div>
 
+<div></div>
 <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn" %>
 
   <script>

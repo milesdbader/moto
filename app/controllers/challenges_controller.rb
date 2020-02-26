@@ -13,11 +13,9 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    @challenge = Challenge.new
     @opponent = User.find(params[:opponent])
     @challenger = User.find(params[:challenger])
-    @challenge.build!(@opponent, @challenger, challenge_params)
-    if @challenge.save
+    if Challenge.build!(@opponent, @challenger, mode: params[:mode])
       redirect_to challenges_path
     else
       render :new
@@ -45,11 +43,6 @@ class ChallengesController < ApplicationController
   end
 
   private
-
-
-  def challenge_params
-    params.require(:challenge).permit(:mode)
-  end
 
   def set_challenge
     @challenge = Challenge.find(params[:id])
