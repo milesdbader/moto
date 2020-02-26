@@ -46,6 +46,13 @@
 
               <% @pending_challenges.each do |challenge| %>
                 <% opp = the_other_guy(challenge, current_user) %>
+                <!-- line below sets accepted to true but doesn't save, for later use -->
+                <% challenge.accepted = true %>
+                <!-- creates hidden submit button -->
+                <%= simple_form_for(challenge) do |f| %>
+                  <%= f.button :submit, "", class: "d-none" %>
+                <% end %>
+
                 <div style="margin-right: 16px;">
                   <div class="dash-challenge-card" style="margin: 0 0 4px 0 !important;">
                     <div>
@@ -73,7 +80,8 @@
                   <% if opp.id == challenge.challenger.user.id %>
                     <div class="d-flex justify-content-center">
                       <div class="d-flex justify-content-between" style="min-width: 62px">
-                        <i class="far fa-check-circle icon-clicker"></i>
+                        <!-- added the stuff below -->
+                        <i class="far fa-check-circle icon-clicker check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
                         <%= link_to challenge_path(challenge), data: { confirm: "Are you sure you want to reject it?" }, method: :delete do %>
                           <i class="far fa-times-circle icon-clicker"></i>
                         <% end %>
@@ -111,3 +119,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  const checks = document.querySelectorAll('.check-box-icon');
+  console.log(checks)
+  checks.forEach((check) => {
+    check.addEventListener("click", (event) => {
+      let check_id = check.dataset.challengeId
+      console.log(check_id);
+    });
+  });
+
+</script>
