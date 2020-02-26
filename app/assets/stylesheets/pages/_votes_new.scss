@@ -47,7 +47,7 @@ html, body {
   width: 100%;
 }
 
-.creative-vote-footer > div {
+.creative-vote-footer > a {
   flex-grow: 1;
   border: solid 3px $dark-purple;
   text-align: center;
@@ -78,3 +78,7 @@ html, body {
   font-size: 60px;
   color: #092EFF;
   }
+
+.new-vote-nav {
+
+}
