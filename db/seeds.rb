@@ -89,16 +89,16 @@ vegetable_ingredients = ['Spinach', 'Bell peppers', 'Kale', 'Alfalfa sprouts', '
 dairy_ingredients = ['Greek yogurt', 'Cottage cheese', 'Milk', 'Butter', 'Buttermilk', 'Custard', 'Curd', 'Cream cheese', 'Paneer', 'Sour milk']
 
 protein_ingredients.each do |ingredient|
-  Ingredient.create(name: ingredient, category: 'protein')
+  Ingredient.create!(name: ingredient, category: 'protein')
 end
 grain_ingredients.each do |ingredient|
-  Ingredient.create(name: ingredient, category: 'grain')
+  Ingredient.create!(name: ingredient, category: 'grain')
 end
 vegetable_ingredients.each do |ingredient|
-  Ingredient.create(name: ingredient, category: 'vegetable')
+  Ingredient.create!(name: ingredient, category: 'vegetable')
 end
 dairy_ingredients.each do |ingredient|
-  Ingredient.create(name: ingredient, category: 'dairy')
+  Ingredient.create!(name: ingredient, category: 'dairy')
 end
 
 puts "Created #{Ingredient.count} ingredients"
@@ -106,13 +106,13 @@ puts "Created #{Ingredient.count} ingredients"
 puts "creating challenges"
 
 # these ones are active
-Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'creative' )
-Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 02, 26), mode: 'classic' )
-Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 02, 27), mode: 'classic' )
+Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'creative', protein: Ingredient.find(12), grain: Ingredient.find(2), dairy: Ingredient.find(50), vegetable: Ingredient.find(35))
+Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 02, 26), mode: 'classic', protein: Ingredient.find(24), grain: Ingredient.find(21), dairy: Ingredient.find(23), vegetable: Ingredient.find(28))
+Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 02, 27), mode: 'classic', protein: Ingredient.find(38), grain: Ingredient.find(2), dairy: Ingredient.find(41), vegetable: Ingredient.find(19))
 
 # these ones are pending
-Challenge.build!(miles, tamara, accepted: false, mode: 'creative' )
-Challenge.build!(david, miles, accepted: false, mode: 'classic' )
+Challenge.build!(miles, tamara, accepted: false, mode: 'creative', protein: Ingredient.find(12), grain: Ingredient.find(2), dairy: Ingredient.find(50), vegetable: Ingredient.find(35))
+Challenge.build!(david, miles, accepted: false, mode: 'classic', protein: Ingredient.find(12), grain: Ingredient.find(2), dairy: Ingredient.find(50), vegetable: Ingredient.find(35))
 
 puts "#{Challenge.count} created"
 

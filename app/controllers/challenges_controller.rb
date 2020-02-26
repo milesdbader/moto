@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: %i[show destroy]
-  
+
   def index
     @user = current_user
     @active_challenges = current_user.active_challenges
@@ -24,7 +24,7 @@ class ChallengesController < ApplicationController
     if params[:mode] == 'classic'
       @recipe = Recipe.find(params[:recipe]).id
     end
-    if Challenge.build!(@opponent, @challenger, mode: params[:mode], recipe_id: @recipe, protein: @protein, dairy: @dairy, grain: @grain, vegetable: @vegetable)
+    if Challenge.build!(@opponent, @challenger, mode: params[:mode], recipe_id: @recipe, protein: @protein, dairy: @dairy, grain: @grain, vegetable: @vegetable, accepted: false)
       redirect_to challenges_path
     else
       render :new
@@ -61,7 +61,7 @@ class ChallengesController < ApplicationController
     @challenge.destroy
     redirect_to challenges_path
   end
-  
+
   private
 
   def set_challenge
