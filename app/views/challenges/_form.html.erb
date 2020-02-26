@@ -1,4 +1,5 @@
 <%= simple_form_for(@player) do |f| %>
+    <%= f.input :title, required: true %>
     <%= f.input :caption %>
     <%= f.input :photo, as: :file, required: true %>
 
