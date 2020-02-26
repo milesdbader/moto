@@ -19,7 +19,18 @@
               <% @active_challenges.each do |challenge| %>
                 <% opp = the_other_guy(challenge, current_user) %>
                 <div class="dash-challenge-card">
-                  <p><%= opp.username %></p>
+                  <div>
+                    <p><%= opp.username %></p>
+                    <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+                        width: 50,
+                        height: 50,
+                        gravity: "face",
+                        crop: "thumb",
+                        cloud_name: "dtrwqimx6",
+                        class: 'dash-avatar'
+                    %>
+                    <p><%= remaining_time_string(challenge) %></p>
+                  </div>
                 </div>
               <% end%>
 
