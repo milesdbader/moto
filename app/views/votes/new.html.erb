@@ -1,8 +1,8 @@
 <div class="page-new-vote">
   <div class="container">
-    <div class="row justify-content-center">
-      <h3>Moto logo</h3>
-    </div>
+    <!-- <div class="row justify-content-center">
+      <h3><div> <%#= image_tag("moto_logo.png", size: "140x80") %> </div></h3>
+    </div> -->
 
     <div class="row justify-content-center">
       <div class="col d-flex justify-content-center">
@@ -12,13 +12,13 @@
 
     <div class="row">
       <div class="col d-flex justify-content-center mt-3">
-        <h1><strong>Creative Mode</strong></h1>
+        <h1><strong><%= @challenge.mode.capitalize %> Mode</strong></h1>
       </div>
     </div>
 
     <div class="row">
-      <div class="col d-flex justify-content-center mt-3">
-        <h3>Your ingredients:</h3>
+      <div class="col d-flex justify-content-center m-3">
+        <h3>Your Challenge:</h3>
       </div>
     </div>
 
@@ -71,11 +71,11 @@
 
     </div>
 
-    <div class="creative-vote-footer">
-      <div> 1 </div>
-      <div> 2 </div>
-      <div> 3 </div>
 
+    <div class="creative-vote-footer mb-3">
+      <div> <%= cl_image_tag @challenge.challenger.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %> </div>
+      <div> <%= image_tag("chef_purple.png", class: 'mt-3', size: "70x70") %> </div>
+      <!-- <div> <%#= @challenge.challenger.user.photo.key %> </div> -->
+      <div> <%= cl_image_tag @challenge.opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %> </div>
     </div>
-
   </div>

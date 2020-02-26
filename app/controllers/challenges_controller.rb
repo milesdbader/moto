@@ -19,7 +19,12 @@ class ChallengesController < ApplicationController
 
   def serve
     @challenge = Challenge.find(params[:challenge_id])
-    @player = Player.find(current_user.id)
+
+    if @challenge.challenger.user.id == current_user.id
+      @player = Player.find(current_user.id)
+    else
+      @player = Player.find(@challenge.opponent.user.id)
+    end
   end
 
   def destroy
@@ -30,8 +35,4 @@ class ChallengesController < ApplicationController
   def set_challenge
     @challenge = Challenge.find(params[:id])
   end
-
-  # def challenge_params
-  #   params.require(:challenge).permit(:content, :photo)
-  # end
 end
