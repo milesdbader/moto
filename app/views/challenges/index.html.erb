@@ -46,8 +46,29 @@
 
               <% @pending_challenges.each do |challenge| %>
                 <% opp = the_other_guy(challenge, current_user) %>
-                <div class="dash-challenge-card">
-                  <p><%= opp.username %></p>
+                <div style="margin-right: 16px;">
+                  <div class="dash-challenge-card" style="margin: 0 0 4px 0 !important;">
+                    <div>
+                      <p><%= opp.username %></p>
+                      <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+                          width: 50,
+                          height: 50,
+                          gravity: "face",
+                          crop: "thumb",
+                          cloud_name: "dtrwqimx6",
+                          class: 'dash-avatar'
+                      %>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-between" style="min-width: 62px">
+                      <%#= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+                      <i class="far fa-check-circle icon-clicker"></i>
+                      <%= link_to challenge_path(challenge), data: { confirm: "Are you sure you want to reject it?" }, method: :delete do %>
+                        <i class="far fa-times-circle icon-clicker"></i>
+                      <% end %>
+                    </div>
+                  </div>
                 </div>
               <% end%>
 

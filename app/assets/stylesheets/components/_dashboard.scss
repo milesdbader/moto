@@ -44,7 +44,7 @@
   margin: 8px 0;
   display: flex;
   border-radius: 8px;
-  background-color: #e5e5e5;
+  // background-color: #e5e5e5;
 }
 
 .dash-avatar {
@@ -70,5 +70,15 @@
     }
 
   }
+}
+
+.icon-clicker {
+  font-size: 26px;
+}
+.fa-check-circle {
+  color: $purple;
+}
+.fa-times-circle {
+  color: $dark-purple;
 }
 
