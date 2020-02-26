@@ -1,0 +1,93 @@
+<div class="col-12 mt-3 text-center">
+  <%= image_tag("idea.png", size: "48x48") %>
+</div>
+
+<div class="row m-3 justify-content-center">
+  <h1><%= @challenge.mode.capitalize %> Mode</h1>
+</div>
+<div class="container my-6">
+  <div id="clockdiv">
+    <div>
+      <span class="days"></span>
+      <div class="smalltext">Days</div>
+    </div>
+    <div>
+      <span class="hours"></span>
+      <div class="smalltext">Hours</div>
+    </div>
+    <div>
+      <span class="minutes"></span>
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+      <span class="seconds"></span>
+      <div class="smalltext">Seconds</div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row text-center m-3">
+    <div class="col-12">
+      <h1> Beat <%= @challenge.opponent.user.username %>! </h1>
+    </div>
+  </div>
+</div>
+
+<div class="row text-center">
+  <img class="challenge-avatar mx-auto d-block"  src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+</div>
+
+<br>
+<br>
+
+<div class="row justify-content-center">
+  <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn btn-purple'  %>
+</div>
+
+<script>
+
+  function getTimeRemaining(endtime) {
+    let t = Date.parse(endtime) - Date.parse(new Date());
+    let seconds = Math.floor((t / 1000) % 60);
+    let minutes = Math.floor((t / 1000 / 60) % 60);
+    let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+    let days = Math.floor(t / (1000 * 60 * 60 * 24));
+    return {
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
+  }
+
+  function initializeClock(id, endtime) {
+    let clock = document.getElementById(id);
+    let daysSpan = clock.querySelector('.days');
+    let hoursSpan = clock.querySelector('.hours');
+    let minutesSpan = clock.querySelector('.minutes');
+    let secondsSpan = clock.querySelector('.seconds');
+
+    function updateClock() {
+      let t = getTimeRemaining(endtime);
+
+      daysSpan.innerHTML = t.days;
+      hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+      minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+      secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+    }
+
+    updateClock();
+    let timeinterval = setInterval(updateClock, 1000);
+  }
+
+  let deadline = new Date(<%= (@challenge.expiration).strftime('%Q') %>);
+  initializeClock('clockdiv', deadline);
+</script>
