@@ -2,6 +2,7 @@ class Player < ApplicationRecord
   belongs_to :user, dependent: :destroy
   # has_one :challenge
   has_many :votes
+  has_one_attached :photo
 
   def challenge
     found = Challenge.find_by(challenger: self)

@@ -3,13 +3,22 @@
   border-radius: 50%;
 }
 .challenge-avatar {
-  width: 190px;
+  width: 120px;
   border-radius: 50%;
-  height: 200px;
+  height: 130px;
   margin: 20px;
   border: solid;
   border-width: thin;
+}
 
+.voting-avatar {
+  width: 100px;
+  border-radius: 50%;
+  height: 110px;
+  // margin-bottom: 10px;
+  border: solid;
+  border-color: solid;
+  border-width: 1px;
 }
 .avatar-large {
   width: 56px;
