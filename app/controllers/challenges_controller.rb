@@ -11,10 +11,15 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    raise
-    my_hash = JSON.parse(params)
-    puts my_hash
-    render :new
+    @challenge = Challenge.new
+    @opponent = User.find(params[:opponent])
+    @challenger = User.find(params[:challenger])
+    @challenge.build!(@opponent, @challenger, challenge_params)
+    if @challenge.save
+      redirect_to challenges_path
+    else
+      render :new
+    end
   end
 
   def accepted?
@@ -37,6 +42,6 @@ class ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:challenger, :opponent, :mode)
+    params.require(:challenge).permit(:mode)
   end
 end
