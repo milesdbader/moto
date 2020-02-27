@@ -105,6 +105,7 @@ puts "Created #{Ingredient.count} ingredients"
 
 puts "creating challenges"
 
+recipe1 = Recipe.first
 # these ones are active
 Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
 Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 02, 29), mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))

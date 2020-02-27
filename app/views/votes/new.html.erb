@@ -25,47 +25,58 @@
         </div>
         <!-- ingredients -->
         <div>
-          <div class="row ingredient-row">
-            <div class="col-2 ingredient-icon">
-              <i class="fas fa-wine-bottle"></i>
+          <% if @challenge.mode == "creative" %>
+            <div class="row ingredient-row">
+              <div class="col-2 ingredient-icon">
+                <i class="fas fa-wine-bottle"></i>
+              </div>
+              <div class="col-8 ingredient-name">
+                <!-- I AM WORKING HERE -->
+                <%= @challenge.ingredients[0].name %>
+              </div>
+              <div class="col-2 ingredient-space-filler"></div>
+            </div><!-- /ingredient-row -->
+            <div class="row ingredient-underline-row"></div>
+            <div class="row ingredient-row">
+              <div class="col-2 ingredient-icon">
+                <i class="fas fa-fish"></i>
+              </div>
+              <div class="col-8 ingredient-name">
+                <%= @challenge.ingredients[1].name %>
+              </div>
+              <div class="col-2 ingredient-space-filler"></div>
+            </div><!-- /ingredient-row -->
+            <div class="row ingredient-underline-row"></div>
+            <div class="row ingredient-row">
+              <div class="col-2 ingredient-icon">
+                <i class="fas fa-carrot"></i>
+              </div>
+              <div class="col-8 ingredient-name">
+                <%= @challenge.ingredients[2].name %>
+              </div>
+              <div class="col-2 ingredient-space-filler"></div>
             </div>
-            <div class="col-8 ingredient-name">
-              <!-- I AM WORKING HERE -->
-              <%= @challenge.ingredients[0].name %>
+            <div class="row ingredient-underline-row"></div>
+            <div class="row ingredient-row">
+              <div class="col-2 ingredient-icon">
+                <i class="fas fa-wine-bottle"></i>
+              </div>
+              <div class="col-8 ingredient-name">
+                <%= @challenge.ingredients[3].name %>
+              </div>
+              <div class="col-2 ingredient-space-filler"></div>
             </div>
-            <div class="col-2 ingredient-space-filler"></div>
-          </div><!-- /ingredient-row -->
-          <div class="row ingredient-underline-row"></div>
-          <div class="row ingredient-row">
-            <div class="col-2 ingredient-icon">
-              <i class="fas fa-fish"></i>
+            <div class="row ingredient-underline-row"></div>
+            <% else %>
+            <div class="row justify-content-center">
+              <%= image_tag("food5.jpeg", height: 500, width: 370) %>
             </div>
-            <div class="col-8 ingredient-name">
-              <%= @challenge.ingredients[1].name %>
+            <div class="row">
+              <div class="col d-flex justify-content-center mt-3">
+                <h4>Grilled Eggplant With Feta</h4>
+              </div>
             </div>
-            <div class="col-2 ingredient-space-filler"></div>
-          </div><!-- /ingredient-row -->
-          <div class="row ingredient-underline-row"></div>
-          <div class="row ingredient-row">
-            <div class="col-2 ingredient-icon">
-              <i class="fas fa-carrot"></i>
-            </div>
-            <div class="col-8 ingredient-name">
-              <%= @challenge.ingredients[2].name %>
-            </div>
-            <div class="col-2 ingredient-space-filler"></div>
-          </div>
-          <div class="row ingredient-underline-row"></div>
-          <div class="row ingredient-row">
-            <div class="col-2 ingredient-icon">
-              <i class="fas fa-wine-bottle"></i>
-            </div>
-            <div class="col-8 ingredient-name">
-              <%= @challenge.ingredients[3].name %>
-            </div>
-            <div class="col-2 ingredient-space-filler"></div>
-          </div>
-          <div class="row ingredient-underline-row"></div>
+            <% end %>
         </div><!-- /ingredients -->
       </div>
     </div>
@@ -86,7 +97,7 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <h2><%= @challenge.challenger.title %></h2>
+          <h2 text-center><%= @challenge.challenger.title %></h2>
           <div class="row justify-content-center comment-row">
             <div class="d-flex col-12 justify-content-center">
              <% if @challenge.challenger.caption.nil? %>
@@ -151,7 +162,7 @@
         <a class="nav-item nav-link active" id="nav-challenge-info-tab" data-toggle="tab"
            href="#nav-challenge-info" role="tab"
            aria-controls="nav-challenge-info" aria-selected="true">
-         <%= image_tag("chef_purple.png", class: 'mt-3', size: "70x70") %>
+         <%= image_tag("chef_hat3.svg", class: 'mt-3', size: "70x70") %>
         </a>
         <a class="nav-item nav-link" id="nav-player-2-tab" data-toggle="tab"
            href="#nav-player-2" role="tab"
