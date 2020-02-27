@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_one_attached :photo
-  has_many :players
+  has_many :players, dependent: :destroy
   has_many :challenges, through: :players
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
