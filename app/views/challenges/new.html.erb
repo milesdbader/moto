@@ -2,54 +2,57 @@
 <div class="container">
   <div class="row justify-content-center">
     <a href="http://localhost:3000/challenges"><i class="fas fa-chevron-left back"></i></a>
-    <h1 style="color:blue">New Challenge</h1>
+    <h1 class="purple-text">New Challenge</h1>
   </div>
   <br>
   <div class="d-flex justify-content-center">
-    <div id="challenger" class="mx-5 d-flex flex-column justify-content-between">
-      <h5>Gen</h5>
+    <div class=" user-aligner mx-2 d-flex flex-column justify-content-between">
+      <h5 id="user">User</h5>
       <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
     </div>
-    <h2 class="my-5">VS</h2>
-    <div class="mx-5 d-flex flex-column justify-content-between">
-      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
+    <h2 class="my-5 mx-4"><strong>VS<strong></h2>
+    <div class="mx-2 d-flex flex-column justify-content-between">
       <h5 id="opponent" data-user=''>Opponent</h5>
+      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
     </div>.
   </div>
-  <div class="row">
-    <div class="offset-1 col-2">
-      <div class="numberCircle"><strong>1.</strong></div>
-    </div>
-    <div>
-      <h2>Choose your Opponent</h2>
-      <%= text_field_tag(:search, params[:search]) %>
-      <%= submit_tag("search", id: 'search-users') %>
+  <div class="new-one">
+    <div class="numberCircle"><strong>1.</strong></div>
+    <div class='mt-2'>
+      <h3>Choose your Opponent</h3>
+      <div class='mt-4'>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag("search", id: 'search-users') %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="offset-1 col-2">
+
+  <div class="new-two">
+    <div class='d-flex align-items-center'>
       <div class="numberCircle"><strong>2.</strong></div>
+      <h3>Choose your Mode</h3>
     </div>
-    <h2>Choose your Mode</h2>
-  </div>
-  <div class="row justify-content-center" id="modes">
-    <div class="radio-toolbar d-flex">
-      <div class="justify-content-center">
-        <input hidden='true' type="radio" id="classic" name="RadioFruit" value="classicStuff">
-        <label for="classic">
-          <i class="fas fa-utensils"></i>
-        </label>
-        <h5><strong>Classic</strong></h5>
-      </div>
-      <div class="justify-content-center">
-        <input hidden='true' type="radio" id="creative" name="RadioFruit" value="creativeStuff">
-        <label for="creative">
-          <i class="fas fa-lightbulb"></i>
-        </label>
-        <h5><strong>Creative</strong></h5>
+
+    <div class="row justify-content-center" id="modes">
+      <div class="radio-toolbar d-flex">
+        <div class="justify-content-center text-center">
+          <input hidden='true' type="radio" id="classic" name="RadioFruit" value="classicStuff">
+          <label for="classic">
+            <i class="fas fa-utensils"></i>
+          </label>
+          <h5><strong>Classic</strong></h5>
+        </div>
+        <div class="justify-content-center text-center">
+          <input hidden='true' type="radio" id="creative" name="RadioFruit" value="creativeStuff">
+          <label for="creative">
+            <i class="fas fa-lightbulb"></i>
+          </label>
+          <h5><strong>Creative</strong></h5>
+        </div>
       </div>
     </div>
   </div>
+
   <div id="yaniv">
     <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
       <h2>Ingredients</h2>
@@ -86,7 +89,7 @@
       <img src="<%= @recipe.image_url %>" alt="" class="image">
     </div>
   </div>
-  <div class="justify-content-center btn btn-purple" style="width: 100%; " id="selector">
+  <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px;" id="selector">
     Get Cookin'
   </div>
   <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn", style: "display: none;" %>
