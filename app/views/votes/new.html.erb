@@ -30,7 +30,8 @@
               <i class="fas fa-wine-bottle"></i>
             </div>
             <div class="col-8 ingredient-name">
-              Salsa
+              <!-- I AM WORKING HERE -->
+              <%= @challenge.ingredients[0].name %>
             </div>
             <div class="col-2 ingredient-space-filler"></div>
           </div><!-- /ingredient-row -->
@@ -40,7 +41,7 @@
               <i class="fas fa-fish"></i>
             </div>
             <div class="col-8 ingredient-name">
-              Herring
+              <%= @challenge.ingredients[1].name %>
             </div>
             <div class="col-2 ingredient-space-filler"></div>
           </div><!-- /ingredient-row -->
@@ -50,7 +51,7 @@
               <i class="fas fa-carrot"></i>
             </div>
             <div class="col-8 ingredient-name">
-              Mushrooms
+              <%= @challenge.ingredients[2].name %>
             </div>
             <div class="col-2 ingredient-space-filler"></div>
           </div>
@@ -60,7 +61,7 @@
               <i class="fas fa-wine-bottle"></i>
             </div>
             <div class="col-8 ingredient-name">
-              Blue cheese
+              <%= @challenge.ingredients[3].name %>
             </div>
             <div class="col-2 ingredient-space-filler"></div>
           </div>
@@ -110,11 +111,10 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="d-flex justify-content-center">
-            <% if @challenge.opponent.photo.key.nil? %>
-              <%= image_tag("prep.jpeg", height: 500, width: 370) %>
-              <p>Waiting for <%= @challenge.opponent.user.username %> to upload...</p>
-            <% else %>
+            <% if @challenge.opponent.photo.attached? %>
               <%= cl_image_tag @challenge.opponent.photo.key, height: 500, width: 370, crop: :fill %>
+            <% else %>
+              <%= image_tag("prep2.jpeg", height: 500, width: 370) %>
             <% end %>
           </div>
         </div>
@@ -122,7 +122,11 @@
           <h2><%= @challenge.opponent.title %></h2>
           <div class="row justify-content-center comment-row">
             <div class="d-flex col-12 justify-content-center">
-             <p><%= @challenge.opponent.caption %></p>
+              <% if @challenge.opponent.caption.nil? %>
+                <p>Waiting for <%= @challenge.opponent.user.username %> to upload...</p>
+              <% else %>
+                <p><%= @challenge.opponent.caption %></p>
+              <% end %>
             </div>
           </div>
         </div>
