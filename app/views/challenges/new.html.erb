@@ -6,9 +6,17 @@
   </div>
   <br>
   <div class="d-flex justify-content-center">
-    <div class=" user-aligner mx-2 d-flex flex-column justify-content-between">
-      <h5 id="user">User</h5>
-      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
+    <div id="challenger" class=" user-aligner mx-2 d-flex flex-column justify-content-between">
+      <h5><%= @user.username %></h5>
+      <%= cl_image_tag @user.photo.key, alt: "Profiloto",
+          width: 80,
+          height: 80,
+          gravity: "face",
+          crop: "thumb",
+          cloud_name: "dtrwqimx6",
+          class: 'dash-avatar'
+      %>
+
     </div>
     <h2 class="my-5 mx-4"><strong>VS<strong></h2>
     <div class="mx-2 d-flex flex-column justify-content-between">
@@ -107,7 +115,7 @@
 
     searchButton.addEventListener('click', () => {
       let query = document.querySelector('#search');
-      fetch('http://localhost:3000/take_user' + '?q=' + query.value)
+      fetch('/take_user' + '?q=' + query.value)
       .then(res => res.json())
       .then((data) =>  {
         if(data.ok){
