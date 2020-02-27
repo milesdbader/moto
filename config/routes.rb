@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     resources :votes, only: [:create, :new, :index]
   get 'serve', to: "challenges#serve", as: :serve
   end
-
-  put 'challenges', to: "challenges#accepted?", as: :accept
+  patch 'challenges/:id', to: "challenges#accepted", as: :accept
   get 'take_user', to: "challenges#take_user", as: :take_user
   resources :players, only: [:create, :edit, :update]
   resources :profiles, only: [:show]

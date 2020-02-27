@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-  before_action :set_challenge, only: %i[show destroy]
+  before_action :set_challenge, only: %i[show destroy accepted]
 
   def index
     @user = current_user
@@ -8,6 +8,7 @@ class ChallengesController < ApplicationController
   end
 
   def new
+    @user = current_user
   end
 
   def show
@@ -31,7 +32,15 @@ class ChallengesController < ApplicationController
     end
   end
 
-  def accepted?
+  def accepted
+    @challenge.accepted = true
+    @challenge.expiration = Time.now + 259200
+    if @challenge.save
+      redirect_to root_path
+    else
+      raise
+      # uhhh what goes here??
+    end
   end
 
   def destroy
