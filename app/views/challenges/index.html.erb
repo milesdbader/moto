@@ -46,6 +46,13 @@
 
               <% @pending_challenges.each do |challenge| %>
                 <% opp = the_other_guy(challenge, current_user) %>
+                <!-- creates hidden submit button -->
+                <%= simple_form_for(challenge) do |f| %>
+                  <div id="challenge-<%= challenge.id %>" class="activate-challenge" data-challenge-id="<%= challenge.id %>">
+                    <%= f.button :submit, "", class: "d-none" %>
+                  </div>
+                <% end %>
+
                 <div style="margin-right: 16px;">
                   <div class="dash-challenge-card" style="margin: 0 0 4px 0 !important;">
                     <div>
@@ -56,7 +63,8 @@
                             gravity: "face",
                             crop: "thumb",
                             cloud_name: "dtrwqimx6",
-                            class: 'dash-avatar'
+                            class: 'dash-avatar',
+                            style: 'margin-right: 4px'
                         %>
                         <p><%= opp.username %></p>
                       </div>
@@ -72,7 +80,8 @@
                   <% if opp.id == challenge.challenger.user.id %>
                     <div class="d-flex justify-content-center">
                       <div class="d-flex justify-content-between" style="min-width: 62px">
-                        <i class="far fa-check-circle icon-clicker"></i>
+                        <!-- added the stuff below -->
+                        <i class="far fa-check-circle icon-clicker check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
                         <%= link_to challenge_path(challenge), data: { confirm: "Are you sure you want to reject it?" }, method: :delete do %>
                           <i class="far fa-times-circle icon-clicker"></i>
                         <% end %>
@@ -110,3 +119,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  const checks = document.querySelectorAll('.check-box-icon');
+  // const invisible_submits = document.querySelectorAll('.activate-challenge > button');
+  checks.forEach((check) => {
+    check.addEventListener("click", (event) => {
+      let check_id = check.dataset.challengeId
+      let invisible_submit = document.querySelector(`#challenge-${check_id} > input`);
+      invisible_submit.click();
+      // console.log(invisible_submit);
+    });
+  });
+
+</script>
