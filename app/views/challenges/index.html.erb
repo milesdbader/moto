@@ -128,9 +128,9 @@
   checks.forEach((check) => {
     check.addEventListener("click", (event) => {
       let check_id = check.dataset.challengeId
-      // console.log(check_id);
-      let invisible_submit = document.querySelector(`#challenge-${check_id}`);
-      console.log(invisible_submit);
+      let invisible_submit = document.querySelector(`#challenge-${check_id} > input`);
+      invisible_submit.click();
+      // console.log(invisible_submit);
     });
   });
 
