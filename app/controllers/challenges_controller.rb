@@ -3,8 +3,8 @@ class ChallengesController < ApplicationController
 
   def index
     @user = current_user
-    @active_challenges = current_user.active_challenges
-    @pending_challenges = current_user.pending_challenges
+    @active_challenges = current_user.active_challenges.reverse
+    @pending_challenges = current_user.pending_challenges.reverse
   end
 
   def new
