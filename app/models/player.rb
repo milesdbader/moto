@@ -6,6 +6,7 @@ class Player < ApplicationRecord
 
   def challenge
     found = Challenge.find_by(challenger: self)
-    Challenge.find_by(opponent: self) if found.nil?
+    return found unless found.nil?
+    return Challenge.find_by(opponent: self)
   end
 end
