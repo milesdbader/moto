@@ -27,40 +27,40 @@
         <div>
           <div class="row ingredient-row">
             <div class="col-2 ingredient-icon">
-              <i class="fas fa-wine-bottle"></i>
-            </div>
-            <div class="col-8 ingredient-name">
-              Salsa
-            </div>
-            <div class="col-2 ingredient-space-filler"></div>
-          </div><!-- /ingredient-row -->
-          <div class="row ingredient-underline-row"></div>
-          <div class="row ingredient-row">
-            <div class="col-2 ingredient-icon">
               <i class="fas fa-fish"></i>
             </div>
             <div class="col-8 ingredient-name">
-              Herring
+              <%= @challenge.ingredients.find_by_category('protein').name %>
             </div>
             <div class="col-2 ingredient-space-filler"></div>
           </div><!-- /ingredient-row -->
           <div class="row ingredient-underline-row"></div>
           <div class="row ingredient-row">
             <div class="col-2 ingredient-icon">
-              <i class="fas fa-carrot"></i>
+              <i class="fas fa-seedling"></i>
             </div>
             <div class="col-8 ingredient-name">
-              Mushrooms
+              <%= @challenge.ingredients.find_by_category('vegetable').name %>
+            </div>
+            <div class="col-2 ingredient-space-filler"></div>
+          </div><!-- /ingredient-row -->
+          <div class="row ingredient-underline-row"></div>
+          <div class="row ingredient-row">
+            <div class="col-2 ingredient-icon">
+              <i class="fas fa-mortar-pestle"></i>
+            </div>
+            <div class="col-8 ingredient-name">
+              <%= @challenge.ingredients.find_by_category('grain').name %>
             </div>
             <div class="col-2 ingredient-space-filler"></div>
           </div>
           <div class="row ingredient-underline-row"></div>
           <div class="row ingredient-row">
             <div class="col-2 ingredient-icon">
-              <i class="fas fa-wine-bottle"></i>
+              <i class="fas fa-cheese"></i>
             </div>
             <div class="col-8 ingredient-name">
-              Blue cheese
+              <%= @challenge.ingredients.find_by_category('dairy').name %>
             </div>
             <div class="col-2 ingredient-space-filler"></div>
           </div>
@@ -74,14 +74,14 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="d-flex justify-content-center">
-            <img src="https://cdn3.tmbi.com/toh/GoogleImages/Banana-Cream-Pie_EXPS_FBMZ16_1151_B05_18_7b.jpg" alt="image" class="user-photo">
+          <%= cl_image_tag @challenge.challenger.photo.key, class: 'user-photo'%>
           </div>
         </div>
         <div class="row justify-content-center">
-          <h2>Not Banana Cream Pie</h2>
+          <h2><%= @challenge.challenger.title %></h2>
           <div class="row justify-content-center comment-row">
             <div class="d-flex col-12 justify-content-center">
-             <p>My meal is finished and it looks better than yours. Please compare and don't be annoying.</p>
+             <p><%= @challenge.challenger.caption %></p>
             </div>
           </div>
         </div>
@@ -99,14 +99,15 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="d-flex justify-content-center">
-            <img src="https://cdn3.tmbi.com/toh/GoogleImages/Banana-Cream-Pie_EXPS_FBMZ16_1151_B05_18_7b.jpg" alt="image" class="user-photo">
+          <%= cl_image_tag @challenge.opponent.photo.key, class: 'user-photo'%>
+
           </div>
         </div>
         <div class="row justify-content-center">
-          <h2>Banana Cream Pie</h2>
+          <h2><%= @challenge.opponent.title %></h2>
           <div class="row justify-content-center comment-row">
             <div class="d-flex col-12 justify-content-center">
-              <p>My meal is finished and it looks better than yours. Please compare and don't be annoying.</p>
+              <p><%= @challenge.opponent.caption %></p>
             </div>
           </div>
         </div>

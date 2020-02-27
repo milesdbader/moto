@@ -112,7 +112,7 @@
 
     searchButton.addEventListener('click', () => {
       let query = document.querySelector('#search');
-      fetch('http://localhost:3000/take_user' + '?q=' + query.value)
+      fetch('/take_user' + '?q=' + query.value)
       .then(res => res.json())
       .then((data) =>  {
         if(data.ok){
