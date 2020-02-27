@@ -1,81 +1,144 @@
-<div class="page-new-vote">
-  <div class="container">
-    <!-- <div class="row justify-content-center">
-      <h3><div> <%#= image_tag("moto_logo.png", size: "140x80") %> </div></h3>
-    </div> -->
+<!-- <div class="container"> -->
+  <%= link_to challenges_path do %>
+    <i class="fas fa-chevron-left"></i>
+  <%  end %>
 
-    <div class="row justify-content-center">
-      <div class="col d-flex justify-content-center">
-        <img src="https://image.flaticon.com/icons/svg/1152/1152919.svg" alt="image" class="light-bulb-icon">
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col d-flex justify-content-center mt-3">
-        <h1><strong><%= @challenge.mode.capitalize %> Mode</strong></h1>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col d-flex justify-content-center m-3">
-        <h3>Your Challenge:</h3>
-      </div>
-    </div>
-
-    <div><!-- ingredients -->
-      <div class="row ingredient-row">
-        <div class="col-2 ingredient-icon">
-          <i class="fas fa-wine-bottle"></i>
-        </div>
-        <div class="col-8 ingredient-name">
-          Salsa
-        </div>
-        <div class="col-2 ingredient-space-filler"></div>
-      </div><!-- /ingredient-row -->
-      <div class="row ingredient-underline-row"></div>
-
-      <div class="row ingredient-row">
-        <div class="col-2 ingredient-icon">
-          <i class="fas fa-fish"></i>
-        </div>
-        <div class="col-8 ingredient-name">
-          Herring
-        </div>
-        <div class="col-2 ingredient-space-filler"></div>
-      </div><!-- /ingredient-row -->
-      <div class="row ingredient-underline-row"></div>
-
-      <div class="row ingredient-row">
-        <div class="col-2 ingredient-icon">
-          <i class="fas fa-carrot"></i>
-        </div>
-        <div class="col-8 ingredient-name">
-          Mushrooms
-        </div>
-        <div class="col-2 ingredient-space-filler"></div>
-      </div>
-      <div class="row ingredient-underline-row"></div>
-
-      <div class="row ingredient-row">
-        <div class="col-2 ingredient-icon">
-          <i class="fas fa-wine-bottle"></i>      </div>
-          <div class="col-8 ingredient-name">
-            Blue cheese
-          </div>
-          <div class="col-2 ingredient-space-filler">
-
+  <div class="tab-content page-new-vote" id="nav-tabContent">
+   <!-- PAGE ONE: CHALLENGE INFO -->
+    <div class="tab-pane fade show active challenge-info" id="nav-challenge-info">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col d-flex justify-content-center">
+            <img src="https://image.flaticon.com/icons/svg/1152/1152919.svg" alt="image" class="light-bulb-icon">
           </div>
         </div>
-        <div class="row ingredient-underline-row"></div>
+        <div class="row">
+          <div class="col d-flex justify-content-center mt-3">
+            <h1><strong><%= @challenge.mode.capitalize %> Mode</strong></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex justify-content-center mt-3">
+            <h3>Your Challenge:</h3>
+          </div>
+        </div>
+        <!-- ingredients -->
+        <div>
+          <div class="row ingredient-row">
+            <div class="col-2 ingredient-icon">
+              <i class="fas fa-wine-bottle"></i>
+            </div>
+            <div class="col-8 ingredient-name">
+              Salsa
+            </div>
+            <div class="col-2 ingredient-space-filler"></div>
+          </div><!-- /ingredient-row -->
+          <div class="row ingredient-underline-row"></div>
+          <div class="row ingredient-row">
+            <div class="col-2 ingredient-icon">
+              <i class="fas fa-fish"></i>
+            </div>
+            <div class="col-8 ingredient-name">
+              Herring
+            </div>
+            <div class="col-2 ingredient-space-filler"></div>
+          </div><!-- /ingredient-row -->
+          <div class="row ingredient-underline-row"></div>
+          <div class="row ingredient-row">
+            <div class="col-2 ingredient-icon">
+              <i class="fas fa-carrot"></i>
+            </div>
+            <div class="col-8 ingredient-name">
+              Mushrooms
+            </div>
+            <div class="col-2 ingredient-space-filler"></div>
+          </div>
+          <div class="row ingredient-underline-row"></div>
+          <div class="row ingredient-row">
+            <div class="col-2 ingredient-icon">
+              <i class="fas fa-wine-bottle"></i>
+            </div>
+            <div class="col-8 ingredient-name">
+              Blue cheese
+            </div>
+            <div class="col-2 ingredient-space-filler"></div>
+          </div>
+          <div class="row ingredient-underline-row"></div>
+        </div><!-- /ingredients -->
+      </div>
+    </div>
+
+    <!-- PAGE USER ONE -->
+    <div class="tab-pane fade page-user-one" id="nav-player-1">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="d-flex justify-content-center">
+            <img src="https://cdn3.tmbi.com/toh/GoogleImages/Banana-Cream-Pie_EXPS_FBMZ16_1151_B05_18_7b.jpg" alt="image" class="user-photo">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <h2>Not Banana Cream Pie</h2>
+          <div class="row justify-content-center comment-row">
+            <div class="d-flex col-12 justify-content-center">
+             <p>My meal is finished and it looks better than yours. Please compare and don't be annoying.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-    </div>
+      <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
+        <div class="col-2 checkmark-icon">
+          <i class="far fa-check-circle"></i>
+        </div>
+      </div>
+    </div><!-- /page-user-one -->
+
+    <!-- PAGE USER TWO -->
+    <div class="tab-pane fade page-user-two" id="nav-player-2">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="d-flex justify-content-center">
+            <img src="https://cdn3.tmbi.com/toh/GoogleImages/Banana-Cream-Pie_EXPS_FBMZ16_1151_B05_18_7b.jpg" alt="image" class="user-photo">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <h2>Banana Cream Pie</h2>
+          <div class="row justify-content-center comment-row">
+            <div class="d-flex col-12 justify-content-center">
+              <p>My meal is finished and it looks better than yours. Please compare and don't be annoying.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
+        <div class="col-2 checkmark-icon">
+          <i class="far fa-check-circle"></i>
+        </div>
+      </div>
+    </div><!-- /page-user-two -->
 
 
-    <div class="creative-vote-footer mb-3">
-      <div> <%= cl_image_tag @challenge.challenger.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %> </div>
-      <div> <%= image_tag("chef_purple.png", class: 'mt-3', size: "70x70") %> </div>
-      <!-- <div> <%#= @challenge.challenger.user.photo.key %> </div> -->
-      <div> <%= cl_image_tag @challenge.opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %> </div>
-    </div>
+    <!-- NAV FOOTER -->
+    <nav>
+      <div class="nav nav-tabs creative-vote-footer" role="tablist">
+        <a class="nav-item nav-link" id="nav-player-1-tab" data-toggle="tab"
+           href="#nav-player-1" role="tab"
+           aria-controls="nav-player-1">
+          <%= cl_image_tag @challenge.challenger.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
+        </a>
+        <a class="nav-item nav-link active" id="nav-challenge-info-tab" data-toggle="tab"
+           href="#nav-challenge-info" role="tab"
+           aria-controls="nav-challenge-info" aria-selected="true">
+         <%= image_tag("chef_purple.png", class: 'mt-3', size: "70x70") %>
+        </a>
+        <a class="nav-item nav-link" id="nav-player-2-tab" data-toggle="tab"
+           href="#nav-player-2" role="tab"
+           aria-controls="nav-player-2">
+         <%= cl_image_tag @challenge.opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
+        </a>
+      </div>
+    </nav>
   </div>
+<!-- </div> -->
