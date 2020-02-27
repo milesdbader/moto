@@ -1,0 +1,6 @@
+<div class="container justify-content-center my-3">
+  <h2>Recipe</h2>
+  <% recipe = Recipe.all.sample%>
+  <h4><strong><%= recipe.name%></strong> </h4>
+  <img src="<%= @recipe.image_url %>" alt="" class="image">
+</div>

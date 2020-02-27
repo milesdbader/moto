@@ -45,6 +45,7 @@ html, body {
   position: fixed;
   bottom: 0;
   width: 100%;
+  justify-content: space-evenly;
 }
 
 .creative-vote-footer > div {
@@ -53,4 +54,35 @@ html, body {
   text-align: center;
   margin: 0px;
   height: 100px;
+}
+
+.user-photo {
+  width: 100%;
+  margin-top: 20%;
+}
+
+.comment-row {
+  background-color: #EEEEEE;
+  width: 70%;
+  border-radius: 10px;
+  display: flex;
+  margin: 20px;
+  padding: 16px;
+  text-align: center;
+  p {
+    margin: 0;  }
+  }
+
+  .checkmark-row {
+    font-size: 60px;
+    color: #092EFF;
+  }
+
+  .nav-challenge-info {
+    display: flex;
+    position: fixed;
+  }
+
+.fa-chevron-left {
+  margin: 10px;
 }
