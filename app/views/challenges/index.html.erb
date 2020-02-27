@@ -18,20 +18,22 @@
 
               <% @active_challenges.each do |challenge| %>
                 <% opp = the_other_guy(challenge, current_user) %>
-                <div class="dash-challenge-card">
-                  <div>
-                    <p><%= opp.username %></p>
-                    <%= cl_image_tag opp.photo.key, alt: "Profiloto",
-                        width: 50,
-                        height: 50,
-                        gravity: "face",
-                        crop: "thumb",
-                        cloud_name: "dtrwqimx6",
-                        class: 'dash-avatar'
-                    %>
-                    <p><%= remaining_time_string(challenge) %></p>
+                <%= link_to challenge_path(challenge) do %>
+                  <div class="dash-challenge-card">
+                    <div>
+                      <p><%= opp.username %></p>
+                      <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+                          width: 50,
+                          height: 50,
+                          gravity: "face",
+                          crop: "thumb",
+                          cloud_name: "dtrwqimx6",
+                          class: 'dash-avatar'
+                      %>
+                      <p><%= remaining_time_string(challenge) %></p>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% end%>
 
             </div>
@@ -99,7 +101,9 @@
     </div>
 
     <div id="dashboard-nav">
-      <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
+      <%= link_to new_challenge_vote_path(Challenge.last) do %>
+        <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
+      <% end %>
 
       <%= link_to new_challenge_path do %>
         <%= image_tag "cook_off_button.png", alt: "Creaoto", width: 100 %>
