@@ -31,7 +31,8 @@ class ChallengesController < ApplicationController
     end
   end
 
-  def accepted?
+  def accepted
+    raise
   end
 
   def destroy
