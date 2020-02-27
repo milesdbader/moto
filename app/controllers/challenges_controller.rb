@@ -50,9 +50,9 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:challenge_id])
 
     if @challenge.challenger.user.id == current_user.id
-      @player = Player.find(current_user.id)
+      @player = @challenge.challenger
     else
-      @player = Player.find(@challenge.opponent.user.id)
+      @player = @challenge.opponent
     end
   end
 
