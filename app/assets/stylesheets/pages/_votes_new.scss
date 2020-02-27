@@ -2,6 +2,11 @@ html, body {
   width: 100vw;
 }
 
+.vote-image {
+  width: 100vw;
+  height: 375px;
+}
+
 .page-new-vote {
   width: 100vw;
   height: 100vh;
@@ -17,7 +22,7 @@ html, body {
   margin-top: 3%;
   font-size: 25px;
   align-items: flex-end;
-  height: 70px;
+  height: 50px;
 }
 
 .ingredient-icon {
@@ -35,9 +40,10 @@ html, body {
 .ingredient-underline-row {
   width: 90%;
   margin: 0 auto;
-  border: 1px blue solid;
-  border-radius: 8px;
-  color: #092EFF;
+  // border: 1px blue solid;
+  // border-radius: 8px;
+  height: 1px;
+  background-image: linear-gradient(to right, white, blue, white);
 }
 
 .creative-vote-footer {
@@ -80,16 +86,21 @@ html, body {
     color: #092EFF;
   }
 
+  .fa-check-circle {
+    font-size: 30px;
+  }
+
   .nav-challenge-info {
     display: flex;
     position: fixed;
   }
 
-.fa-chevron-left {
-  margin: 10px;
-}
+  .fa-chevron-left {
+    margin: 10px;
+  }
 
-.voting-page {
-  max-width: 360px;
-  position: fixed;
-}
+  .voting-page {
+    max-width: 360px;
+    position: fixed;
+  }
+

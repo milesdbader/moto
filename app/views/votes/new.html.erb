@@ -69,7 +69,7 @@
             <div class="row ingredient-underline-row"></div>
             <% else %>
             <div class="row justify-content-center">
-              <%= image_tag("food5.jpeg", height: 500, width: 370) %>
+              <%= image_tag("food5.jpeg", height: 300, width: 300) %>
             </div>
             <div class="row">
               <div class="col d-flex justify-content-center mt-3">
@@ -89,15 +89,15 @@
             <%#= cl_image_tag @challenge.challenger.photo.key, height: 500, width: 370, crop: :fill %>
 
             <% if @challenge.challenger.photo.attached? %>
-              <%= cl_image_tag @challenge.challenger.photo.key, height: 500, width: 370, crop: :fill %>
+              <%= cl_image_tag @challenge.challenger.photo.key, class: 'vote-image', height: 300, width: 300, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpeg", height: 500, width: 370) %>
+              <%= image_tag("prep2.jpeg", class: 'vote-image',  height: 300, width: 300) %>
             <% end %>
 
           </div>
         </div>
         <div class="row justify-content-center">
-          <h2 text-center><%= @challenge.challenger.title %></h2>
+          <h4 text-center><strong> <%= @challenge.challenger.title %> </strong></h4>
           <div class="row justify-content-center comment-row">
             <div class="d-flex col-12 justify-content-center">
              <% if @challenge.challenger.caption.nil? %>
@@ -123,14 +123,14 @@
         <div class="row justify-content-center">
           <div class="d-flex justify-content-center">
             <% if @challenge.opponent.photo.attached? %>
-              <%= cl_image_tag @challenge.opponent.photo.key, height: 500, width: 370, crop: :fill %>
+              <%= cl_image_tag @challenge.opponent.photo.key, class: 'vote-image', height: 300, width: 300, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpeg", height: 500, width: 370) %>
+              <%= image_tag("prep2.jpeg", class: 'vote-image', height: 300, width: 300) %>
             <% end %>
           </div>
         </div>
         <div class="row justify-content-center">
-          <h2><%= @challenge.opponent.title %></h2>
+          <h2><strong> <%= @challenge.opponent.title %> </strong></h2>
           <div class="row justify-content-center comment-row">
             <div class="d-flex col-12 justify-content-center">
               <% if @challenge.opponent.caption.nil? %>
