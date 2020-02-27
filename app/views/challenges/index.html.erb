@@ -50,7 +50,7 @@
                 <% challenge.accepted = true %>
                 <!-- creates hidden submit button -->
                 <%= simple_form_for(challenge) do |f| %>
-                  <div class="activate-challenge" data-challenge-id="<%= challenge.id %>">
+                  <div id="challenge-<%= challenge.id %>" class="activate-challenge" data-challenge-id="<%= challenge.id %>">
                     <%= f.button :submit, "", class: "d-none" %>
                   </div>
                 <% end %>
@@ -124,11 +124,13 @@
 
 <script>
   const checks = document.querySelectorAll('.check-box-icon');
-  console.log(checks)
+  // const invisible_submits = document.querySelectorAll('.activate-challenge > button');
   checks.forEach((check) => {
     check.addEventListener("click", (event) => {
       let check_id = check.dataset.challengeId
-      console.log(check_id);
+      // console.log(check_id);
+      let invisible_submit = document.querySelector(`#challenge-${check_id}`);
+      console.log(invisible_submit);
     });
   });
 
