@@ -50,7 +50,9 @@
                 <% challenge.accepted = true %>
                 <!-- creates hidden submit button -->
                 <%= simple_form_for(challenge) do |f| %>
-                  <%= f.button :submit, "", class: "d-none" %>
+                  <div class="activate-challenge" data-challenge-id="<%= challenge.id %>">
+                    <%= f.button :submit, "", class: "d-none" %>
+                  </div>
                 <% end %>
 
                 <div style="margin-right: 16px;">
