@@ -16,8 +16,8 @@ require 'nokogiri'
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'Cleaning the database'
 
-Ingredient.destroy_all
 ChallengeIngredient.destroy_all
+Ingredient.destroy_all
 Challenge.destroy_all
 Player.destroy_all
 User.destroy_all
@@ -106,13 +106,13 @@ puts "Created #{Ingredient.count} ingredients"
 puts "creating challenges"
 
 # these ones are active
-Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'creative', protein: Ingredient.find(12), grain: Ingredient.find(2), dairy: Ingredient.find(50), vegetable: Ingredient.find(35))
-Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 02, 26), mode: 'classic', protein: Ingredient.find(24), grain: Ingredient.find(21), dairy: Ingredient.find(23), vegetable: Ingredient.find(28))
-Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 02, 27), mode: 'classic', protein: Ingredient.find(38), grain: Ingredient.find(2), dairy: Ingredient.find(41), vegetable: Ingredient.find(19))
+Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
+Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 02, 26), mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
+Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 02, 27), mode: 'classic', protein: Ingredient.find_by(name: 'Salmon'), grain: Ingredient.find_by(name: 'Pistachios'), dairy: Ingredient.find_by(name: 'Milk'), vegetable: Ingredient.find_by(name: 'Broccoli'))
 
 # these ones are pending
-Challenge.build!(miles, tamara, accepted: false, mode: 'creative', protein: Ingredient.find(12), grain: Ingredient.find(2), dairy: Ingredient.find(50), vegetable: Ingredient.find(35))
-Challenge.build!(david, miles, accepted: false, mode: 'classic', protein: Ingredient.find(12), grain: Ingredient.find(2), dairy: Ingredient.find(50), vegetable: Ingredient.find(35))
+Challenge.build!(miles, tamara, accepted: false, mode: 'creative', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
+Challenge.build!(david, miles, accepted: false, mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
 
 puts "#{Challenge.count} created"
 
