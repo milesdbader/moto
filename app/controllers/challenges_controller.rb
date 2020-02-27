@@ -3,8 +3,8 @@ class ChallengesController < ApplicationController
 
   def index
     @user = current_user
-    @active_challenges = current_user.active_challenges
-    @pending_challenges = current_user.pending_challenges
+    @active_challenges = current_user.active_challenges.reverse
+    @pending_challenges = current_user.pending_challenges.reverse
   end
 
   def new
@@ -24,7 +24,7 @@ class ChallengesController < ApplicationController
     if params[:mode] == 'classic'
       @recipe = Recipe.find(params[:recipe]).id
     end
-    if Challenge.build!(@opponent, @challenger, mode: params[:mode], recipe_id: @recipe, protein: @protein, dairy: @dairy, grain: @grain, vegetable: @vegetable, accepted: false)
+    if Challenge.build!(@challenger, @opponent, mode: params[:mode], recipe_id: @recipe, protein: @protein, dairy: @dairy, grain: @grain, vegetable: @vegetable, accepted: false)
       redirect_to challenges_path
     else
       render :new

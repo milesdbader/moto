@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-  belongs_to :user, dependent: :destroy, class_name: 'User'
+  belongs_to :user, class_name: 'User'
   # has_one :challenge
   has_many :votes
   has_one_attached :photo
