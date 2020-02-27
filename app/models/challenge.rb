@@ -1,6 +1,6 @@
 class Challenge < ApplicationRecord
   has_one :recipe
-  has_many :challenge_ingredients
+  has_many :challenge_ingredients, dependent: :destroy
   has_many :ingredients, through: :challenge_ingredients
 
   belongs_to :challenger, class_name: 'Player', foreign_key: 'challenger_id'
