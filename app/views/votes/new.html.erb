@@ -117,12 +117,13 @@
           </div>
         </div>
       </div>
-
-      <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
-        <div class="col-2 checkmark-icon">
-          <i class="far fa-check-circle"></i>
+      <% if current_user != @challenge.challenger.user && current_user != @challenge.opponent.user %>
+        <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
+          <div class="col-2 checkmark-icon">
+            <i class="far fa-check-circle"></i>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div><!-- /page-user-one -->
 
     <!-- PAGE USER TWO -->
@@ -151,11 +152,13 @@
         </div>
       </div>
 
-      <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
-        <div class="col-2 checkmark-icon">
-          <i class="far fa-check-circle"></i>
+      <% if current_user != @challenge.challenger.user && current_user != @challenge.opponent.user %>
+        <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
+          <div class="col-2 checkmark-icon">
+            <i class="far fa-check-circle"></i>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div><!-- /page-user-two -->
 <!-- </div> -->
 
