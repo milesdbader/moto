@@ -21,3 +21,21 @@
   width: 100%;
   crop: fill;
 }
+
+.purple-text{
+  color: $purple;
+}
+
+.user-aligner {
+  align-self: baseline;
+  align-items: center;
+}
+
+.new-one {
+  display: flex;
+  margin-top: 12px;
+}
+
+.new-two {
+  margin-top: 48px;
+}
