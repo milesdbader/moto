@@ -1,4 +1,4 @@
 class Vote < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :player, dependent: :destroy
+  belongs_to :user
+  belongs_to :player
 end
