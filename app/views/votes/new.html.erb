@@ -2,6 +2,7 @@
   <%= link_to challenges_path do %>
     <i class="fas fa-chevron-left"></i>
   <% end %>
+
   <!-- <div class="container voting-page"> -->
   <div class="tab-content page-new-vote" id="nav-tabContent">
    <!-- PAGE ONE: CHALLENGE INFO -->
@@ -68,7 +69,7 @@
             <div class="row ingredient-underline-row"></div>
             <% else %>
             <div class="row justify-content-center">
-              <%= image_tag("food5.jpg", height: 500, width: 370) %>
+              <%= image_tag("food5.jpeg", height: 500, width: 370) %>
             </div>
             <div class="row">
               <div class="col d-flex justify-content-center mt-3">
@@ -90,7 +91,7 @@
             <% if @challenge.challenger.photo.attached? %>
               <%= cl_image_tag @challenge.challenger.photo.key, height: 500, width: 370, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpg", height: 500, width: 370) %>
+              <%= image_tag("prep2.jpeg", height: 500, width: 370) %>
             <% end %>
 
           </div>
@@ -111,12 +112,16 @@
 
       <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
         <div class="col-2 checkmark-icon">
-          <i class="far fa-check-circle"></i>
+           <input type='radio' id='challenger-vote' checked='checked' name='radio'>
+          <label for='challenger-vote'><i class="far fa-check-circle"></i></label>
+        </div>
+        <div id="ninja-submit2" style="display: none;">
+
         </div>
       </div>
     </div><!-- /page-user-one -->
 
-    <!-- PAGE USER TWO -->
+    <!-- PA</div>GE USER TWO -->
     <div class="tab-pane fade page-user-two" id="nav-player-2">
       <div class="container">
         <div class="row justify-content-center">
@@ -124,7 +129,7 @@
             <% if @challenge.opponent.photo.attached? %>
               <%= cl_image_tag @challenge.opponent.photo.key, height: 500, width: 370, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpg", height: 500, width: 370) %>
+              <%= image_tag("prep2.jpeg", height: 500, width: 370) %>
             <% end %>
           </div>
         </div>
@@ -143,8 +148,13 @@
       </div>
 
       <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
-        <div class="col-2 checkmark-icon">
-          <i class="far fa-check-circle"></i>
+        <div class="col-2 checkmark-icon2">
+          <input type='radio' id='opponent-vote' checked='checked' name='radio'>
+          <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
+        </div>
+        </div>
+        <div class="btn purple-btn" id="ninja-submit" style="display: none;">
+          <%= render 'shared/vote', challenge: @challenge, vote: @vote %>
         </div>
       </div>
     </div><!-- /page-user-two -->
@@ -171,4 +181,43 @@
       </div>
     </nav>
   </div>
+
+  <%= link_to "submit vote", challenge_votes_path, method: :post, class: "sneaky-btn-returns", style: "display: none;" %>
+
+
+  <script>
+
+  let vote = document.querySelector('.checkmark-icon > input')
+  let vote2 = document.querySelector('.checkmark-icon2 > input')
+  vote.addEventListener('click', () => {
+    handleVote(vote)
+  })
+
+  vote2.addEventListener('click', () => {
+    handleVote(vote2)
+  })
+
+
+  let handleVote = (result) => {
+    console.log(result)
+    let opponentSumbitter = document.querySelector('#ninja-submit');
+    let challengerSumbitter = document.querySelector('#ninja-submit2');
+    let sneakySubmit = document.querySelector('sneaky-btn-returns');
+    if (result.id == 'challenger-vote') {
+      opponentSumbitter.style.display = "none"
+      challengerSumbitter.style.display = "block"
+
+    } else {
+      challengerSumbitter.style.display = "none"
+      opponentSumbitter.style.display = "block"
+    }
+    // let isChecked = document.getElementById('challenger-vote').checked;
+    // mode = isChecked ? 'challenger' : 'opponent';
+    // let ninja = `/challenges?challenger=${challenger}&opponent=${opponent}&mode=${mode}&recipe=${recipe}&protein=${protein}&grain=${grain}&dairy=${dairy}&vegetable=${vegetable}`
+    // let target = document.querySelector('.sneaky-btn')
+    // target.href = ninja;
+    // target.click()
+  }
+
+  </script>
 <!-- </div> -->
