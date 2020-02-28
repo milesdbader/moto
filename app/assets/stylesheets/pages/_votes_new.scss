@@ -43,7 +43,7 @@ html, body {
   margin: 0 auto;
   // border: 1px blue solid;
   // border-radius: 8px;
-  height: 1px;
+  height: 2px;
   background-image: linear-gradient(to right, white, blue, white);
 }
 
@@ -90,6 +90,12 @@ html, body {
 
   .fa-check-circle {
     font-size: 40px;
+  }
+
+  #check{
+    font-size: 20px;
+    margin-top: 15px;
+
   }
 
   .nav-challenge-info {

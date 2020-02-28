@@ -16,7 +16,7 @@
           <% if current_user == @challenge.challenger.user || @challenge.opponent.user %>
             <p>Your post is live for voting!</p>
           <% else %>
-            <p>Which dish was executed better? Vote on your favourite!</p>
+            <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
           <% end %>
 
 
@@ -40,7 +40,6 @@
                 <i class="fas fa-wine-bottle"></i>
               </div>
               <div class="col-8 ingredient-name">
-                <!-- I AM WORKING HERE -->
                 <%= @challenge.ingredients[0].name %>
               </div>
               <div class="col-2 ingredient-space-filler"></div>
