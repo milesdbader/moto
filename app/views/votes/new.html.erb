@@ -68,7 +68,7 @@
             <div class="row ingredient-underline-row"></div>
             <% else %>
             <div class="row justify-content-center">
-              <%= image_tag("food5.jpeg", height: 500, width: 370) %>
+              <%= image_tag("food5.jpg", height: 500, width: 370) %>
             </div>
             <div class="row">
               <div class="col d-flex justify-content-center mt-3">
@@ -90,7 +90,7 @@
             <% if @challenge.challenger.photo.attached? %>
               <%= cl_image_tag @challenge.challenger.photo.key, height: 500, width: 370, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpeg", height: 500, width: 370) %>
+              <%= image_tag("prep2.jpg", height: 500, width: 370) %>
             <% end %>
 
           </div>
@@ -124,7 +124,7 @@
             <% if @challenge.opponent.photo.attached? %>
               <%= cl_image_tag @challenge.opponent.photo.key, height: 500, width: 370, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpeg", height: 500, width: 370) %>
+              <%= image_tag("prep2.jpg", height: 500, width: 370) %>
             <% end %>
           </div>
         </div>
