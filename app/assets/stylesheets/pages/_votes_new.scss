@@ -46,19 +46,14 @@ html, body {
 }
 
 .creative-vote-footer {
-  // display: flex;
+  display: flex;
   position: fixed;
   bottom: 0;
-  // width: 100%;
-  // justify-content: space-evenly;
-
-  // #dashboard-nav {
+  width: 100%;
+  max-width: 1000px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  margin: 16px 0;
-  margin-left: 24px;
-// }
 }
 
 .creative-vote-footer > div {

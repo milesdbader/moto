@@ -2,7 +2,6 @@
   <%= link_to challenges_path do %>
     <i class="fas fa-chevron-left"></i>
   <% end %>
-  <!-- <div class="container voting-page"> -->
   <div class="tab-content page-new-vote" id="nav-tabContent">
    <!-- PAGE ONE: CHALLENGE INFO -->
     <div class="tab-pane fade show active challenge-info" id="nav-challenge-info">
@@ -93,7 +92,6 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="d-flex justify-content-center">
-            <%#= cl_image_tag @challenge.challenger.photo.key, height: 500, width: 370, crop: :fill %>
 
             <% if @challenge.challenger.photo.attached? %>
               <%= cl_image_tag @challenge.challenger.photo.key, class: 'vote-image', height: 300, width: 300, crop: :fill %>
@@ -163,6 +161,7 @@
 
     <!-- NAV FOOTER -->
     <nav>
+      <div class="row justify-content-center">
       <div class="nav nav-tabs creative-vote-footer" role="tablist">
         <a class="nav-item nav-link" id="nav-player-1-tab" data-toggle="tab"
            href="#nav-player-1" role="tab"
@@ -179,6 +178,7 @@
            aria-controls="nav-player-2">
          <%= cl_image_tag @challenge.opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
         </a>
+      </div>
       </div>
     </nav>
   </div>
