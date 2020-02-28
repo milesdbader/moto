@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :players, dependent: :destroy
   has_many :challenges, through: :players
+  has_many :votes, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -44,5 +45,16 @@ class User < ApplicationRecord
   # Challenges that have not been accepted
   def pending_challenges
     challenges.where(accepted: false)
+  end
+
+  #challenges where voting is open, I did not participate, and I have not yet voted
+  def votable_challenges
+    Challenge.where('(challenges.voting_end IS NOT NULL AND challenges.voting_end > NOW())')
+      .reject { |challenge| challenge.challenger.user == self || challenge.opponent.user == self }
+      .reject { |challenge| challenge.has_he_voted?(self) }
+  end
+
+  def next_votable_challenge
+    self.votable_challenges.first
   end
 end
