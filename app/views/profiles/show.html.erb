@@ -1,51 +1,24 @@
 <div class="profile-page-full">
   <header>
-
-    <div class="container">
-
-      <div class="profile">
-
-        <div class="profile-image">
-            <%= cl_image_tag current_user.photo.key %>
-
-
-  <!--         <img src="https://pics.me.me/thumb_funny-avatar-mr-bean-2778088.png" alt="">
-   -->
-        </div>
-
-        <div class="profile-user-settings">
-
-          <h1 class="profile-user-name"><%= current_user.username %></h1>
-        </div>
-      </div>
-      <!-- End of profile section -->
+    <div class="profile">
+      <%= cl_image_tag current_user.photo.key %>
+      <h1><%= current_user.username %></h1>
     </div>
 
-  <div class="profile-bio">
-
-          <p><span class="profile-real-name">✈ 🌍 🍕 💃 💍 👩‍👦‍👦
-          Nervous about cooking.
-          Excited about food.</p></span>
-  </div>
-  <div class="container">
-      <div class="profile-stats">
-
-
-          <ul>
-            <li><span class="profile-stat-count">43</span> challenges</li>
-            <li><span class="profile-stat-count">21</span> won</li>
-            <li><span class="profile-stat-count">22</span> lost</li>
-          </ul>
-        </div>
+    <div class="profile-bio">
+      <p>✈ 🌍 🍕 💃 💍 👩‍👦‍👦<br>
+      Nervous about cooking.<br>
+      Excited about food.</p>
     </div>
-    <!-- End of container -->
+
+    <div class="profile-stats">
+      <ul>
+        <li><span class="profile-stat-count">43</span> challenges</li>
+        <li><span class="profile-stat-count">21</span> won</li>
+        <li><span class="profile-stat-count">22</span> lost</li>
+      </ul>
+    </div>
   </header>
-  <!-- <div class="creative-vote-tabs">
-    <div>All</div>
-    <div>Won</div>
-
-  </div> -->
-
 
       <div class="nav nav-tabs profile-show-tabs" role="tablist">
         <a class="nav-item nav-link active" id="nav-player-1-tab" data-toggle="tab"
