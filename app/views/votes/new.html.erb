@@ -8,10 +8,19 @@
    <!-- PAGE ONE: CHALLENGE INFO -->
     <div class="tab-pane fade show active challenge-info" id="nav-challenge-info">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col d-flex justify-content-center">
+        <div class="row justify-content-center" id="vote-intro">
+          <!-- <div class="col d-flex justify-content-center">
             <img src="https://image.flaticon.com/icons/svg/1152/1152919.svg" alt="image" class="light-bulb-icon">
-          </div>
+          </div> -->
+
+          <% if current_user == @challenge.challenger.user || @challenge.opponent.user %>
+            <p>Your post is live for voting!</p>
+          <% else %>
+            <p>Which dish was executed better? Vote on your favourite!</p>
+          <% end %>
+
+
+
         </div>
         <div class="row">
           <div class="col d-flex justify-content-center mt-3">
@@ -19,8 +28,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col d-flex justify-content-center mt-3">
-            <h3>Your Challenge:</h3>
+          <div class="col d-flex justify-content-center mt-3 vote-intro">
+            <h3>Challenge:</h3>
           </div>
         </div>
         <!-- ingredients -->
@@ -68,12 +77,12 @@
             </div>
             <div class="row ingredient-underline-row"></div>
             <% else %>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="classic-image">
               <%= image_tag("food5.jpeg", height: 300, width: 300) %>
             </div>
             <div class="row">
               <div class="col d-flex justify-content-center mt-3">
-                <h4>Grilled Eggplant With Feta</h4>
+                <h4><strong> Grilled Eggplant With Feta </strong></h4>
               </div>
             </div>
             <% end %>
