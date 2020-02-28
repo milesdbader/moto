@@ -2,169 +2,178 @@
 <div class="container">
   <div class="row justify-content-center">
     <a href="http://localhost:3000/challenges"><i class="fas fa-chevron-left back"></i></a>
-    <h1 style="color:blue">New Challenge</h1>
+    <h1 class="purple-text">New Challenge</h1>
   </div>
   <br>
   <div class="d-flex justify-content-center">
-    <div id="challenger" class="mx-5 d-flex flex-column justify-content-between">
-      <h5>Gen</h5>
-      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
+    <div id="challenger" class=" user-aligner mx-2 d-flex flex-column justify-content-between">
+      <h5><%= @user.username %></h5>
+      <%= cl_image_tag @user.photo.key, alt: "Profiloto",
+      width: 80,
+      height: 80,
+      gravity: "face",
+      crop: "thumb",
+      cloud_name: "dtrwqimx6",
+      class: 'dash-avatar'
+        %>
+
     </div>
-    <h2 class="my-5">VS</h2>
-    <div class="mx-5 d-flex flex-column justify-content-between">
-      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
+    <h2 class="my-5 mx-4"><strong>VS<strong></h2>
+    <div class="mx-2 d-flex flex-column justify-content-between">
       <h5 id="opponent" data-user=''>Opponent</h5>
-    </div>.
-  </div>
-  <div class="row">
-    <div class="offset-1 col-2">
-      <div class="numberCircle"><strong>1.</strong></div>
-    </div>
-    <div>
-      <h2>Choose your Opponent</h2>
-      <%= text_field_tag(:search, params[:search]) %>
-      <%= submit_tag("search", id: 'search-users') %>
+      <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
     </div>
   </div>
-  <div class="row">
-    <div class="offset-1 col-2">
+  <div class="new-one">
+    <div class="numberCircle"><strong>1.</strong></div>
+    <div class='mt-2'>
+      <h3>Choose your Opponent</h3>
+      <div class='mt-4'>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag("search", id: 'search-users') %>
+      </div>
+    </div>
+  </div>
+  <div class="new-two">
+    <div class='d-flex align-items-center'>
       <div class="numberCircle"><strong>2.</strong></div>
+      <h3>Choose your Mode</h3>
     </div>
-    <h2>Choose your Mode</h2>
-  </div>
-  <div class="row justify-content-center" id="modes">
-    <div class="radio-toolbar d-flex">
-      <div class="justify-content-center">
-        <input hidden='true' type="radio" id="classic" name="RadioFruit" value="classicStuff">
-        <label for="classic">
-          <i class="fas fa-utensils"></i>
-        </label>
-        <h5><strong>Classic</strong></h5>
-      </div>
-      <div class="justify-content-center">
-        <input hidden='true' type="radio" id="creative" name="RadioFruit" value="creativeStuff">
-        <label for="creative">
-          <i class="fas fa-lightbulb"></i>
-        </label>
-        <h5><strong>Creative</strong></h5>
-      </div>
-    </div>
-  </div>
-  <div id="yaniv">
-    <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
-      <h2>Ingredients</h2>
-      <div class="d-flex justify-content-center">
-        <div class="col-4 ingredient" >
-          <i class="fas fa-fish icon" ></i>
-          <% @protein = Ingredient.all.where(category: 'protein').sample%>
-          <h4 id="protein" data-id='<%= @protein.id%>'> <%= @protein.name%> </h4>
+
+    <div class="row justify-content-center" id="modes">
+      <div class="radio-toolbar d-flex">
+        <div class="justify-content-center text-center">
+          <input hidden='true' type="radio" id="classic" name="RadioFruit" value="classicStuff">
+          <label for="classic">
+            <i class="fas fa-utensils"></i>
+          </label>
+          <h5><strong>Classic</strong></h5>
         </div>
-        <div class="col-4 offset-2 ingredient">
-          <i class="fas fa-mortar-pestle icon"></i>
-          <% @grain = Ingredient.all.where(category: 'grain').sample%>
-          <h4 id="grain" data-id='<%= @grain.id%>'> <%= @grain.name%> </h4>
-        </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <div class="col-4 offset-2 ingredient">
-          <i class="fas fa-cheese icon" ></i>
-          <% @dairy = Ingredient.all.where(category: 'dairy').sample%>
-          <h4 id="dairy" data-id='<%= @dairy.id%>'> <%= @dairy.name%> </h4>
-        </div>
-        <div class="col-4 offset-2 ingredient">
-          <i class="fas fa-seedling icon"></i>
-          <% @vegetable = Ingredient.all.where(category: 'vegetable').sample%>
-          <h4 id="vegetable" data-id='<%= @vegetable.id%>'> <%= @vegetable.name%> </h4>
+        <div class="justify-content-center text-center">
+          <input hidden='true' type="radio" id="creative" name="RadioFruit" value="creativeStuff">
+          <label for="creative">
+            <i class="fas fa-lightbulb"></i>
+          </label>
+          <h5><strong>Creative</strong></h5>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="container justify-content-center my-3" id="recipes" style="display: none;">
-      <h2>Recipe</h2>
-      <% @recipe = Recipe.all.sample%>
-      <h4 id="recipe" data-id="<%= @recipe.id%>"><strong><%= @recipe.name%></strong> </h4>
-      <img src="<%= @recipe.image_url %>" alt="" class="image">
+  <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
+    <h2>Ingredients</h2>
+    <div class="d-flex justify-content-center">
+      <div class="col-4 ingredient" >
+        <i class="fas fa-fish icon" ></i>
+        <% @protein = Ingredient.all.where(category: 'protein').sample%>
+        <h4 id="protein" data-id='<%= @protein.id%>'> <%= @protein.name%> </h4>
+      </div>
+      <div class="col-4 offset-2 ingredient">
+        <i class="fas fa-mortar-pestle icon"></i>
+        <% @grain = Ingredient.all.where(category: 'grain').sample%>
+        <h4 id="grain" data-id='<%= @grain.id%>'> <%= @grain.name%> </h4>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="col-4 offset-2 ingredient">
+        <i class="fas fa-cheese icon" ></i>
+        <% @dairy = Ingredient.all.where(category: 'dairy').sample%>
+        <h4 id="dairy" data-id='<%= @dairy.id%>'> <%= @dairy.name%> </h4>
+      </div>
+      <div class="col-4 offset-2 ingredient">
+        <i class="fas fa-seedling icon"></i>
+        <% @vegetable = Ingredient.all.where(category: 'vegetable').sample%>
+        <h4 id="vegetable" data-id='<%= @vegetable.id%>'> <%= @vegetable.name%> </h4>
+      </div>
     </div>
   </div>
-  <div class="justify-content-center btn btn-purple" style="width: 100%; " id="selector">
-    Get Cookin'
-  </div>
-  <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn", style: "display: none;" %>
 
-  <script>
+        <div class="container justify-content-center my-3" id="recipes" style="display: none;">
+          <h2>Recipe</h2>
+          <% @recipe = Recipe.all.sample%>
+          <h4 id="recipe" data-id="<%= @recipe.id%>"><strong><%= @recipe.name%></strong> </h4>
+          <img src="<%= @recipe.image_url %>" alt="" class="image">
+        </div>
+      </div>
+      <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px;" id="selector">
+        Get Cookin'
+      </div>
+      <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn", style: "display: none;" %>
+
+      <script>
 
 
-    function displayName(opponent) {
-      let otherGuy = document.getElementById("opponent");
+        function displayName(opponent) {
+          let otherGuy = document.getElementById("opponent");
 
-      otherGuy.innerHTML = opponent.username;
-      otherGuy.dataset.user =  opponent.id
-    }
-
-    let searchButton = document.querySelector('#search-users');
-
-    searchButton.addEventListener('click', () => {
-      let query = document.querySelector('#search');
-      fetch('http://localhost:3000/take_user' + '?q=' + query.value)
-      .then(res => res.json())
-      .then((data) =>  {
-        if(data.ok){
-          displayName(data.user[0])
+          otherGuy.innerHTML = opponent.username;
+          otherGuy.dataset.user =  opponent.id
         }
-      });
-    })
+
+        let searchButton = document.querySelector('#search-users');
+
+        searchButton.addEventListener('click', () => {
+          let query = document.querySelector('#search');
+          fetch('/take_user' + '?q=' + query.value)
+          .then(res => res.json())
+          .then((data) =>  {
+            if(data.ok){
+              displayName(data.user[0])
+            }
+          });
+        })
 
 
-    let submitButton = document.querySelector("#selector")
+        let submitButton = document.querySelector("#selector")
 
-    submitButton.addEventListener('click', () => {
-      handleChallenge()
-    })
+        submitButton.addEventListener('click', () => {
+          handleChallenge()
+        })
 
-    let handleChallenge = () => {
-      let challenger = <%= current_user.id %>;
-      let opponent = document.getElementById("opponent");
-      opponent = opponent.dataset.user;
-      let protein = document.getElementById("protein");
-      protein = protein.dataset.id
-      let grain = document.getElementById("grain");
-      grain = grain.dataset.id
-      let dairy = document.getElementById("dairy");
-      dairy = dairy.dataset.id
-      let vegetable = document.getElementById("vegetable");
-      vegetable = vegetable.dataset.id
-      let recipe = document.getElementById("recipe");
-      recipe = recipe.dataset.id
-      let isChecked = document.getElementById('classic').checked;
-      mode = isChecked ? 'classic' : 'creative';
-      let ninja = `/challenges?challenger=${challenger}&opponent=${opponent}&mode=${mode}&recipe=${recipe}&protein=${protein}&grain=${grain}&dairy=${dairy}&vegetable=${vegetable}`
-      let target = document.querySelector('.sneaky-btn')
-      target.href = ninja;
-      target.click()
-    }
-
-
-    let modePicker = document.querySelector("#modes")
-    modePicker.addEventListener('click', () => {
-      exposer()
-    })
-
-    let exposer = () => {
-      let button = document.getElementById('classic');
-      let recipes = document.getElementById("recipes");
-      let ingredients = document.getElementById("ingredients");
-      mode = button.checked ? 'classic' : 'creative';
-      let wrap = document.querySelector('#yaniv')
-      if (mode == 'classic') {
-        ingredients.style.display = "none"
-        recipes.style.display = "block";
-      } else {
-        recipes.style.display = "none"
-        ingredients.style.display = "block";
-      }
-    }
+        let handleChallenge = () => {
+          let challenger = <%= current_user.id %>;
+          let opponent = document.getElementById("opponent");
+          opponent = opponent.dataset.user;
+          let protein = document.getElementById("protein");
+          protein = protein.dataset.id
+          let grain = document.getElementById("grain");
+          grain = grain.dataset.id
+          let dairy = document.getElementById("dairy");
+          dairy = dairy.dataset.id
+          let vegetable = document.getElementById("vegetable");
+          vegetable = vegetable.dataset.id
+          let recipe = document.getElementById("recipe");
+          recipe = recipe.dataset.id
+          let isChecked = document.getElementById('classic').checked;
+          mode = isChecked ? 'classic' : 'creative';
+          let ninja = `/challenges?challenger=${challenger}&opponent=${opponent}&mode=${mode}&recipe=${recipe}&protein=${protein}&grain=${grain}&dairy=${dairy}&vegetable=${vegetable}`
+          let target = document.querySelector('.sneaky-btn')
+          target.href = ninja;
+          target.click()
+        }
 
 
+        let modePicker = document.querySelector("#modes")
+        modePicker.addEventListener('click', () => {
+          exposer()
+        })
 
-  </script>
+        let exposer = () => {
+          let button = document.getElementById('classic');
+          let recipes = document.getElementById("recipes");
+          let ingredients = document.getElementById("ingredients");
+          mode = button.checked ? 'classic' : 'creative';
+          let wrap = document.querySelector('#yaniv')
+          if (mode == 'classic') {
+            ingredients.style.display = "none"
+            recipes.style.display = "block";
+          } else {
+            recipes.style.display = "none"
+            ingredients.style.display = "block";
+          }
+        }
+
+
+
+      </script>
 

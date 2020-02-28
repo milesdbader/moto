@@ -2,7 +2,7 @@
   font-size: 35px;
   margin-right: 20px;
   margin-top: 8px;
-  color: blue;
+  color: $purple;
 }
 
 .radio-toolbar {
@@ -44,7 +44,7 @@
 
 .radio-toolbar input[type="radio"]:checked + label {
     i {
-      color: blue;
+      color: $purple;
     }
 }
 
