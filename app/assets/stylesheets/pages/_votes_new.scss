@@ -86,3 +86,19 @@ html, body {
 .fa-chevron-left {
   margin: 10px;
 }
+
+.creative-vote-tabs {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  justify-content: space-evenly;
+  font-size: 16px;
+
+  div {
+    flex-grow: 1;
+    // border: 2px solid $purple;
+    text-align: center;
+    margin: 0px;
+    height: 20px
+  }
+}
