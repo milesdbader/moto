@@ -96,7 +96,7 @@
             <% if @challenge.challenger.photo.attached? %>
               <%= cl_image_tag @challenge.challenger.photo.key, class: 'vote-image', height: 300, width: 300, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpeg", class: 'vote-image',  height: 300, width: 300) %>
+              <%= image_tag("prep2.jpg", class: 'vote-image',  height: 300, width: 300) %>
             <% end %>
 
           </div>
@@ -131,7 +131,7 @@
             <% if @challenge.opponent.photo.attached? %>
               <%= cl_image_tag @challenge.opponent.photo.key, class: 'vote-image', height: 300, width: 300, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpeg", class: 'vote-image', height: 300, width: 300) %>
+              <%= image_tag("prep2.jpg", class: 'vote-image', height: 300, width: 300) %>
             <% end %>
           </div>
         </div>

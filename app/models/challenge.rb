@@ -36,4 +36,17 @@ class Challenge < ApplicationRecord
   def players
     [self.challenger, self.opponent]
   end
+
+  def has_he_voted?(user)
+    voted = false
+    votes = self.challenger.votes
+    self.opponent.votes.each { |vote| votes << vote}
+
+    votes.each do |vote|
+      voted = true if vote.user == user
+    end
+    return voted
+    # if this challenger's votes has one from the user, set voted to true
+    # if this opponent's votes has one from the user, set voted to true
+  end
 end

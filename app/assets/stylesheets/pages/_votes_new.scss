@@ -113,6 +113,26 @@ html, body {
     position: fixed;
   }
 
+.fa-chevron-left {
+  margin: 10px;
+}
+
+.creative-vote-tabs {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  justify-content: space-evenly;
+  font-size: 16px;
+
+  div {
+    flex-grow: 1;
+    // border: 2px solid $purple;
+    text-align: center;
+    margin: 0px;
+    height: 20px
+  }
+}
+
   #vote-intro {
   color: $purple;
   font-weight: bold;
