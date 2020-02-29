@@ -1,3 +1,9 @@
+.prof-active {
+  border-color: $purple;
+  border-style: solid;
+  border-width: 2px;
+}
+
 .profile-page-full {
   font-family: "Open Sans", Arial, sans-serif;
   min-height: 100vh;
@@ -6,12 +12,6 @@
   padding-bottom: 30px;
   font-size: 10px;
 }
-
-// #profile-chevron {
-//   position: sticky;
-//   top: 0;
-//   z-index: 300;
-// }
 
 .chev {
   background-color: white;
@@ -93,10 +93,6 @@
     text-align: center;
     margin: 0px;
     color: lightgray;
-  }
-
-  #nav-player-2-tab {
-    // z-index: 300;
   }
 
   a.active {
