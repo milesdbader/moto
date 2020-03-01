@@ -1,12 +1,12 @@
 
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row title-wrap">
     <a href="http://localhost:3000/challenges"><i class="fas fa-chevron-left back"></i></a>
     <h1 class="purple-text">New Challenge</h1>
   </div>
   <br>
-  <div class="d-flex justify-content-center">
-    <div id="challenger" class=" user-aligner mx-2 d-flex flex-column justify-content-between">
+  <div class="d-flex justify-content-center combined-players-wrap">
+    <div class="challenger" class="">
       <h5><%= @user.username %></h5>
       <%= cl_image_tag @user.photo.key, alt: "Profiloto",
       width: 80,
@@ -18,8 +18,8 @@
         %>
 
       </div>
-      <h2 class="my-5 mx-4"><strong>VS<strong></h2>
-        <div class="mx-2 d-flex flex-column justify-content-between">
+      <h2 style='flex-grow: 1;'class="my-5"><strong>vs<strong></h2>
+        <div class="mx-2 opponent-wrap">
           <h5 id="opponent" data-user=''>Opponent</h5>
           <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
         </div>
@@ -29,13 +29,13 @@
         <div class='mt-2'>
           <h3>Choose your Opponent</h3>
           <div class='mt-4'>
-            <%= text_field_tag(:search, params[:search]) %>
+            <%= text_field_tag(:search, params[:search], placeholder: 'Search by username') %>
             <%= submit_tag("search", id: 'search-users') %>
           </div>
         </div>
       </div>
       <div class="new-two">
-        <div class='d-flex justify-content-center'>
+        <div class='d-flex challenge-step justify-content-center'>
           <div class="numberCircle"><strong>2.</strong></div>
           <h3>Choose your Mode</h3>
         </div>
@@ -63,24 +63,24 @@
       <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
         <h2>Ingredients</h2>
         <div class="d-flex justify-content-center">
-          <div class="col-4 ingredient" >
+          <div class="col-6 ingredient" >
             <i class="fas fa-fish icon" ></i>
             <% @protein = Ingredient.all.where(category: 'protein').sample%>
             <h4 id="protein" data-id='<%= @protein.id%>'> <%= @protein.name%> </h4>
           </div>
-          <div class="col-4 offset-2 ingredient">
+          <div class="col-6 offset-2 ingredient">
             <i class="fas fa-mortar-pestle icon"></i>
             <% @grain = Ingredient.all.where(category: 'grain').sample%>
             <h4 id="grain" data-id='<%= @grain.id%>'> <%= @grain.name%> </h4>
           </div>
         </div>
         <div class="d-flex justify-content-center">
-          <div class="col-4 offset-2 ingredient">
+          <div class="col-6 offset-2 ingredient">
             <i class="fas fa-cheese icon" ></i>
             <% @dairy = Ingredient.all.where(category: 'dairy').sample%>
             <h4 id="dairy" data-id='<%= @dairy.id%>'> <%= @dairy.name%> </h4>
           </div>
-          <div class="col-4 offset-2 ingredient">
+          <div class="col-6 offset-2 ingredient">
             <i class="fas fa-seedling icon"></i>
             <% @vegetable = Ingredient.all.where(category: 'vegetable').sample%>
             <h4 id="vegetable" data-id='<%= @vegetable.id%>'> <%= @vegetable.name%> </h4>
@@ -92,7 +92,7 @@
         <h2>Recipe</h2>
         <% @recipe = Recipe.all.sample%>
         <h4 id="recipe" data-id="<%= @recipe.id%>"><strong><%= @recipe.name%></strong> </h4>
-        <img src="<%= @recipe.image_url %>" alt="" class="image">
+        <img src="<%= @recipe.image_url %>" alt="" class="challenge-image">
       </div>
     </div>
     <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px;" id="selector">
