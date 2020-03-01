@@ -4,8 +4,8 @@
 }
 
 #serve-page {
-  background-image: url('back5.jpg');
-  background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,0.2)), url('back5.jpg');
+  background-image: image-url('back5.jpg');
+  background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,0.2)), image-url('back5.jpg');
   background-size: cover;
   height: 100vh;
   width: 100%;
