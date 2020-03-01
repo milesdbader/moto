@@ -38,60 +38,57 @@
        </a>
       </div>
 
+<!-- FIND JS CODE IN PROFILE-PAGE.JS -->
 
-
+    <div class="profile-challenge-result" data-challenge-id="1">
       <div class="profile-competitors">
         <div class="mx-3">
-          <%= cl_image_tag current_user.photo.key, alt:"avatar1", class:'avatar' %>
+          <%= cl_image_tag current_user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: 1 } %>
           <h3>54%</h3>
         </div>
 
         <div class="mx-3">
-          <%= image_tag("beautiful.jpg", alt:"avatar2", class: 'avatar') %>
+          <%= image_tag("beautiful.jpg", alt:"avatar2", class: 'avatar', data: { user_id: 2 }) %>
           <h3>46%</h3>
         </div>
       </div>
 
-      <div style="height: 250px; width: 300px; margin: auto; position: relative">
+      <div class="profile-challenge-images">
         <%= image_tag("lightbulb.png", class: "lightbulb") %>
-        <div class='profile-food top-img' style="background-image: url('https://www.oetker.co.uk/Recipe/Recipes/oetker.co.uk/uk-en/baking/image-thumb__3688__RecipeDetailsLightBox/chocolate-victoria-sponge-cake.jpg')"></div>
-        <div class='profile-food back-img' style="background-image: url('https://www.landolakes.com/RecipeManagementSystem/media/Recipe-Media-Files/Recipes/Retail/x17/20277-strawberry-ombre-cake-600X600.jpg')"></div>
+        <div class='profile-food top-img'
+             style="background-image: url('https://www.oetker.co.uk/Recipe/Recipes/oetker.co.uk/uk-en/baking/image-thumb__3688__RecipeDetailsLightBox/chocolate-victoria-sponge-cake.jpg')"
+             data-user-id="1">
+        </div>
+        <div class='profile-food'
+             style="background-image: url('https://www.landolakes.com/RecipeManagementSystem/media/Recipe-Media-Files/Recipes/Retail/x17/20277-strawberry-ombre-cake-600X600.jpg')"
+             data-user-id="2">
+        </div>
       </div>
+    </div>
 
+    <div class="profile-challenge-result" data-challenge-id="2">
       <div class="profile-competitors">
         <div class="mx-3">
-          <%= cl_image_tag current_user.photo.key, alt:"avatar1", class:'avatar user1', id: 'user1' %>
+          <%= cl_image_tag current_user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: 1 } %>
           <h3>54%</h3>
         </div>
 
         <div class="mx-3">
-         <%= image_tag("beautiful.jpg", alt:"avatar2", class: 'avatar') %>
+         <%= image_tag("beautiful.jpg", alt:"avatar2", class: 'avatar', data: { user_id: 2 }) %>
           <h3>46%</h3>
         </div>
       </div>
 
-      <div style="height: 250px; width: 300px; margin: auto; position: relative">
+      <div class="profile-challenge-images">
         <%= image_tag("lightbulb.png", class: "lightbulb") %>
-        <div class='profile-food top-img' style="background-image: url('https://www.oetker.co.uk/Recipe/Recipes/oetker.co.uk/uk-en/baking/image-thumb__3688__RecipeDetailsLightBox/chocolate-victoria-sponge-cake.jpg')"></div>
-        <div class='profile-food back-img' style="background-image: url('https://www.landolakes.com/RecipeManagementSystem/media/Recipe-Media-Files/Recipes/Retail/x17/20277-strawberry-ombre-cake-600X600.jpg')"></div>
+        <div class='profile-food top-img'
+          style="background-image: url('https://www.oetker.co.uk/Recipe/Recipes/oetker.co.uk/uk-en/baking/image-thumb__3688__RecipeDetailsLightBox/chocolate-victoria-sponge-cake.jpg')"
+          data-user-id="1">
+        </div>
+        <div class='profile-food back-img'
+          style="background-image: url('https://www.landolakes.com/RecipeManagementSystem/media/Recipe-Media-Files/Recipes/Retail/x17/20277-strawberry-ombre-cake-600X600.jpg')"
+          data-user-id="2">
+        </div>
       </div>
+    </div>
 </div>
-
-
-<script>
-
-
-  const userAvatars = document.querySelectorAll(".avatar");
-  userAvatars.forEach((avatar) => {
-    avatar.addEventListener('click', (event) => {
-
-      avatar.classList.toggle("prof-active");
-
-      top = document.querySelectorAll("back-img");
-      top.classList.add("top-img");
-
-      console.log(event.currentTarget);
-    });
-  });
-
-</script>
