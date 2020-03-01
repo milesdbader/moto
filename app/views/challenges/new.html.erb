@@ -61,32 +61,29 @@
       </div>
 
       <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
-        <h2>Ingredients</h2>
-        <div class="d-flex justify-content-center">
-          <div class="col-6 ingredient" >
-            <i class="fas fa-fish icon" ></i>
-            <% @protein = Ingredient.all.where(category: 'protein').sample%>
-            <h4 id="protein" data-id='<%= @protein.id%>'> <%= @protein.name%> </h4>
+        <h2>Ingredients:</h2>
+          <div class="ingredient-container">
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583077961/xccy4qysekpjwcea1wg0.jpg)">
+              <% @protein = Ingredient.all.where(category: 'protein').sample%>
+              <h4 id="protein" data-id='<%= @protein.id%>'> <%= @protein.name%> </h4>
+            </div>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583077970/cvstigl1rjmbispwab27.jpg)">
+              <% @dairy = Ingredient.all.where(category: 'dairy').sample%>
+              <h4 id="dairy" data-id='<%= @dairy.id%>'> <%= @dairy.name%> </h4>
+            </div>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583077945/b5k882v3ajabgn932cxt.jpg)">
+              <% @grain = Ingredient.all.where(category: 'grain').sample%>
+              <h4 id="grain" data-id='<%= @grain.id%>'> <%= @grain.name%> </h4>
+            </div>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583077977/kjonpsm9w3vn3flhlrxj.jpg)">
+              <% @vegetable = Ingredient.all.where(category: 'vegetable').sample%>
+              <h4 id="vegetable" data-id='<%= @vegetable.id%>'> <%= @vegetable.name%> </h4>
+            </div>
           </div>
-          <div class="col-6 offset-2 ingredient">
-            <i class="fas fa-mortar-pestle icon"></i>
-            <% @grain = Ingredient.all.where(category: 'grain').sample%>
-            <h4 id="grain" data-id='<%= @grain.id%>'> <%= @grain.name%> </h4>
-          </div>
-        </div>
-        <div class="d-flex justify-content-center">
-          <div class="col-6 offset-2 ingredient">
-            <i class="fas fa-cheese icon" ></i>
-            <% @dairy = Ingredient.all.where(category: 'dairy').sample%>
-            <h4 id="dairy" data-id='<%= @dairy.id%>'> <%= @dairy.name%> </h4>
-          </div>
-          <div class="col-6 offset-2 ingredient">
-            <i class="fas fa-seedling icon"></i>
-            <% @vegetable = Ingredient.all.where(category: 'vegetable').sample%>
-            <h4 id="vegetable" data-id='<%= @vegetable.id%>'> <%= @vegetable.name%> </h4>
-          </div>
-        </div>
       </div>
+
+
+      <!-- </div> -->
 
       <div class="container justify-content-center my-3" id="recipes" style="display: none;">
         <h2>Recipe</h2>

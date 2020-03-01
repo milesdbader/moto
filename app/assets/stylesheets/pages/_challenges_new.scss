@@ -42,14 +42,22 @@
   }
 }
 
-
-#ingredients{
+.ingredient-container {
   padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  text-align: center;
 }
 
 #recipes{
   padding-bottom: 50px;
+
+  img{
+    border-radius: 8px;
+  }
 }
+
 #selector{
   position: fixed;
   bottom: 0px;
