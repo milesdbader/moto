@@ -84,7 +84,7 @@
                       <div class="d-flex justify-content-between" style="min-width: 62px">
                         <!-- added the stuff below -->
 
-                        <i class="far fa-check-circle icon-clicker check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
+                        <i class="far fa-check-circle icon-clicker check-box-icon" id="check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
                         <i class="far fa-times-circle icon-clicker btn-challenge-cancel" data-challenge-id="<%= challenge.id %>"></i>
                         <%= link_to "", challenge_path(challenge), class: "reject-link",  method: :delete %>
                       </div>

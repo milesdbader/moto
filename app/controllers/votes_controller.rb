@@ -1,11 +1,16 @@
 class VotesController < ApplicationController
-  before_action :set_challenge, only: %i[new]
+  before_action :set_challenge, only: %i[new create]
   def create
+    @challenger = @challenge.challenger
+    @opponent = @challenge.opponent
     @vote = Vote.new(player: Player.find(params[:player]), user: current_user)
     @vote.save
     # redirect_to new_challenge_vote(current_user.next_votable_challenge.id)
-    redirect_to new_challenge_vote(current_user.next_votable_challenge)
-
+    if current_user.next_votable_challenge
+      redirect_to new_challenge_vote_path(current_user.next_votable_challenge)
+    else
+      render :new
+    end
   end
 
   def index
