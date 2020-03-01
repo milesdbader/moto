@@ -1,4 +1,10 @@
+<% @completed_challenges = current_user.challenges.all_completed %>
 <div class="profile-page-full">
+    <div class="chev">
+    <%= link_to challenges_path do %>
+      <i class="fas fa-chevron-left" id="profile-chevron"></i>
+    <% end %>
+    </div>
   <header>
     <div class="profile">
       <%= cl_image_tag current_user.photo.key %>
@@ -13,7 +19,7 @@
 
     <div class="profile-stats">
       <ul>
-        <li><span class="profile-stat-count">43</span> challenges</li>
+        <li><span class="profile-stat-count"><%= @completed_challenges.count %></span> challenges</li>
         <li><span class="profile-stat-count">21</span> won</li>
         <li><span class="profile-stat-count">22</span> lost</li>
       </ul>
@@ -33,24 +39,68 @@
        </a>
       </div>
 
+<!-- FIND JS CODE IN PROFILE-PAGE.JS -->
+
+    <% @completed_challenges.each do |challenge| %>
+
+    <div class="profile-challenge-result" data-challenge-id="<%= challenge.id %>">
       <div class="profile-competitors">
         <div class="mx-3">
-          <%= cl_image_tag current_user.photo.key, alt:"avatar1", class:'avatar' %>
-          <!-- <img src="https://pics.me.me/thumb_funny-avatar-mr-bean-2778088.png" alt="avatar1" class='avatar'> -->
+          <%= cl_image_tag challenge.opponent.user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: challenge.opponent.user.id } %>
           <h3>54%</h3>
         </div>
 
         <div class="mx-3">
-          <img src="data:image/jpeg;base64,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" alt="avatar1" class='avatar'>
+          <%= cl_image_tag challenge.challenger.user.photo.key, alt:"avatar1", class: 'avatar', data: { user_id: challenge.challenger.user.id } %>
           <h3>46%</h3>
         </div>
       </div>
 
-      <div style="height: 250px; width: 300px; margin: auto; position: relative">
-        <%= image_tag("lightbulb.png", class: "lightbulb") %>
-        <div class='profile-food top-img' style="background-image: url('https://www.oetker.co.uk/Recipe/Recipes/oetker.co.uk/uk-en/baking/image-thumb__3688__RecipeDetailsLightBox/chocolate-victoria-sponge-cake.jpg')"></div>
-        <div class='profile-food back-img' style="background-image: url('https://www.landolakes.com/RecipeManagementSystem/media/Recipe-Media-Files/Recipes/Retail/x17/20277-strawberry-ombre-cake-600X600.jpg')"></div>
+      <div class="profile-challenge-images">
+        <div class="challenge-mode">
+        <% if challenge.mode == "creative" %>
+          <%= image_tag("lightbulb.png", class: "lightbulb") %>
+        <% else %>
+          <div class='fork'>
+            <%= image_tag("cutlery.png") %>
+          </div>
+        <% end %>
+        </div>
+        <div class='profile-food top-img'
+             style="background-image: url('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/<%= challenge.opponent.photo.key %>')"
+             data-user-id="<%= challenge.opponent.user.id %>">
+        </div>
+        <div class='profile-food'
+             style="background-image: url('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/<%= challenge.challenger.photo.key %>')"
+             data-user-id="<%= challenge.challenger.user.id %>">
+        </div>
       </div>
+    </div>
+    <% end %>
+
+    <!-- <div class="profile-challenge-result" data-challenge-id="2">
+      <div class="profile-competitors">
+        <div class="mx-3">
+          <%#= cl_image_tag current_user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: 1 } %>
+          <h3>54%</h3>
+        </div>
+
+        <div class="mx-3">
+         <%#= image_tag("beautiful.jpg", alt:"avatar2", class: 'avatar', data: { user_id: 2 }) %>
+          <h3>46%</h3>
+        </div>
+      </div>
+
+      <div class="profile-challenge-images">
+        <%#= image_tag("lightbulb.png", class: "lightbulb") %>
+        <div class='profile-food top-img'
+          style="background-image: url('https://www.oetker.co.uk/Recipe/Recipes/oetker.co.uk/uk-en/baking/image-thumb__3688__RecipeDetailsLightBox/chocolate-victoria-sponge-cake.jpg')"
+          data-user-id="1">
+        </div>
+        <div class='profile-food back-img'
+          style="background-image: url('https://www.landolakes.com/RecipeManagementSystem/media/Recipe-Media-Files/Recipes/Retail/x17/20277-strawberry-ombre-cake-600X600.jpg')"
+          data-user-id="2">
+        </div>
+      </div>
+    </div> -->
 </div>
-
-
