@@ -26,12 +26,21 @@ const wireSweetalertChallengeReject = () => {
 
     initSweetalert(selector,
       {
-        title: "Are you sure?",
+        title: "Reject this challenge?",
         text: "This action cannot be reversed",
-        icon: "warning"
+        buttons: [true, "Reject it!"]
       },
       callback
     )
   })
 }
-export { wireSweetalertChallengeReject }
+
+const wireSweetalertNoVotes = () => {
+  initSweetalert('#vote-button-no-votables',
+    {
+      title: "Nothing to vote on!",
+      text: "There are no challenges on the chopping block now. Check back soon :)"
+    }
+  )
+}
+export { wireSweetalertChallengeReject, wireSweetalertNoVotes }

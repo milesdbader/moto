@@ -106,9 +106,7 @@
           <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
         <% end %>
       <% else %>
-        <%= link_to '#', data: { confirm: "There are no challenges on the chopping block right now. Check back soon!" } do %>
-          <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
-        <% end %>
+        <%= image_tag "vote_page_button.png", id: 'vote-button-no-votables', alt: "Voto", width: 60, height: 60 %>
       <% end %>
 
       <%= link_to new_challenge_path do %>

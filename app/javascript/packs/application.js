@@ -1,4 +1,5 @@
 import "bootstrap";
-import { wireSweetalertChallengeReject } from "../plugins/swal.js"
+import { wireSweetalertChallengeReject, wireSweetalertNoVotes } from "../plugins/swal.js"
 
-wireSweetalertChallengeReject()
+wireSweetalertChallengeReject();
+wireSweetalertNoVotes();
