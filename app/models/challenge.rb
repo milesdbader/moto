@@ -60,7 +60,7 @@ class Challenge < ApplicationRecord
     end
   end
 
-  def votes
+  def vote_count
     self.challenger.votes.count + self.opponent.votes.count
   end
 end

@@ -50,7 +50,7 @@
             <%if challenge.opponent.votes.count == 0 %>
               <h3>0%</h3>
             <%else%>
-              <h3> <%= challenge.votes / challenge.opponent.votes.count %> </h3>
+              <h3> <%= challenge.vote_count / challenge.opponent.votes.count %> </h3>
             <%end%>
 
         </div>
