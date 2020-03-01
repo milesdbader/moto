@@ -84,9 +84,8 @@
                       <div class="d-flex justify-content-between" style="min-width: 62px">
                         <!-- added the stuff below -->
                         <i class="far fa-check-circle icon-clicker check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
-                        <%= link_to challenge_path(challenge), data: { confirm: "Are you sure you want to reject it?" }, method: :delete do %>
-                          <i class="far fa-times-circle icon-clicker"></i>
-                        <% end %>
+                        <i class="far fa-times-circle icon-clicker btn-challenge-cancel" data-challenge-id="<%= challenge.id %>"></i>
+                        <%= link_to "", challenge_path(challenge), class: "reject-link",  method: :delete %>
                       </div>
                     </div>
                   <% end %>
@@ -107,9 +106,7 @@
           <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
         <% end %>
       <% else %>
-        <%= link_to '#', data: { confirm: "There are no challenges on the chopping block right now. Check back soon!" } do %>
-          <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
-        <% end %>
+        <%= image_tag "vote_page_button.png", id: 'vote-button-no-votables', alt: "Voto", width: 60, height: 60 %>
       <% end %>
 
       <%= link_to new_challenge_path do %>
