@@ -25,8 +25,7 @@
                       <%= cl_image_tag opp.photo.key, alt: "Profiloto",
                           width: 50,
                           height: 50,
-                          gravity: "face",
-                          crop: "thumb",
+                          crop: "fill",
                           cloud_name: "dtrwqimx6",
                           class: 'dash-avatar'
                       %>
@@ -62,8 +61,7 @@
                         <%= cl_image_tag opp.photo.key, alt: "Profiloto",
                             width: 30,
                             height: 30,
-                            gravity: "face",
-                            crop: "thumb",
+                            crop: "fill",
                             cloud_name: "dtrwqimx6",
                             class: 'dash-avatar',
                             style: 'margin-right: 4px'
@@ -118,8 +116,7 @@
         <%= cl_image_tag @user.photo.key, alt: "Profiloto",
             width: 60,
             height: 60,
-            gravity: "face",
-            crop: "thumb",
+            crop: "fill",
             cloud_name: "dtrwqimx6",
             class: 'dash-avatar'
         %>
