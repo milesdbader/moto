@@ -1,8 +1,13 @@
-<div class="col-12 mt-3 text-center">
-  <%= image_tag("idea.png", size: "48x48") %>
-</div>
+<div class="container show-container">
+<%= link_to challenges_path do %>
+    <i class="fas fa-chevron-left"></i>
+  <%  end %>
 
-<div class="row m-3 justify-content-center">
+<!-- <div class="col-12 mt-3 text-center">
+  <%#= image_tag("idea.png", size: "48x48") %>
+</div> -->
+
+<div class="row justify-content-center">
   <h1><strong> <%= @challenge.mode.capitalize %> Mode </strong></h1>
 </div>
 
@@ -34,7 +39,7 @@
 <div class="container">
   <div class="row text-center m-3">
     <div class="col-12">
-      <h2> Beat <%= @challenge.opponent.user.username %>! </h2>
+      <h3> Beat <%= @challenge.opponent.user.username %>! </h3>
     </div>
   </div>
 </div>
@@ -98,6 +103,7 @@
 
 <div class="row justify-content-center">
   <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn btn-purple' , style:'font-weight: bold; font-size: 21px;' %>
+</div>
 </div>
 
 <script>

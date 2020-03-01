@@ -6,7 +6,7 @@ html, body {
   margin-top: 3%;
   font-size: 25px;
   align-items: flex-end;
-  height: 50px;
+  height: 40px;
 }
 
 .c-ingredient-icon {
@@ -18,14 +18,14 @@ html, body {
 .c-ingredient-name {
   text-align: center;
   margin-left: -30px;
+  margin-top: 2px;
   font-size: 20px;
 }
 
 .c-ingredient-underline-row {
   width: 90%;
   margin: 0 auto;
-  border: 1px $purple solid;
-  border-radius: 8px;
-  color: #092EFF;
+  margin-top: 1px;
+  height: 2px;
+  background-image: linear-gradient(to right, white, blue, white);
 }
-

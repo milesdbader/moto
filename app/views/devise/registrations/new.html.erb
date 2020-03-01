@@ -1,8 +1,11 @@
-<div class="container">
+<div class="container" id="login">
+  <div class="top-logo">
+    <%= image_tag "moto_logo.png", alt: "Moto", width: 200, class: "logo-on-top" %>
+  </div>
   <div class="row">
     <div class="col-12 my-4">
 
-      <h2>Sign up</h2>
+      <h3 class="mb-3">Sign up</h3>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -22,13 +25,14 @@
         <%= f.input :photo, as: :file %>
       </div>
 
-      <div class="form-actions btn-purple text-center">
+      <div class="form-actions btn-purple justify-content-center">
         <%= f.button :submit, "Sign up" %>
       </div>
       <% end %>
 
-      <%= render "devise/shared/links" %>
-
+      <div class="my-3 text-center">
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>

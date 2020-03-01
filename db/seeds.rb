@@ -17,11 +17,19 @@ require 'nokogiri'
 puts 'Cleaning the database'
 
 ChallengeIngredient.destroy_all
+print 'ChallengeIngredients, '
+Vote.destroy_all
+print 'Votes, '
 Ingredient.destroy_all
+print 'Ingredients, '
 Challenge.destroy_all
+print 'Challenges, '
 Player.destroy_all
+print 'Players, '
 User.destroy_all
+print 'Users, '
 Recipe.destroy_all
+puts 'Recipes'
 
 puts 'Database empty'
 
@@ -56,7 +64,7 @@ david = User.new(
   password: '123456789',
   username: 'davidstranders'
   )
-image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582627158/Z9JySKnsW8qJkaCyPrtDvzZU.jpg')
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582993683/uz6xP9oZqHg5Az4WBZgrZhMN.jpg')
 david.photo.attach(io: image3, filename: 'seed')
 
 miles.save!
@@ -116,12 +124,29 @@ Challenge.build!(tamara, miles, accepted: false, mode: 'creative', protein: Ingr
 Challenge.build!(david, tamara, accepted: false, mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
 Challenge.build!(miles, tamara, accepted: false, mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
 
-Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
+Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/vi3nwpxzozuk1zsdwwo1.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803097/tfxxbzfqw9tfx7hj4aug.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredients, but at least it's delicious!", title: "One Badass Breaky")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST FRENCH TOAST")
+
+Challenge.build!(david, eyal, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/vi3nwpxzozuk1zsdwwo1.jpg')
+opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803097/tfxxbzfqw9tfx7hj4aug.jpg')
+Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
+Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredients, but at least it's delicious!", title: "One Badass Breaky")
+Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
+Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST FRENCH TOAST")
+
+Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/vi3nwpxzozuk1zsdwwo1.jpg')
+opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803097/tfxxbzfqw9tfx7hj4aug.jpg')
+Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
+Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredients, but at least it's delicious!", title: "One Badass Breaky")
+Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
+Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST FRENCH TOAST")
+
 puts "#{Challenge.count} created"
 

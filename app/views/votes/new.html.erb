@@ -3,24 +3,35 @@
     <i class="fas fa-chevron-left"></i>
   <% end %>
 
+
   <!-- <div class="container voting-page"> -->
+
   <div class="tab-content page-new-vote" id="nav-tabContent">
    <!-- PAGE ONE: CHALLENGE INFO -->
     <div class="tab-pane fade show active challenge-info" id="nav-challenge-info">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col d-flex justify-content-center">
+        <div class="row justify-content-center" id="vote-intro">
+          <!-- <div class="col d-flex justify-content-center">
             <img src="https://image.flaticon.com/icons/svg/1152/1152919.svg" alt="image" class="light-bulb-icon">
-          </div>
+          </div> -->
+
+          <% if current_user == @challenge.challenger.user || @challenge.opponent.user %>
+            <p>Your post is live for voting!</p>
+          <% else %>
+            <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
+          <% end %>
+
+
+
         </div>
         <div class="row">
           <div class="col d-flex justify-content-center mt-3">
-            <h1><strong><%= @challenge.mode.capitalize %> Mode</strong></h1>
+            <h2><strong><%= @challenge.mode.capitalize %> Mode</strong></h2>
           </div>
         </div>
         <div class="row">
-          <div class="col d-flex justify-content-center mt-3">
-            <h3>Your Challenge:</h3>
+          <div class="col d-flex justify-content-center mt-3 vote-intro">
+            <h3>Challenge:</h3>
           </div>
         </div>
         <!-- ingredients -->
@@ -31,7 +42,6 @@
                 <i class="fas fa-wine-bottle"></i>
               </div>
               <div class="col-8 ingredient-name">
-                <!-- I AM WORKING HERE -->
                 <%= @challenge.ingredients[0].name %>
               </div>
               <div class="col-2 ingredient-space-filler"></div>
@@ -68,12 +78,14 @@
             </div>
             <div class="row ingredient-underline-row"></div>
             <% else %>
-            <div class="row justify-content-center">
-              <%= image_tag("food5.jpeg", height: 500, width: 370) %>
+
+            <div class="row justify-content-center" id="classic-image">
+              <%= image_tag("food5.jpg", height: 300, width: 300) %>
+
             </div>
             <div class="row">
               <div class="col d-flex justify-content-center mt-3">
-                <h4>Grilled Eggplant With Feta</h4>
+                <h4><strong> Grilled Eggplant With Feta </strong></h4>
               </div>
             </div>
             <% end %>
@@ -86,17 +98,19 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="d-flex justify-content-center">
-            <%#= cl_image_tag @challenger.photo.key, height: 500, width: 370, crop: :fill %>
 
-            <% if @challenger.photo.attached? %>
-              <%= cl_image_tag @challenger.photo.key, height: 500, width: 370, crop: :fill %>
+
+            <% if @challenge.challenger.photo.attached? %>
+              <%= cl_image_tag @challenge.challenger.photo.key, class: 'vote-image', height: 300, width: 300, crop: :fill %>
             <% else %>
-              <%= image_tag("prep2.jpeg", height: 500, width: 370) %>
+              <%= image_tag("prep2.jpg", class: 'vote-image',  height: 300, width: 300) %>
+
             <% end %>
 
           </div>
         </div>
         <div class="row justify-content-center">
+
           <h2 text-center><%= @challenger.title %></h2>
           <div class="row justify-content-center comment-row">
             <div class="d-flex col-12 justify-content-center">
@@ -110,6 +124,7 @@
         </div>
       </div>
 
+      <% if current_user != @challenge.challenger.user && current_user != @challenge.opponent.user %>
       <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
         <div class="col-2 checkmark-icon">
            <input type='radio' id='challenger-vote' checked='' name='radio'>
@@ -119,6 +134,7 @@
         Submit Vote
         </div>
       </div>
+      <% end %>
     </div><!-- /page-user-one -->
 
     <!-- PA</div>GE USER TWO -->
@@ -134,7 +150,9 @@
           </div>
         </div>
         <div class="row justify-content-center">
+
           <h2><%= @opponent.title %></h2>
+
           <div class="row justify-content-center comment-row">
             <div class="d-flex col-12 justify-content-center">
               <% if @opponent.caption.nil? %>
@@ -147,6 +165,7 @@
         </div>
       </div>
 
+      <% if current_user != @challenge.challenger.user && current_user != @challenge.opponent.user %>
       <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
         <div class="col-2 checkmark-icon2">
           <input type='radio' id='opponent-vote' checked='checked' name='radio'>
@@ -155,13 +174,15 @@
         </div>
         <div class="btn btn-purple" id="ninja-submit" style="display: none;">
         Submit Vote
+
         </div>
-      </div>
+      <% end %>
     </div><!-- /page-user-two -->
 <!-- </div> -->
 
     <!-- NAV FOOTER -->
     <nav>
+      <div class="row justify-content-center">
       <div class="nav nav-tabs creative-vote-footer" role="tablist">
         <a class="nav-item nav-link" id="nav-player-1-tab" data-toggle="tab"
            href="#nav-player-1" role="tab"
@@ -178,6 +199,7 @@
            aria-controls="nav-player-2">
          <%= cl_image_tag @opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
         </a>
+      </div>
       </div>
     </nav>
   </div>￼
