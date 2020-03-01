@@ -54,6 +54,7 @@ class User < ApplicationRecord
       .reject { |challenge| challenge.has_he_voted?(self) }
   end
 
+
   def next_votable_challenge
     self.votable_challenges.first
   end
