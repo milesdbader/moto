@@ -11,7 +11,7 @@
             <img src="https://image.flaticon.com/icons/svg/1152/1152919.svg" alt="image" class="light-bulb-icon">
           </div> -->
 
-          <% if current_user == @challenge.challenger.user || @challenge.opponent.user %>
+          <% if current_user == @challenge.challenger.user || current_user == @challenge.opponent.user %>
             <p>Your post is live for voting!</p>
           <% else %>
             <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
