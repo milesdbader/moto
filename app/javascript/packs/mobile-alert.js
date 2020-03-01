@@ -8,4 +8,10 @@ const switchToMobileFlash = () => {
   });
 }
 
-switchToMobileFlash();
+let visited = sessionStorage.getItem('visited');
+
+if(visited === null){
+  switchToMobileFlash();
+  sessionStorage.setItem('visited', true)
+}
+

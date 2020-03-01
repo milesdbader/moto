@@ -6,7 +6,7 @@ const challengeResults = document.querySelector('.profile-challenge-result')
 if (challengeResults) {
   setupProfileChallengeEvents()
 }
-import { wieSweetalertChallengeReject, wireSweetalertNoVotes } from "../plugins/swal.js"
+import { wireSweetalertChallengeReject, wireSweetalertNoVotes } from "../plugins/swal.js"
 
 wireSweetalertChallengeReject();
 wireSweetalertNoVotes();
