@@ -1,0 +1,99 @@
+//
+
+
+
+.combined-players-wrap{
+    h2{
+    font-family: Pacifico;
+    font-size: 35px;
+    margin-right: 45px;
+    color: rgba(0, 45, 255, 0.51);
+    }
+}
+
+.title-wrap{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+
+  h1{
+    padding-top: 5px;
+  }
+}
+
+
+.opponent-wrap{
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  padding-top: 30px;
+
+    h5 {
+    font-size: 20px;
+  }
+}
+
+.challenger{
+  display: flex !important;
+  flex-direction: column;
+  padding-left: 20px;
+
+  h5 {
+    font-size: 20px;
+  }
+}
+
+
+#ingredients{
+  padding-bottom: 50px;
+}
+
+#recipes{
+  padding-bottom: 50px;
+}
+#selector{
+  position: fixed;
+  bottom: 0px;
+}
+
+#search{
+  background: rgba(97, 122, 237, 0.2);
+  border-radius: 5px;
+}
+
+#search-users{
+    background: #22358D;
+    color: white;
+    padding: 3px 10px 2px 10px;
+    border-radius: 3px;
+}
+
+
+.new-one {
+  h3{
+  font-size: 25px !important;
+  }
+}
+
+.new-two{
+  h3{
+  font-size: 25px !important;
+  flex-grow: 1;
+  padding-left: 0px;
+  padding-top: 10px;
+  }
+  .challenge-step{
+    display: flex;
+    justify-content: space-evenly !important;
+    padding-left: 10px;
+  }
+}
+
+
+.ingredient{
+  min-height: 125px;
+}
+
+.challenge-image{
+  width: 100%;
+  height: 300px;
+}
