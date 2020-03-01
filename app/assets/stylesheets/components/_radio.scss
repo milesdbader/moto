@@ -1,9 +1,10 @@
-.back {
-  font-size: 35px;
+.back{
+  font-size: 30px;
   margin-right: 20px;
   margin-top: 8px;
   color: $purple;
 }
+
 
 .radio-toolbar {
   margin: 10px;
@@ -47,4 +48,12 @@
       color: $purple;
     }
 }
+
+
+
+input[type='radio']{
+  display: none;
+}
+
+
 
