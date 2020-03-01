@@ -76,7 +76,7 @@ html, body {
   width: 70%;
   border-radius: 10px;
   display: flex;
-  margin: 20px;
+  margin-top: 20px;
   padding: 16px;
   text-align: center;
   p {
@@ -86,6 +86,7 @@ html, body {
   .checkmark-row {
     font-size: 60px;
     color: #092EFF;
+    text-align: -webkit-center;
     // margin-bottom: 400px;
   }
 
