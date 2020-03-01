@@ -103,9 +103,12 @@
     <div id="dashboard-nav">
       <% votable = @user.next_votable_challenge %>
       <% if votable %>
-        <%= link_to new_challenge_vote_path(votable) do %>
-          <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
-        <% end %>
+        <div id="vote-button-votables">
+          <%= link_to new_challenge_vote_path(votable) do %>
+            <span id="vote-count-badge">8</span>
+            <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
+          <% end %>
+        </div>
       <% else %>
         <%= image_tag "vote_page_button.png", id: 'vote-button-no-votables', alt: "Voto", width: 60, height: 60 %>
       <% end %>
