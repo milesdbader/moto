@@ -1,11 +1,11 @@
 class VotesController < ApplicationController
   before_action :set_challenge, only: %i[new]
   def create
-    @vote = Vote.new(vote_params)
+    @vote = Vote.new(player: Player.find(params[:player]), user: current_user)
     @vote.user = current_user
     @vote.save
     # redirect_to new_challenge_vote(current_user.next_votable_challenge.id)
-    redirect_to root
+    redirect_to root_path
   end
 
   def index
@@ -13,13 +13,11 @@ class VotesController < ApplicationController
 
   def new
     @vote = Vote.new
+    @challenger = @challenge.challenger
+    @opponent = @challenge.opponent
   end
 
   private
-
-  def vote_params
-    params.require(:vote).permit(:player)
-  end
 
   def set_challenge
     @challenge = Challenge.find(params[:challenge_id])
