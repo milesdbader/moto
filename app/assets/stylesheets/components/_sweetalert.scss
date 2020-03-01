@@ -1,0 +1,17 @@
+.swal-button--confirm {
+  background-color: $purple;
+}
+
+.swal-overlay {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.swal-modal {
+  border: 2px solid $purple;
+  border-radius: 8px;
+}
+
+.swal-footer, .swal-text {
+  text-align: center;
+}
+

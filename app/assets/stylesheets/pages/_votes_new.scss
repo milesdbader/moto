@@ -15,7 +15,7 @@ html, body {
 
 .light-bulb-icon {
   width: 60px;
-  color: #092EFF;
+  color: $purple;
   margin-top: 5%;
 }
 
@@ -29,7 +29,7 @@ html, body {
 .ingredient-icon {
   font-size: 30px;
   margin-left: 30px;
-  color: #798EF0;
+  color: $light-purple;
 }
 
 .ingredient-name {
@@ -42,7 +42,7 @@ html, body {
   width: 90%;
   margin: 0 auto;
   height: 2px;
-  background-image: linear-gradient(to right, white, blue, white);
+  background-image: linear-gradient(to right, white, $purple, white);
 }
 
 .creative-vote-footer {
@@ -76,7 +76,7 @@ html, body {
   width: 70%;
   border-radius: 10px;
   display: flex;
-  margin: 20px;
+  margin-top: 20px;
   padding: 16px;
   text-align: center;
   p {
@@ -85,7 +85,8 @@ html, body {
 
   .checkmark-row {
     font-size: 60px;
-    color: #092EFF;
+    color: $purple;
+    text-align: -webkit-center;
     // margin-bottom: 400px;
   }
 
@@ -147,3 +148,4 @@ html, body {
     max-width: 100vw;
     max-height: 700px;
   }
+
