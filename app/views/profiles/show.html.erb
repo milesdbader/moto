@@ -1,3 +1,4 @@
+<% @completed_challenges = current_user.challenges.all_completed %>
 <div class="profile-page-full">
     <div class="chev">
     <%= link_to challenges_path do %>
@@ -18,7 +19,7 @@
 
     <div class="profile-stats">
       <ul>
-        <li><span class="profile-stat-count">43</span> challenges</li>
+        <li><span class="profile-stat-count"><%= @completed_challenges.count %></span> challenges</li>
         <li><span class="profile-stat-count">21</span> won</li>
         <li><span class="profile-stat-count">22</span> lost</li>
       </ul>
@@ -40,31 +41,42 @@
 
 <!-- FIND JS CODE IN PROFILE-PAGE.JS -->
 
-    <div class="profile-challenge-result" data-challenge-id="1">
+    <% @completed_challenges.each do |challenge| %>
+
+    <div class="profile-challenge-result" data-challenge-id="<%= challenge.id %>">
       <div class="profile-competitors">
         <div class="mx-3">
-          <%= cl_image_tag current_user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: 1 } %>
+          <%= cl_image_tag challenge.opponent.user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: challenge.opponent.user.id } %>
           <h3>54%</h3>
         </div>
 
         <div class="mx-3">
-          <%= image_tag("beautiful.jpg", alt:"avatar2", class: 'avatar', data: { user_id: 2 }) %>
+          <%= cl_image_tag challenge.challenger.user.photo.key, alt:"avatar1", class: 'avatar', data: { user_id: challenge.challenger.user.id } %>
           <h3>46%</h3>
         </div>
       </div>
 
       <div class="profile-challenge-images">
-        <%= image_tag("lightbulb.png", class: "lightbulb") %>
+        <div class="challenge-mode">
+        <% if challenge.mode == "creative" %>
+          <%= image_tag("lightbulb.png", class: "lightbulb") %>
+        <% else %>
+          <div class='fork'>
+            <%= image_tag("cutlery.png") %>
+          </div>
+        <% end %>
+        </div>
         <div class='profile-food top-img'
-             style="background-image: url('https://www.oetker.co.uk/Recipe/Recipes/oetker.co.uk/uk-en/baking/image-thumb__3688__RecipeDetailsLightBox/chocolate-victoria-sponge-cake.jpg')"
-             data-user-id="1">
+             style="background-image: url('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/<%= challenge.opponent.photo.key %>')"
+             data-user-id="<%= challenge.opponent.user.id %>">
         </div>
         <div class='profile-food'
-             style="background-image: url('https://www.landolakes.com/RecipeManagementSystem/media/Recipe-Media-Files/Recipes/Retail/x17/20277-strawberry-ombre-cake-600X600.jpg')"
-             data-user-id="2">
+             style="background-image: url('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/<%= challenge.challenger.photo.key %>')"
+             data-user-id="<%= challenge.challenger.user.id %>">
         </div>
       </div>
     </div>
+    <% end %>
 
     <!-- <div class="profile-challenge-result" data-challenge-id="2">
       <div class="profile-competitors">

@@ -53,4 +53,10 @@ class Challenge < ApplicationRecord
   def completed?
     self.challenger.photo.attached? && self.opponent.photo.attached?
   end
+
+  def self.all_completed
+    Challenge.all.select do |challenge|
+      challenge.completed?
+    end
+  end
 end

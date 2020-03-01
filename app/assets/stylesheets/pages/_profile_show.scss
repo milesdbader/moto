@@ -161,3 +161,30 @@
   box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
   padding: 10px;
 }
+.cutlery {
+  width: 70px;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  z-index: 200;
+  background: #fff;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  padding: 10px;
+}
+
+.fork {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  z-index: 200;
+  background: #fff;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  padding: 12px;
+  img {
+    width: 100%;
+  }
+}
