@@ -49,4 +49,8 @@ class Challenge < ApplicationRecord
     # if this challenger's votes has one from the user, set voted to true
     # if this opponent's votes has one from the user, set voted to true
   end
+
+  def completed?
+    self.challenger.photo.attached? && self.opponent.photo.attached?
+  end
 end
