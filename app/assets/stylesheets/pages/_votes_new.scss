@@ -148,9 +148,3 @@ html, body {
     max-height: 700px;
   }
 
-  .nav-link, .nav-item {
-    border: none !important;
-    &:active, &:hover, &:focus {
-      border: none !important;
-    }
-  }
