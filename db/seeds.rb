@@ -64,7 +64,7 @@ david = User.new(
   password: '123456789',
   username: 'davidstranders'
   )
-image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582627158/Z9JySKnsW8qJkaCyPrtDvzZU.jpg')
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582993683/uz6xP9oZqHg5Az4WBZgrZhMN.jpg')
 david.photo.attach(io: image3, filename: 'seed')
 
 miles.save!
