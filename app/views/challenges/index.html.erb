@@ -103,7 +103,7 @@
       <% if votable %>
         <div id="vote-button-votables">
           <%= link_to new_challenge_vote_path(votable) do %>
-            <span id="vote-count-badge">8</span>
+            <span id="vote-count-badge"><%= @user.votable_challenges.count %></span>
             <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
           <% end %>
         </div>
