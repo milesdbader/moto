@@ -108,7 +108,7 @@
           <% end %>
         </div>
       <% else %>
-        <%= image_tag "vote_page_button.png", id: 'vote-button-no-votables', alt: "Voto", width: 60, height: 60 %>
+        <%= image_tag "vote_page_button.png", id: 'vote-button-no-votables', alt: "Voto", width: 60, height: 60, class: 'dim-opacity' %>
       <% end %>
 
       <%= link_to new_challenge_path do %>
