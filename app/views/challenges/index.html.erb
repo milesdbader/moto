@@ -25,8 +25,7 @@
                       <%= cl_image_tag opp.photo.key, alt: "Profiloto",
                           width: 50,
                           height: 50,
-                          gravity: "face",
-                          crop: "thumb",
+                          crop: "fill",
                           cloud_name: "dtrwqimx6",
                           class: 'dash-avatar'
                       %>
@@ -62,8 +61,7 @@
                         <%= cl_image_tag opp.photo.key, alt: "Profiloto",
                             width: 30,
                             height: 30,
-                            gravity: "face",
-                            crop: "thumb",
+                            crop: "fill",
                             cloud_name: "dtrwqimx6",
                             class: 'dash-avatar',
                             style: 'margin-right: 4px'
@@ -84,7 +82,7 @@
                       <div class="d-flex justify-content-between" style="min-width: 62px">
                         <!-- added the stuff below -->
 
-                        <i class="far fa-check-circle icon-clicker check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
+                        <i class="far fa-check-circle icon-clicker check-box-icon" id="check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
                         <i class="far fa-times-circle icon-clicker btn-challenge-cancel" data-challenge-id="<%= challenge.id %>"></i>
                         <%= link_to "", challenge_path(challenge), class: "reject-link",  method: :delete %>
                       </div>
@@ -121,8 +119,7 @@
         <%= cl_image_tag @user.photo.key, alt: "Profiloto",
             width: 60,
             height: 60,
-            gravity: "face",
-            crop: "thumb",
+            crop: "fill",
             cloud_name: "dtrwqimx6",
             class: 'dash-avatar'
         %>

@@ -15,10 +15,10 @@
             <img src="https://image.flaticon.com/icons/svg/1152/1152919.svg" alt="image" class="light-bulb-icon">
           </div> -->
 
-          <% if current_user == @challenge.challenger.user || current_user == @challenge.opponent.user %>
-            <p>Your post is live for voting!</p>
+          <% if current_user == @challenge.challenger.user || @challenge.opponent.user %>
+          <p>Your post is live for voting!</p>
           <% else %>
-            <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
+          <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
           <% end %>
 
 
@@ -123,8 +123,8 @@
          </div>
        </div>
      </div>
-     <% if current_user != @challenge.challenger.user && current_user != @challenge.opponent.user %>
-    <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
+    <% if current_user != @challenge.challenger.user && current_user != @challenge.opponent.user && @challenge.has_he_voted?(current_user) == false %>
+    <div class="justify-content-center checkmark-row">
       <div class="col-2 checkmark-icon">
        <input type='radio' id='challenger-vote' checked='' name='radio'>
        <label for='challenger-vote'><i class="far fa-check-circle"></i></label>
@@ -164,8 +164,8 @@
     </div>
   </div>
 
-  <% if current_user != @challenge.challenger.user && current_user != @challenge.opponent.user %>
-  <div class="col d-flex justify-content-center mt-3 pt-3 checkmark-row">
+  <% if (current_user != @challenge.challenger.user && current_user != @challenge.opponent.user) && @challenge.has_he_voted?(current_user) == false %>
+  <div class="justify-content-center checkmark-row">
     <div class="col-2 checkmark-icon2">
       <input type='radio' id='opponent-vote' checked='checked' name='radio'>
       <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
@@ -200,8 +200,7 @@
     </div>
   </div>
 </nav>
-</div>￼
-
+</div>
 
 <%= link_to "submit vote", challenge_votes_path, method: :post, class: "sneaky-btn-returns", style: "display: none;" %>
 

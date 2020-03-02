@@ -7,7 +7,7 @@
     font-family: Pacifico;
     font-size: 35px;
     margin-right: 45px;
-    color: rgba(0, 45, 255, 0.51);
+    color: $purple;
     }
 }
 
@@ -42,26 +42,34 @@
   }
 }
 
-
-#ingredients{
+.ingredient-container {
   padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  text-align: center;
 }
 
 #recipes{
   padding-bottom: 50px;
+
+  img{
+    border-radius: 8px;
+  }
 }
+
 #selector{
   position: fixed;
   bottom: 0px;
 }
 
 #search{
-  background: rgba(97, 122, 237, 0.2);
+  background: $lightest-purple;
   border-radius: 5px;
 }
 
 #search-users{
-    background: #22358D;
+    background: $purple;
     color: white;
     padding: 3px 10px 2px 10px;
     border-radius: 3px;

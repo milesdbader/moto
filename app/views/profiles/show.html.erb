@@ -47,12 +47,17 @@
       <div class="profile-competitors">
         <div class="mx-3">
           <%= cl_image_tag challenge.opponent.user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: challenge.opponent.user.id } %>
-          <h3>54%</h3>
+            <%if challenge.opponent.votes.count == 0 %>
+              <h3>0%</h3>
+            <%else%>
+              <h3> <%= challenge.vote_count / challenge.opponent.votes.count %> </h3>
+            <%end%>
+
         </div>
 
         <div class="mx-3">
           <%= cl_image_tag challenge.challenger.user.photo.key, alt:"avatar1", class: 'avatar', data: { user_id: challenge.challenger.user.id } %>
-          <h3>46%</h3>
+          <h3><%= 100 - challenge.opponent.votes.count %>%</h3>
         </div>
       </div>
 
