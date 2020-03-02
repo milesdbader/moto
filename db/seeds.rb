@@ -116,8 +116,8 @@ puts "creating challenges"
 recipe1 = Recipe.first
 # these ones are active
 Challenge.build!(tamara, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
-Challenge.build!(eyal, miles,  accepted: true, expiration: Time.new(2020, 02, 29), mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
-Challenge.build!(tamara, eyal, accepted: true, expiration: Time.new(2020, 02, 28), mode: 'classic', protein: Ingredient.find_by(name: 'Salmon'), grain: Ingredient.find_by(name: 'Pistachios'), dairy: Ingredient.find_by(name: 'Milk'), vegetable: Ingredient.find_by(name: 'Broccoli'))
+Challenge.build!(eyal, miles,  accepted: true, expiration: Time.new(2020, 03, 10), mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
+Challenge.build!(tamara, eyal, accepted: true, expiration: Time.new(2020, 03, 07), mode: 'classic', protein: Ingredient.find_by(name: 'Salmon'), grain: Ingredient.find_by(name: 'Pistachios'), dairy: Ingredient.find_by(name: 'Milk'), vegetable: Ingredient.find_by(name: 'Broccoli'))
 
 # these ones are pending
 Challenge.build!(tamara, miles, accepted: false, mode: 'creative', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))

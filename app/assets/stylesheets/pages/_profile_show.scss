@@ -18,6 +18,8 @@
   position: sticky;
   top: 0;
   z-index: 300;
+  display: flex;
+  justify-content: space-between;
 }
 
 .profile {
@@ -151,11 +153,11 @@
 // }
 
 .lightbulb {
-  width: 80px;
+  width: 70px;
   border-radius: 50%;
   position: absolute;
   top: -30px;
-  left: -30px;
+  left: -18px;
   z-index: 200;
   background: #fff;
   box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
@@ -174,12 +176,12 @@
 }
 
 .fork {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   position: absolute;
   top: -30px;
-  left: -30px;
+  left: -18px;
   z-index: 200;
   background: #fff;
   box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
