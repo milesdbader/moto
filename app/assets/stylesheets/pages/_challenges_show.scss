@@ -11,7 +11,7 @@ html, body {
 .c-ingredient-icon {
   font-size: 30px;
   margin-left: 30px;
-  color: #798EF0;
+  color: $light-purple;
 }
 
 .c-ingredient-name {
@@ -26,5 +26,5 @@ html, body {
   margin: 0 auto;
   margin-top: 1px;
   height: 2px;
-  background-image: linear-gradient(to right, white, blue, white);
+  background-image: linear-gradient(to right, white, $purple, white);
 }

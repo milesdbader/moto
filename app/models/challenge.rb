@@ -59,4 +59,8 @@ class Challenge < ApplicationRecord
       challenge.completed?
     end
   end
+
+  def vote_count
+    self.challenger.votes.count + self.opponent.votes.count
+  end
 end
