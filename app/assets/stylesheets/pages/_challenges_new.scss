@@ -1,7 +1,3 @@
-//
-
-
-
 .combined-players-wrap{
     h2{
     font-family: Pacifico;
@@ -14,13 +10,18 @@
 .title-wrap{
   display: flex;
   justify-content: space-evenly;
-  margin-top: 20px;
+  margin-top: 5px;
 
   h1{
     padding-top: 5px;
+    margin-left: -20px;
   }
 }
 
+#question {
+  font-family: Pacifico;
+  padding-top: 15px;
+}
 
 .opponent-wrap{
   display: flex !important;

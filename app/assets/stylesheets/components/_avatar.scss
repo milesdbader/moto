@@ -4,6 +4,14 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
+.c-avatar img{
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid black;
+}
 .challenge-avatar {
   width: 100px;
   border-radius: 50%;
@@ -11,6 +19,12 @@
   margin: 10px;
   border: solid;
   border-width: thin;
+  border-width: 2px;
+}
+
+.dash-avatar {
+  border: 1px solid black;
+  border-radius: 50%
 }
 
 .voting-avatar {

@@ -1,6 +1,7 @@
-.back{
-  font-size: 30px;
+#back {
+  font-size: 20px;
   margin-right: 20px;
+  margin-left: -15px;
   margin-top: 8px;
   color: $purple;
 }
@@ -23,13 +24,14 @@
     font-family: sans-serif, Arial;
     font-size: 16px;
     border-radius: 4px;
-    i {
+    img {
       font-size: 6em;
       width: 145px;
       line-height: 140px;
       border-radius: 50%;
       text-align: center;
       border: 2px solid #666;
+      padding: 20px
     }
 }
 
@@ -38,18 +40,17 @@
 }
 
 .radio-toolbar input[type="radio"] + label {
-    i {
+    img {
       color: black;
     }
 }
 
 .radio-toolbar input[type="radio"]:checked + label {
-    i {
-      color: $purple;
+    img {
+      background-color: $alisa-purple;
+      border: $dark-purple;
     }
 }
-
-
 
 input[type='radio']{
   display: none;
