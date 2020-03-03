@@ -30,8 +30,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0;
-  margin-top: 0;
+  margin-bottom: 8px;
+  position: sticky;
+  bottom: 0;
 }
 
 #challenge-header {
