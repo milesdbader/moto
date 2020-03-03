@@ -61,6 +61,7 @@
       </div>
 
       <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
+        <button class="btn purple-btn"> <button>
         <h2>Ingredients:</h2>
           <div class="ingredient-container">
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583077961/xccy4qysekpjwcea1wg0.jpg)">
@@ -164,9 +165,12 @@
         if (mode == 'classic') {
           ingredients.style.display = "none"
           recipes.style.display = "block";
+          shuffler('classic')
         } else {
           recipes.style.display = "none"
           ingredients.style.display = "block";
+          shuffler('creative')
+
         }
       }
 
