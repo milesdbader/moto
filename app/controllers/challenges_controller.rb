@@ -44,13 +44,16 @@ class ChallengesController < ApplicationController
   end
 
   def take_user
-    opponent = User.where(username: params['q'])
+    opponent = handle_search_query
     if opponent.empty?
       render json: {ok: false}
     else
       render json: {ok: true, user: opponent}
     end
   end
+
+
+
 
   def serve
     @challenge = Challenge.find(params[:challenge_id])
@@ -68,6 +71,14 @@ class ChallengesController < ApplicationController
   end
 
   private
+
+  def handle_search_query
+    if params['q']
+      User.where(username: params['q'])
+    else
+      User.where("username ILIKE :q ", q: "#{params['auto']}%")
+    end
+  end
 
   def set_challenge
     @challenge = Challenge.find(params[:id])
