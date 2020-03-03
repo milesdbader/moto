@@ -1,0 +1,51 @@
+<div>
+  <h1 id="vote-result-header"><%= challenge.mode.capitalize %> Mode Results</h1>
+  <div class="player-result challenger-player">
+    <div class="id-line">
+      <%= cl_image_tag challenge.challenger.user.photo.key, alt: "Challenger Avatar",
+          width: 32,
+          height: 32,
+          crop: "fill",
+          cloud_name: "dtrwqimx6",
+          class: "vote-result-avatar"
+      %>
+      <p><%= challenge.challenger.user.username %></p>
+    </div>
+    <div class="image-line">
+      <div id="challenger-image" class="submission-image" style="background-image: url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583237001/<%= challenge.challenger.photo.key %>);">
+        <!-- background image is challenger submission -->
+        <h3><%= challenge.challenger.title %></h3>
+      </div>
+
+      <div class="vote-percentage-display">
+        <h2><%= vote_percentage_share(challenge.challenger, challenge) %>%</h2>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="player-result opponent-player">
+    <div class="image-line">
+
+      <div class="vote-percentage-display">
+        <h2><%= 100 - vote_percentage_share(challenge.challenger, challenge) %>%</h2>
+      </div>
+
+      <div id="opponent-image" class="submission-image" style="background-image: url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583237001/<%= challenge.opponent.photo.key %>);">
+        <!-- background image is challenger submission -->
+        <h3><%= challenge.opponent.title %></h3>
+      </div>
+    </div>
+    <div class="id-line">
+      <p><%= challenge.opponent.user.username %></p>
+      <%= cl_image_tag challenge.opponent.user.photo.key, alt: "Opponent Avatar",
+          width: 32,
+          height: 32,
+          crop: "fill",
+          cloud_name: "dtrwqimx6",
+          class: "vote-result-avatar"
+      %>
+    </div>
+  </div>
+
+</div>

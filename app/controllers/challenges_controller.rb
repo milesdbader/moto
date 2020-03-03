@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: %i[show destroy accepted]
+  before_action :set_cache_headers, only: :index
 
   def index
     @user = current_user
@@ -9,6 +10,8 @@ class ChallengesController < ApplicationController
 
   def new
     @user = current_user
+    randomize_ingredients
+    reciper
   end
 
   def show
@@ -37,9 +40,6 @@ class ChallengesController < ApplicationController
     @challenge.expiration = Time.now + 259200
     if @challenge.save
       redirect_to root_path
-    else
-      raise
-      # uhhh what goes here??
     end
   end
 
@@ -56,6 +56,9 @@ class ChallengesController < ApplicationController
     end
   end
 
+
+
+
   def serve
     @challenge = Challenge.find(params[:challenge_id])
 
@@ -66,15 +69,37 @@ class ChallengesController < ApplicationController
     end
   end
 
+  def reciper
+    @recipe = Recipe.all.sample
+  end
 
   def destroy
     @challenge.destroy
     redirect_to challenges_path
   end
 
+  def randomizer
+    randomize_ingredients
+  end
+
   private
+
+  def handle_search_query
+    if params['q']
+      User.where(username: params['q'])
+    else
+      User.where("username ILIKE :q ", q: "#{params['auto']}%")
+    end
+  end
 
   def set_challenge
     @challenge = Challenge.find(params[:id])
+  end
+
+  def randomize_ingredients
+    @protein = Ingredient.where(category: 'protein').sample
+    @grain = Ingredient.all.where(category: 'grain').sample
+    @vegetable = Ingredient.all.where(category: 'vegetable').sample
+    @dairy = Ingredient.all.where(category: 'dairy').sample
   end
 end

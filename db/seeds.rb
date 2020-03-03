@@ -67,10 +67,60 @@ david = User.new(
 image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582993683/uz6xP9oZqHg5Az4WBZgrZhMN.jpg')
 david.photo.attach(io: image3, filename: 'seed')
 
+# NEW USER SEEDS:
+
+
+john = User.new(
+  email: 'john.harris@gmail.com',
+  password: '123456789',
+  username: 'johnharris'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227479/john_cfzn9a.jpg')
+john.photo.attach(io: image3, filename: 'seed')
+
+hilary = User.new(
+  email: 'hilary.clinton@gmail.com',
+  password: '123456789',
+  username: 'therealhilaryclinton'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227557/hilary_fxm7fd.jpg')
+hilary.photo.attach(io: image3, filename: 'seed')
+
+tristan = User.new(
+  email: 'tristan.broski1102@gmail.com',
+  password: '123456789',
+  username: 'tristanthebro'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227580/tristan_nufyzg.jpg')
+tristan.photo.attach(io: image3, filename: 'seed')
+
+martha = User.new(
+  email: 'martha.stewart@food.com',
+  password: '123456789',
+  username: 'marthastewart'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227721/martha_cv6gak.jpg')
+martha.photo.attach(io: image3, filename: 'seed')
+
+calvin = User.new(
+  email: 'calvincohen@gmail.com',
+  password: '123456789',
+  username: 'ccalvin'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227744/calvin_hnts7d.jpg')
+calvin.photo.attach(io: image3, filename: 'seed')
+
+
+
 miles.save!
 eyal.save!
 tamara.save!
 david.save!
+john.save!
+hilary.save!
+tristan.save!
+martha.save!
+calvin.save!
 
 puts 'Users generated'
 puts "You now have #{User.count} users"

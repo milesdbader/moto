@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store"
+  end
+
 end

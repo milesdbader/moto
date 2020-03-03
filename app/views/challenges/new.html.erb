@@ -26,7 +26,6 @@
          <!--  <h3 id="question"><strong>?</strong></h3> -->
           <img src="https://res.cloudinary.com/dtrwqimx6/image/upload/v1583255519/Screenshot_from_2020-03-03_19-11-40_aor2lc.png" alt="">
       </div>
-      <!-- <img src="https://res.cloudinary.com/dtrwqimx6/image/upload/v1583247900/question_1_d18eot.png" alt="" class="avatar new-c-avatar"> -->
     </div>
   </div>
       <div class="row new-one">
@@ -35,9 +34,18 @@
           <h3>Choose your Opponent</h3>
         </div>
           <div class='mt-4 align-items-center'>
-            <%= text_field_tag(:search, params[:search], placeholder: 'Search by username') %>
-            <%= submit_tag("search", id: 'search-users') %>
+    
+          <div class='challenge-search-wrap'>
+            <%= text_field_tag(:search, params[:search], placeholder: 'Search by username', id: 'search-input') %>
+            <%= button_tag(type: 'submit', id: 'search-users') do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+            <ul class="search-autocomple-ul">
+
+            </ul>
           </div>
+          </div>
+
       </div>
       <div class="new-two">
         <div class='d-flex challenge-step justify-content-center'>
@@ -67,8 +75,11 @@
         </div>
       </div>
 
-      <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
-        <h3><strong>Your Ingredients:</strong></h3>
+      <div class="container justify-content-center my-3 ml-2" id="ingredients" style="display: none;">
+        <h2 class="ing-title">Ingredients:</h2>
+          <%= form_tag randomizer_path, remote: true do %>
+            <%= image_submit_tag('random.png', class: "shuffle") %>
+          <% end %>
           <div class="ingredient-container">
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583077961/xccy4qysekpjwcea1wg0.jpg)">
               <% @protein = Ingredient.all.where(category: 'protein').sample%>
@@ -94,17 +105,68 @@
 
       <div class="container justify-content-center my-3" id="recipes" style="display: none;">
         <h3><strong>Your Recipe:</strong></h3>
+        <div class="eyalxxxxthebest5454">
         <% @recipe = Recipe.all.sample%>
-        <h4 id="recipe" data-id="<%= @recipe.id%>"><%= @recipe.name%></h4>
-        <img src="<%= @recipe.image_url %>" alt="" class="challenge-image">
+        <h4 id="recipe" data-id="<%= @recipe.id%>"><strong><%= @recipe.name%></strong> </h4>
+        <div class='challenge-image-container'>
+          <img src="<%= @recipe.image_url %>" alt="" class="challenge-image">
+          <%= form_tag reciper_path, remote: true do %>
+            <%= image_submit_tag('random.png', class: "recipe-shuffle") %>
+          <% end %>
+        </div>
+          </div>
       </div>
-  <!-- </div> -->
-</div>
-  <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px;" id="selector">
-    Get Cookin'
-  </div>
-  <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn", style: "display: none;" %>
+    </div>
+    <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px; z-index: 3;" id="selector">
+      Get Cookin'
+    </div>
+    <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn", style: "display: none;" %>
+
     <script>
+
+      // first need event listener on search input
+      // for every letter make fetch request for all users based on input (username)
+      // if any found return username
+      // for every usrname found create new li and add to ul table
+
+
+
+      const formatUsers = (users, searchList) => {
+          let result = [];
+          users.forEach((user) => {
+            result.push('<li onclick="handleListClick(this)">' + user.username + '</li>')
+          })
+          searchList.innerHTML = result.join('');
+      }
+
+      const handleAutoComplete = () => {
+        let input = document.getElementById('search-input');
+        let list = document.querySelector('.search-autocomple-ul');
+
+        input.addEventListener('keyup', (e) => {
+          if(e.currentTarget.value == '') {
+            list.innerHTML = '';
+            return;
+          }
+          fetch('/take_user' + '?auto=' + e.currentTarget.value)
+          .then(res => res.json())
+          .then((data )=> {
+            if(data.ok){
+              formatUsers(data.user, list)
+            }else{
+              list.innerHTML = '';
+            }
+          })
+        });
+      }
+
+      const handleListClick = (elem) => {
+          let input = document.getElementById('search-input');
+          input.value = elem.innerText;
+          elem.remove();
+      }
+
+
 
 
       function displayName(opponent) {
@@ -115,13 +177,14 @@
 
         // imageWrap.append(image);
         otherGuy.innerHTML = opponent.username;
-        otherGuy.dataset.user =  opponent.id
+        otherGuy.dataset.user =  opponent.id;
+        // otherGuyPhoto.innerHTML = ;
       }
 
       let searchButton = document.querySelector('#search-users');
 
       searchButton.addEventListener('click', () => {
-        let query = document.querySelector('#search');
+        let query = document.querySelector('#search-input');
         fetch('/take_user' + '?q=' + query.value)
         .then(res => res.json())
         .then((data) =>  {
@@ -172,7 +235,7 @@
         let button = document.getElementById('classic');
         let recipes = document.getElementById("recipes");
         let ingredients = document.getElementById("ingredients");
-        mode = button.checked ? 'classic' : 'creative';
+        let mode = button.checked ? 'classic' : 'creative';
         let wrap = document.querySelector('#yaniv')
         if (mode == 'classic') {
           ingredients.style.display = "none"
@@ -190,6 +253,9 @@
           behavior: 'smooth'
       }
 
+
+
+      handleAutoComplete()
 
     </script>
 

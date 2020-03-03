@@ -1,0 +1,26 @@
+(() => {
+  const p = document.createElement('p')
+  p.innerHTML = "<%= j render 'vote_results', challenge: @challenge %>"
+
+  const options = {
+    content: p,
+    buttons: [false, "Next"]
+  }
+
+  const challenger_image = p.querySelector('#challenger-image');
+  const opponent_image = p.querySelector('#opponent-image');
+
+  if (<%= @challenge.challenger.votes.count %> > <%= @challenge.opponent.votes.count %>){
+    console.log('you are here');
+    challenger_image.classList.add('winning');
+    opponent_image.classList.add('losing');
+  } else if (<%= @challenge.challenger.votes.count %> < <%= @challenge.opponent.votes.count %>) {
+    console.log('you are there');
+    challenger_image.classList.add('losing');
+    opponent_image.classList.add('winning');
+  }
+
+  swal(options).then(() => {
+    window.location = "<%= @next_url %>"
+  })
+})()

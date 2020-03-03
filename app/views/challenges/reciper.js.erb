@@ -1,0 +1,7 @@
+// Change recipe
+
+$recipe = document.getElementById('recipe')
+$recipeImage = document.querySelector('.challenge-image')
+$recipe.dataset.id = "<%= @recipe.id %>"
+$recipe.innerHTML = "<%= @recipe.name %>"
+$recipeImage.src = "<%= @recipe.image_url %>"
