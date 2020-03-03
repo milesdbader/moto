@@ -1,0 +1,8 @@
+  <div class="chev">
+    <%= link_to profile_path do %>
+      <i class="fas fa-chevron-left" id="profile-chevron"></i>
+    <% end %>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/edit_profile', user: @user %>
+
+    </div>
