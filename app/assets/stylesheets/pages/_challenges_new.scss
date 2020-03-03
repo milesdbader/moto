@@ -60,6 +60,8 @@
   }
 }
 
+
+
 #selector{
   position: fixed;
   bottom: 0px;
@@ -108,16 +110,34 @@
   height: 300px;
 }
 
+#ingredients {
+  position: relative;
+}
 
+.shuffle{
+  z-index: 2;
+  border-radius: 50%;
+  width: 70px;
+  background-color: $purple;
+  padding: 10px;
+  position: absolute;
+  right: 42%;
+  top: 42%;
+  border: 3px solid #c9c9c9;
+}
 
-#shuffle{
-  z-index: 10;
-  border-radius: 45%;
+.recipe-shuffle{
+  z-index: 2;
+  border-radius: 50%;
   width: 55px;
   background-color: $purple;
   padding: 10px;
   position: absolute;
-  left: 44vw;
-  top: 113vh;
+  right: -6vw;
+  top: -2.5vh;
+  border: 3px solid #fff;
 }
 
+.challenge-image-container {
+  position: relative;
+}

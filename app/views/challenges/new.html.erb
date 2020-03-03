@@ -60,11 +60,10 @@
         </div>
       </div>
 
-      <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
-        <button class="btn purple-btn"> <button>
+      <div class="container justify-content-center my-3 ml-2" id="ingredients" style="display: none;">
         <h2 class="ing-title">Ingredients:</h2>
           <%= form_tag randomizer_path, remote: true do %>
-            <%= image_submit_tag('random.png', id: "shuffle") %>
+            <%= image_submit_tag('random.png', class: "shuffle") %>
           <% end %>
           <div class="ingredient-container">
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583077961/xccy4qysekpjwcea1wg0.jpg)">
@@ -91,12 +90,19 @@
 
       <div class="container justify-content-center my-3" id="recipes" style="display: none;">
         <h2>Recipe</h2>
+          <div class="eyalxxxxthebest5454">
         <% @recipe = Recipe.all.sample%>
         <h4 id="recipe" data-id="<%= @recipe.id%>"><strong><%= @recipe.name%></strong> </h4>
-        <img src="<%= @recipe.image_url %>" alt="" class="challenge-image">
+        <div class='challenge-image-container'>
+          <img src="<%= @recipe.image_url %>" alt="" class="challenge-image">
+          <%= form_tag reciper_path, remote: true do %>
+            <%= image_submit_tag('random.png', class: "recipe-shuffle") %>
+          <% end %>
+        </div>
+          </div>
       </div>
     </div>
-    <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px;" id="selector">
+    <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px; z-index: 3;" id="selector">
       Get Cookin'
     </div>
     <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn", style: "display: none;" %>
@@ -169,12 +175,9 @@
         if (mode == 'classic') {
           ingredients.style.display = "none"
           recipes.style.display = "block";
-          shuffler('classic')
         } else {
           recipes.style.display = "none"
           ingredients.style.display = "block";
-          shuffler('creative')
-
         }
       }
 

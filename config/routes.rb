@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   patch 'challenges/:id', to: "challenges#accepted", as: :accept
   get 'take_user', to: "challenges#take_user", as: :take_user
   post 'randomizer', to: "challenges#randomizer", as: :randomizer
+  post 'reciper', to: "challenges#reciper", as: :reciper
   resources :players, only: [:create, :edit, :update]
   resources :profiles, only: [:show]
 
