@@ -1,0 +1,48 @@
+#vote-result-header {
+  color: $purple;
+}
+
+.player-result > div {
+  display: flex;
+}
+
+.player-result {
+  margin-top: 40px;
+}
+
+.submission-image {
+  background-size: cover;
+  height: 116px;
+  width: 188px;
+  h3 {
+    color: white;
+    font-size: 18px;
+    width: 100%;
+  }
+  display: flex;
+  align-items: flex-end;
+}
+
+.player-result.opponent-player > div {
+  justify-content: flex-end;
+}
+
+.vote-result-avatar {
+  border-radius: 50%;
+  margin: 4px;
+}
+
+.id-line {
+  align-items: center;
+  p {
+    margin: 0;
+  }
+}
+
+.vote-percentage-display {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
