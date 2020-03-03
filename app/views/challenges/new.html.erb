@@ -9,7 +9,7 @@
   <br>
   <div class="d-flex justify-content-space-around combined-players-wrap">
     <div class="challenger" class="">
-      <h5><%= @user.username %></h5>
+      <p><strong><%= @user.username %></strong></p>
       <%= cl_image_tag @user.photo.key, alt: "Profiloto",
       width: 80,
       height: 80,
@@ -18,7 +18,7 @@
       cloud_name: "dtrwqimx6",
       class: 'dash-avatar' %>
 
-     </div>
+    </div>
     <h2 class="my-5 ml-5"><strong>vs<strong></h2>
     <div class="mx-2 opponent-wrap">
       <p id="opponent" data-user=''>Opponent</p>
@@ -98,12 +98,12 @@
         <h4 id="recipe" data-id="<%= @recipe.id%>"><%= @recipe.name%></h4>
         <img src="<%= @recipe.image_url %>" alt="" class="challenge-image">
       </div>
-    </div>
-    <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px;" id="selector">
-      Get Cookin'
-    </div>
-    <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn", style: "display: none;" %>
-
+  <!-- </div> -->
+</div>
+  <div class="justify-content-center btn btn-purple" style="width: 100%; margin-top: 28px;" id="selector">
+    Get Cookin'
+  </div>
+  <%= link_to "get cooking", challenges_path, method: :post, class: "sneaky-btn", style: "display: none;" %>
     <script>
 
 
