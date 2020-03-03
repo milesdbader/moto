@@ -208,8 +208,8 @@
   let vote = document.querySelector('.checkmark-icon > input')
   let vote2 = document.querySelector('.checkmark-icon2 > input')
   let target = document.querySelector('.sneaky-btn-returns')
-  ninjaSubmit = document.querySelector('#ninja-submit')
-  ninjaSubmit2 = document.querySelector('#ninja-submit2')
+  let ninjaSubmit = document.querySelector('#ninja-submit')
+  let ninjaSubmit2 = document.querySelector('#ninja-submit2')
 
 
   vote.addEventListener('click', () => {
@@ -234,14 +234,15 @@
     let opponentSumbitter = document.querySelector('#ninja-submit');
     let challengerSumbitter = document.querySelector('#ninja-submit2');
     let sneakySubmit = document.querySelector('sneaky-btn-returns');
-    let player = <%=@opponent.id%>
+    let player;
     if (result.id == 'challenger-vote') {
       opponentSumbitter.style.display = "none"
       challengerSumbitter.style.display = "block"
-      let player = <%=@challenger.id%>
+      player = <%=@challenger.id%>
     } else {
       challengerSumbitter.style.display = "none"
       opponentSumbitter.style.display = "block"
+      player = <%=@opponent.id%>
     }
     let ninja = `/challenges/${<%=@challenge.id%>}/votes?player=${player}`
     target.href = ninja;

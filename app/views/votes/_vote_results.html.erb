@@ -18,8 +18,7 @@
       </div>
 
       <div class="vote-percentage-display">
-        <h2><%= challenge.challenger.votes.count %></h2>
-        <small>votes</small>
+        <h2><%= vote_percentage_share(challenge.challenger, challenge) %>%</h2>
       </div>
 
     </div>
@@ -29,8 +28,7 @@
     <div class="image-line">
 
       <div class="vote-percentage-display">
-        <h2><%= challenge.opponent.votes.count %></h2>
-        <small>votes</small>
+        <h2><%= vote_percentage_share(challenge.challenger, challenge) %>%</h2>
       </div>
 
       <div class="submission-image" style="background-image: url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583237001/<%= challenge.opponent.photo.key %>);">
