@@ -30,8 +30,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0;
-  margin-top: 0;
+  margin-bottom: 8px;
+  position: sticky;
+  bottom: 0;
 }
 
 #challenge-header {
@@ -92,4 +93,25 @@
 
 #check-box-icon {
   font-size: 26px;
+}
+
+#vote-button-votables {
+  position: relative;
+  display: inline-block;
+}
+
+#vote-count-badge {
+  position: absolute;
+  right: -10px;
+  top: -3px;
+  background: $purple;
+  text-align: center;
+  border-radius: 50%;
+  color: white;
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.dim-opacity {
+  opacity: 0.8;
 }

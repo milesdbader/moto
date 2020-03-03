@@ -1,10 +1,7 @@
 <!-- <div class="container"> -->
-  <%= link_to challenges_path do %>
-  <i class="fas fa-chevron-left"></i>
-  <% end %>
-
-
-  <!-- <div class="container voting-page"> -->
+    <%= link_to challenges_path do %>
+    <i class="fas fa-chevron-left"></i>
+    <% end %>
 
     <div class="tab-content page-new-vote" id="nav-tabContent">
      <!-- PAGE ONE: CHALLENGE INFO -->
@@ -16,9 +13,9 @@
           </div> -->
 
           <% if current_user == @challenge.challenger.user || current_user == @challenge.opponent.user %>
-            <p>Your post is live for voting!</p>
+          <p>Your post is live for voting!</p>
           <% else %>
-            <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
+          <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
           <% end %>
 
 
@@ -109,11 +106,12 @@
 
           </div>
         </div>
-        <div class="row justify-content-center">
-
+        <div class="text-center">
           <h2 text-center><%= @challenger.title %></h2>
+        </div>
+        <div class="row justify-content-center">
           <div class="row justify-content-center comment-row">
-            <div class="d-flex col-12 justify-content-center">
+            <div class="d-flex col-12 justify-content-center text-center">
              <% if @challenger.caption.nil? %>
              <p>Waiting for <%= @challenger.user.username %> to upload...</p>
              <% else %>
@@ -121,17 +119,18 @@
              <% end %>
            </div>
          </div>
-       </div>
+        </div>
      </div>
     <% if current_user != @challenge.challenger.user && current_user != @challenge.opponent.user && @challenge.has_he_voted?(current_user) == false %>
-    <div class="justify-content-center checkmark-row">
-      <div class="col-2 checkmark-icon">
+    <div class="justify-content-center checkmark-row text-center">
+      <div class="checkmark-icon">
        <input type='radio' id='challenger-vote' checked='' name='radio'>
        <label for='challenger-vote'><i class="far fa-check-circle"></i></label>
      </div>
      <div class="btn btn-purple" id="ninja-submit" style="display: none;">
       Submit Vote
     </div>
+
     </div>
   <% end %>
 </div><!-- /page-user-one -->
@@ -148,10 +147,10 @@
         <% end %>
       </div>
     </div>
-    <div class="row justify-content-center">
-
+    <div class="text-center">
       <h2><%= @opponent.title %></h2>
-
+    </div>
+    <div class="row justify-content-center">
       <div class="row justify-content-center comment-row">
         <div class="d-flex col-12 justify-content-center">
           <% if @opponent.caption.nil? %>
@@ -165,8 +164,8 @@
   </div>
 
   <% if (current_user != @challenge.challenger.user && current_user != @challenge.opponent.user) && @challenge.has_he_voted?(current_user) == false %>
-  <div class="justify-content-center checkmark-row">
-    <div class="col-2 checkmark-icon2">
+  <div class="justify-content-center checkmark-row text-center">
+    <div class="checkmark-icon2">
       <input type='radio' id='opponent-vote' checked='checked' name='radio'>
       <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
     </div>
@@ -200,8 +199,7 @@
     </div>
   </div>
 </nav>
-</div>￼
-
+</div>
 
 <%= link_to "submit vote", challenge_votes_path, method: :post, class: "sneaky-btn-returns", style: "display: none;" %>
 

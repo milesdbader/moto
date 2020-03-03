@@ -7,7 +7,29 @@
   transition: background 0.3s ease;
 }
 
+.c-btn-purple {
+  display: flex;
+  color: white;
+  padding: 8px 4px;
+  border-radius: 4px;
+  background: $purple;
+  transition: background 0.3s ease;
+  font-weight: bold;
+  font-size: 16px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .btn-purple:hover {
+  background: $dark-purple;
+  color: white;
+}
+
+.c-btn-purple:hover {
   background: $dark-purple;
   color: white;
 }

@@ -16,5 +16,9 @@
     <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
+
+    <% if !touch_device? %>
+      <%= javascript_pack_tag 'mobile-alert' %>
+    <% end %>
   </body>
 </html>

@@ -141,3 +141,48 @@
 .challenge-image-container {
   position: relative;
 }
+
+// search bar autocomplete
+.challenge-search-wrap{
+  margin-top: 26px;
+  input[type=text]:focus, textarea:focus {
+    border-radius: 12px 0 0 12px;
+  }
+  ul{
+    padding-left: 0px;
+    width: 70%;
+  }
+
+  li{
+    list-style: none;
+    border: 1px solid;
+  }
+  #search-input {
+    height: 42px;
+    border: 1px solid #CC5B50;
+    border-radius: 12px 0 0 12px;
+    box-shadow: none;
+    padding: 0 10px;
+  }
+  #search-users {
+    height: 42px;
+    border: 1px solid #CC5B50;
+    border-radius: 0 12px 12px 0;
+    margin-left: -6px;
+    i {
+      margin: 0 4px;
+    }
+  }
+}
+
+.search-autocomple-ul {
+  margin-top: 8px;
+  li {
+    border: none;
+    margin: 6px 0;
+    padding-left: 10px;
+  }
+}
+
+
+

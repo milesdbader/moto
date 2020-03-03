@@ -67,10 +67,60 @@ david = User.new(
 image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582993683/uz6xP9oZqHg5Az4WBZgrZhMN.jpg')
 david.photo.attach(io: image3, filename: 'seed')
 
+# NEW USER SEEDS:
+
+
+john = User.new(
+  email: 'john.harris@gmail.com',
+  password: '123456789',
+  username: 'johnharris'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227479/john_cfzn9a.jpg')
+john.photo.attach(io: image3, filename: 'seed')
+
+hilary = User.new(
+  email: 'hilary.clinton@gmail.com',
+  password: '123456789',
+  username: 'therealhilaryclinton'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227557/hilary_fxm7fd.jpg')
+hilary.photo.attach(io: image3, filename: 'seed')
+
+tristan = User.new(
+  email: 'tristan.broski1102@gmail.com',
+  password: '123456789',
+  username: 'tristanthebro'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227580/tristan_nufyzg.jpg')
+tristan.photo.attach(io: image3, filename: 'seed')
+
+martha = User.new(
+  email: 'martha.stewart@food.com',
+  password: '123456789',
+  username: 'marthastewart'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227721/martha_cv6gak.jpg')
+martha.photo.attach(io: image3, filename: 'seed')
+
+calvin = User.new(
+  email: 'calvincohen@gmail.com',
+  password: '123456789',
+  username: 'ccalvin'
+  )
+image3 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583227744/calvin_hnts7d.jpg')
+calvin.photo.attach(io: image3, filename: 'seed')
+
+
+
 miles.save!
 eyal.save!
 tamara.save!
 david.save!
+john.save!
+hilary.save!
+tristan.save!
+martha.save!
+calvin.save!
 
 puts 'Users generated'
 puts "You now have #{User.count} users"
@@ -90,10 +140,12 @@ end
 david_made_this
 
 puts "#{Recipe.count} recipes created"
+
 puts "Generating ingredients"
+
 protein_ingredients = ['Corn', 'Potatoes', 'Broccoli', 'Cauliflower', 'Peas', 'Asparagus', 'Salmon', 'Beef', 'Chicken', 'Tuna', 'Pork', 'Turkey', 'Halibut', 'Spelt', 'Teff', 'Black beans', 'Lima beans', 'Chinese cabbage', 'Bison']
 grain_ingredients = ['Chickpeas', 'Soybeans', 'Artichoke', 'Potato', 'Parsnips', 'Broccoli', 'Pumpkin', 'Quinoa', 'Almonds', 'Pistachios']
-vegetable_ingredients = ['Spinach', 'Bell peppers', 'Kale', 'Alfalfa sprouts', 'Sweet potatoes', 'Broccoli', 'Endive', 'Fennel', 'Basil', 'Thyme', 'Sage', 'Rosemary', 'Arugula', 'Chives' 'Peas', 'Beets', 'Carrots', 'Tomato', 'Garlic', 'Onion', 'Cauliflower', 'Seaweed']
+vegetable_ingredients = ['Spinach', 'Bell peppers', 'Kale', 'Alfalfa sprouts', 'Sweet potatoes', 'Broccoli', 'Endive', 'Fennel', 'Basil', 'Thyme', 'Sage', 'Rosemary', 'Arugula', 'Chives', 'Peas', 'Beets', 'Carrots', 'Tomato', 'Garlic', 'Onion', 'Cauliflower', 'Seaweed']
 dairy_ingredients = ['Greek yogurt', 'Cottage cheese', 'Milk', 'Butter', 'Buttermilk', 'Custard', 'Curd', 'Cream cheese', 'Paneer', 'Sour milk']
 
 protein_ingredients.each do |ingredient|
@@ -116,12 +168,15 @@ puts "creating challenges"
 recipe1 = Recipe.first
 # these ones are active
 Challenge.build!(tamara, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
-Challenge.build!(eyal, miles,  accepted: true, expiration: Time.new(2020, 02, 29), mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
-Challenge.build!(tamara, eyal, accepted: true, expiration: Time.new(2020, 02, 28), mode: 'classic', protein: Ingredient.find_by(name: 'Salmon'), grain: Ingredient.find_by(name: 'Pistachios'), dairy: Ingredient.find_by(name: 'Milk'), vegetable: Ingredient.find_by(name: 'Broccoli'))
+Challenge.build!(tamara, david, accepted: true, expiration: Time.new(2020, 03, 05), mode: 'classic', recipe_id: Recipe.find_by(name: "Simple Pumpkin Soup").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
+Challenge.build!(tamara, miles,  accepted: true, expiration: Time.new(2020, 03, 10), mode: 'classic', recipe_id: Recipe.find_by(name: "Crispy Breaded Cauliflower Wings").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
+Challenge.build!(eyal, david,  accepted: true, expiration: Time.new(2020, 03, 11), mode: 'classic', recipe_id: Recipe.find_by(name: "8-Minute Sweet Potatoes").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
+Challenge.build!(eyal, miles,  accepted: true, expiration: Time.new(2020, 03, 12), mode: 'classic', recipe_id: Recipe.find_by(name: "Sautéed Kale with Lemon, Tahini & Hemp Seeds").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
+Challenge.build!(tamara, eyal, accepted: true, expiration: Time.new(2020, 03, 07), mode: 'creative', protein: Ingredient.find_by(name: 'Salmon'), grain: Ingredient.find_by(name: 'Pistachios'), dairy: Ingredient.find_by(name: 'Milk'), vegetable: Ingredient.find_by(name: 'Broccoli'))
 
 # these ones are pending
 Challenge.build!(tamara, miles, accepted: false, mode: 'creative', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
-Challenge.build!(david, tamara, accepted: false, mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
+Challenge.build!(david, tamara, accepted: false, mode: 'classic', recipe_id: Recipe.find_by(name: "Simple Pumpkin Soup").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
 Challenge.build!(miles, tamara, accepted: false, mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
 
 Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
@@ -156,7 +211,7 @@ Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredient
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST FRENCH TOAST")
 
-Challenge.build!(david, tamara, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+Challenge.build!(david, tamara, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "Simple Pumpkin Soup").id, voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583063746/x0g1koetqaja1ztbujue.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583063727/y5r213vcgfpsa9ksxrxv.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')

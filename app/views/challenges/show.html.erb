@@ -1,15 +1,20 @@
 <div class="container show-container">
-<%= link_to challenges_path do %>
+
+
+  <%= link_to challenges_path do %>
     <i class="fas fa-chevron-left"></i>
   <%  end %>
 
-<!-- <div class="col-12 mt-3 text-center">
-  <%#= image_tag("idea.png", size: "48x48") %>
-</div> -->
-
 <div class="row justify-content-center">
-  <h1><strong> <%= @challenge.mode.capitalize %> Mode </strong></h1>
+  <% if @challenge.mode == "creative" %>
+    <%= image_tag("lightbulb.png", size: "24x24",  class: "mt-1 mr-1") %>
+  <% else %>
+    <%= image_tag("cutlery.png", size: "24x24",  class: "mt-2 mr-1") %>
+  <% end %>
+  <h2><strong> <%= @challenge.mode.capitalize %> Mode </strong></h2>
 </div>
+
+<!-- <br> -->
 
 <div class="row text-center">
   <div class="container my-6">
@@ -34,19 +39,18 @@
   </div>
 </div>
 
-<br>
+<!-- <br> -->
 
 <div class="container">
-  <div class="row text-center m-3">
+  <div class="row text-center mt-3">
     <div class="col-12">
       <% opp = the_other_guy(@challenge, current_user) %>
-      <h3> Beat <%= opp.username %>! </h3>
+      <h4> Beat <%= opp.username %>! </h4>
     </div>
   </div>
 </div>
 
 <div class="row text-center">
-  <!-- <img class="challenge-avatar mx-auto d-block"  src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt=""> -->
   <%= cl_image_tag opp.photo.key, alt: "Profiloto",
       width: 120,
       height: 120,
@@ -57,51 +61,61 @@
 </div>
 
 <div><!-- ingredients -->
-  <div class="row c-ingredient-row">
-    <div class="col-2 ingredient-icon">
-      <i class="fas fa-wine-bottle"></i>
-    </div>
-    <div class="col-8 c-ingredient-name">
-      Salsa
-    </div>
-    <div class="col-2 ingredient-space-filler"></div>
-  </div><!-- /ingredient-row -->
-  <div class="row c-ingredient-underline-row"></div>
-
-  <div class="row c-ingredient-row">
-    <div class="col-2 c-ingredient-icon">
-      <i class="fas fa-fish"></i>
-    </div>
-    <div class="col-8 c-ingredient-name">
-      Herring
-    </div>
-    <div class="col-2 ingredient-space-filler"></div>
-  </div><!-- /ingredient-row -->
-  <div class="row c-ingredient-underline-row"></div>
-
-  <div class="row c-ingredient-row">
-    <div class="col-2 c-ingredient-icon">
-      <i class="fas fa-carrot"></i>
-    </div>
-    <div class="col-8 c-ingredient-name">
-      Mushrooms
-    </div>
-    <div class="col-2 ingredient-space-filler"></div>
-  </div>
-  <div class="row c-ingredient-underline-row"></div>
-
-  <div class="row c-ingredient-row">
-    <div class="col-2 c-ingredient-icon">
-      <i class="fas fa-wine-bottle"></i>      </div>
+  <% if @challenge.mode == "creative" %>
+    <div class="row c-ingredient-row">
+      <div class="col-2 ingredient-icon">
+        <i class="fas fa-wine-bottle"></i>
+      </div>
       <div class="col-8 c-ingredient-name">
-        Blue cheese
+        <%= @challenge.ingredients[0].name  %>
       </div>
-      <div class="col-2 ingredient-space-filler">
+      <div class="col-2 ingredient-space-filler"></div>
+    </div><!-- /ingredient-row -->
+    <div class="row c-ingredient-underline-row"></div>
 
+    <div class="row c-ingredient-row">
+      <div class="col-2 c-ingredient-icon">
+        <i class="fas fa-fish"></i>
       </div>
+      <div class="col-8 c-ingredient-name">
+        <%= @challenge.ingredients[1].name  %>
+      </div>
+      <div class="col-2 ingredient-space-filler"></div>
+    </div><!-- /ingredient-row -->
+    <div class="row c-ingredient-underline-row"></div>
+
+    <div class="row c-ingredient-row">
+      <div class="col-2 c-ingredient-icon">
+        <i class="fas fa-carrot"></i>
+      </div>
+      <div class="col-8 c-ingredient-name">
+        <%= @challenge.ingredients[2].name  %>
+      </div>
+      <div class="col-2 ingredient-space-filler"></div>
     </div>
     <div class="row c-ingredient-underline-row"></div>
-  </div>
+
+    <div class="row c-ingredient-row">
+      <div class="col-2 c-ingredient-icon">
+        <i class="fas fa-wine-bottle"></i>      </div>
+        <div class="col-8 c-ingredient-name">
+          <%= @challenge.ingredients[3].name  %>
+        </div>
+        <div class="col-2 ingredient-space-filler"></div>
+      </div>
+      <div class="row c-ingredient-underline-row"></div>
+    </div>
+   <% else %>
+    <div class="row">
+      <div class="col d-flex justify-content-center mt-3">
+        <h4 class="text-center"><strong> <%= Recipe.find(@challenge.recipe_id).name %> </strong></h4>
+      </div>
+    </div>
+    <div class="row justify-content-center" id="classic-image">
+      <img src="<%= Recipe.find(@challenge.recipe_id).image_url %>" alt="">
+      <%#= image_tag("food5.jpg", height: 250, width: 250) %>
+    </div>
+   <% end %>
 
 </div>
 
@@ -110,7 +124,7 @@
 <br>
 
 <div class="row justify-content-center">
-  <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn btn-purple' , style:'font-weight: bold; font-size: 21px;' %>
+  <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn c-btn-purple' %>
 </div>
 </div>
 

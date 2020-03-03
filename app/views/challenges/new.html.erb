@@ -1,7 +1,9 @@
 
 <div class="container">
   <div class="row title-wrap">
-    <a href="http://localhost:3000/challenges"><i class="fas fa-chevron-left back"></i></a>
+    <%= link_to challenges_path do %>
+      <i class="fas fa-chevron-left back"></i>
+    <% end %>
     <h1 class="purple-text">New Challenge</h1>
   </div>
   <br>
@@ -28,9 +30,14 @@
         <div class="numberCircle"><strong>1.</strong></div>
         <div class='mt-2'>
           <h3>Choose your Opponent</h3>
-          <div class='mt-4'>
-            <%= text_field_tag(:search, params[:search], placeholder: 'Search by username') %>
-            <%= submit_tag("search", id: 'search-users') %>
+          <div class='challenge-search-wrap'>
+            <%= text_field_tag(:search, params[:search], placeholder: 'Search by username', id: 'search-input') %>
+            <%= button_tag(type: 'submit', id: 'search-users') do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+            <ul class="search-autocomple-ul">
+
+            </ul>
           </div>
         </div>
       </div>
@@ -109,6 +116,50 @@
 
     <script>
 
+      // first need event listener on search input
+      // for every letter make fetch request for all users based on input (username)
+      // if any found return username
+      // for every usrname found create new li and add to ul table
+
+
+
+      const formatUsers = (users, searchList) => {
+          let result = [];
+          users.forEach((user) => {
+            result.push('<li onclick="handleListClick(this)">' + user.username + '</li>')
+          })
+          searchList.innerHTML = result.join('');
+      }
+
+      const handleAutoComplete = () => {
+        let input = document.getElementById('search-input');
+        let list = document.querySelector('.search-autocomple-ul');
+
+        input.addEventListener('keyup', (e) => {
+          if(e.currentTarget.value == '') {
+            list.innerHTML = '';
+            return;
+          }
+          fetch('/take_user' + '?auto=' + e.currentTarget.value)
+          .then(res => res.json())
+          .then((data )=> {
+            if(data.ok){
+              formatUsers(data.user, list)
+            }else{
+              list.innerHTML = '';
+            }
+          })
+        });
+      }
+
+      const handleListClick = (elem) => {
+          let input = document.getElementById('search-input');
+          input.value = elem.innerText;
+          elem.remove();
+      }
+
+
+
 
       function displayName(opponent) {
         let otherGuy = document.getElementById("opponent");
@@ -121,7 +172,7 @@
       let searchButton = document.querySelector('#search-users');
 
       searchButton.addEventListener('click', () => {
-        let query = document.querySelector('#search');
+        let query = document.querySelector('#search-input');
         fetch('/take_user' + '?q=' + query.value)
         .then(res => res.json())
         .then((data) =>  {
@@ -182,6 +233,9 @@
       }
 
 
+
+
+      handleAutoComplete()
 
     </script>
 

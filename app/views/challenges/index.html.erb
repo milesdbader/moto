@@ -101,15 +101,18 @@
     <div id="dashboard-nav">
       <% votable = @user.next_votable_challenge %>
       <% if votable %>
-        <%= link_to new_challenge_vote_path(votable) do %>
-          <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
-        <% end %>
+        <div id="vote-button-votables">
+          <%= link_to new_challenge_vote_path(votable) do %>
+            <span id="vote-count-badge"><%= @user.votable_challenges.count %></span>
+            <%= image_tag "vote_page_button.png", alt: "Voto", width: 60, height: 60 %>
+          <% end %>
+        </div>
       <% else %>
-        <%= image_tag "vote_page_button.png", id: 'vote-button-no-votables', alt: "Voto", width: 60, height: 60 %>
+        <%= image_tag "vote_page_button.png", id: 'vote-button-no-votables', alt: "Voto", width: 60, height: 60, class: 'dim-opacity' %>
       <% end %>
 
       <%= link_to new_challenge_path do %>
-        <%= image_tag "cook_off_button.png", alt: "Creaoto", width: 100 %>
+        <%= image_tag "cook_off_button.png", alt: "Creaoto", width: 80, height: 80 %>
       <% end %>
 
       <%= link_to profile_path(current_user.id) do %>
