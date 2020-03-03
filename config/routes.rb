@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   patch 'challenges/:id', to: "challenges#accepted", as: :accept
   get 'take_user', to: "challenges#take_user", as: :take_user
   resources :players, only: [:create, :edit, :update]
-  resources :profiles, only: [:show]
+  resources :profiles, only: [:show, :edit, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,5 @@
+<%=  simple_form_for(user, url: profile_path(user), method: 'patch') do |f|%>
+  <%= f.input :username, :label => "Please enter a new username" %>
+  <%= f.input :photo, :label => "Please upload a new photo" %>
+  <%= f.submit  %>
+<% end  %>
