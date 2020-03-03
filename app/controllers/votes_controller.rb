@@ -6,10 +6,21 @@ class VotesController < ApplicationController
     @vote = Vote.new(player: Player.find(params[:player]), user: current_user)
     @vote.save
     # redirect_to new_challenge_vote(current_user.next_votable_challenge.id)
-    if current_user.next_votable_challenge
-      redirect_to new_challenge_vote_path(current_user.next_votable_challenge)
+    @has_another_vote = current_user.next_votable_challenge
+    if @has_another_vote
+      @next_url = new_challenge_vote_path(current_user.next_votable_challenge)
+      respond_to do |format|
+        format.html {
+          redirect_to @next_url
+        }
+        format.js
+      end
     else
-      render :new
+      @next_url = challenges_path
+      respond_to do |format|
+        format.html { render :new }
+        format.js
+      end
     end
   end
 
