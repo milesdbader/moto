@@ -48,6 +48,8 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   text-align: center;
+  width: 300px;
+
 }
 
 #recipes{
@@ -57,6 +59,8 @@
     border-radius: 8px;
   }
 }
+
+
 
 #selector{
   position: fixed;
@@ -105,3 +109,80 @@
   width: 100%;
   height: 300px;
 }
+
+#ingredients {
+  position: relative;
+}
+
+.shuffle{
+  z-index: 2;
+  border-radius: 50%;
+  width: 70px;
+  background-color: $purple;
+  padding: 10px;
+  position: absolute;
+  right: 42%;
+  top: 42%;
+  border: 3px solid #c9c9c9;
+}
+
+.recipe-shuffle{
+  z-index: 2;
+  border-radius: 50%;
+  width: 55px;
+  background-color: $purple;
+  padding: 10px;
+  position: absolute;
+  right: -6vw;
+  top: -2.5vh;
+  border: 3px solid #fff;
+}
+
+.challenge-image-container {
+  position: relative;
+}
+
+// search bar autocomplete
+.challenge-search-wrap{
+  margin-top: 26px;
+  input[type=text]:focus, textarea:focus {
+    border-radius: 12px 0 0 12px;
+  }
+  ul{
+    padding-left: 0px;
+    width: 70%;
+  }
+
+  li{
+    list-style: none;
+    border: 1px solid;
+  }
+  #search-input {
+    height: 42px;
+    border: 1px solid #CC5B50;
+    border-radius: 12px 0 0 12px;
+    box-shadow: none;
+    padding: 0 10px;
+  }
+  #search-users {
+    height: 42px;
+    border: 1px solid #CC5B50;
+    border-radius: 0 12px 12px 0;
+    margin-left: -6px;
+    i {
+      margin: 0 4px;
+    }
+  }
+}
+
+.search-autocomple-ul {
+  margin-top: 8px;
+  li {
+    border: none;
+    margin: 6px 0;
+    padding-left: 10px;
+  }
+}
+
+
+

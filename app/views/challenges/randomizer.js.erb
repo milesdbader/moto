@@ -1,0 +1,21 @@
+
+// Change protein
+
+$protein = document.getElementById('protein')
+$protein.dataset.id = "<%= @protein.id %>"
+$protein.innerHTML = "<%= @protein.name %>"
+
+// Change dairy
+$dairy = document.getElementById('dairy')
+$dairy.dataset.id = "<%= @dairy.id %>"
+$dairy.innerHTML = "<%= @dairy.name %>"
+
+// Change grain
+$grain = document.getElementById('grain')
+$grain.dataset.id = "<%= @grain.id %>"
+$grain.innerHTML = "<%= @grain.name %>"
+
+// Change vegetable
+$vegetable = document.getElementById('vegetable')
+$vegetable.dataset.id = "<%= @vegetable.id %>"
+$vegetable.innerHTML = "<%= @vegetable.name %>"

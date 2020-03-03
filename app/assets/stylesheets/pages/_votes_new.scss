@@ -107,7 +107,8 @@ html, body {
   }
 
   .fa-chevron-left {
-    margin: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
   }
 
   .voting-page {
@@ -139,6 +140,8 @@ html, body {
   #classic-image img {
     border-radius: 5px;
     margin: 10px;
+    height: 250px;
+    width: 250px;
   }
 
   #ninja-submit, #ninja-submit2{

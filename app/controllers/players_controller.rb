@@ -16,6 +16,9 @@ class PlayersController < ApplicationController
       render :new
     end
 
+    if @challenge.completed?
+      @challenge.voting_end = Time.now + 259200
+    end
   end
 
   private

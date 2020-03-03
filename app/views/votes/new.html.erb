@@ -12,7 +12,7 @@
             <img src="https://image.flaticon.com/icons/svg/1152/1152919.svg" alt="image" class="light-bulb-icon">
           </div> -->
 
-          <% if current_user == @challenge.challenger.user || @challenge.opponent.user %>
+          <% if current_user == @challenge.challenger.user || current_user == @challenge.opponent.user %>
           <p>Your post is live for voting!</p>
           <% else %>
           <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
@@ -77,7 +77,7 @@
           <% else %>
 
           <div class="row justify-content-center" id="classic-image">
-            <%= image_tag("food5.jpg", height: 300, width: 300) %>
+            <%#= image_tag("food5.jpg", height: 300, width: 300) %>
 
           </div>
           <div class="row">
@@ -126,10 +126,11 @@
       <div class="checkmark-icon">
        <input type='radio' id='challenger-vote' checked='' name='radio'>
        <label for='challenger-vote'><i class="far fa-check-circle"></i></label>
-      </div>
-      <div class="btn btn-purple" id="ninja-submit2" style="display: none;">
-        Submit Vote
-      </div>
+     </div>
+     <div class="btn btn-purple" id="ninja-submit" style="display: none;">
+      Submit Vote
+    </div>
+
     </div>
   <% end %>
 </div><!-- /page-user-one -->
@@ -169,7 +170,7 @@
       <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
     </div>
   </div>
-  <div class="btn btn-purple" id="ninja-submit" style="display: none;">
+  <div class="btn btn-purple" id="ninja-submit2" style="display: none;">
     Submit Vote
   </div>
   <% end %>
@@ -231,15 +232,15 @@
 
   let handleVote = (result) => {
     console.log(result)
-    let opponentSumbitter = document.querySelector('#ninja-submit');
-    let challengerSumbitter = document.querySelector('#ninja-submit2');
-    let sneakySubmit = document.querySelector('sneaky-btn-returns');
+
+    let opponentSumbitter = document.querySelector('#ninja-submit2');
+    let challengerSumbitter = document.querySelector('#ninja-submit');
     let player;
     if (result.id == 'challenger-vote') {
       opponentSumbitter.style.display = "none"
       challengerSumbitter.style.display = "block"
       player = <%=@challenger.id%>
-    } else {
+    } else if (result.id == 'opponent-vote'){
       challengerSumbitter.style.display = "none"
       opponentSumbitter.style.display = "block"
       player = <%=@opponent.id%>
