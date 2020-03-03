@@ -57,14 +57,14 @@
             <%if challenge.opponent.votes.count == 0 %>
               <h3>0%</h3>
             <%else%>
-              <h3> <%= challenge.vote_count / challenge.opponent.votes.count %> </h3>
+              <h3> <%= vote_percentage_share(challenge.opponent, challenge) %>%</h3>
             <%end%>
 
         </div>
 
         <div class="mx-3">
           <%= cl_image_tag challenge.challenger.user.photo.key, alt:"avatar1", class: 'avatar', data: { user_id: challenge.challenger.user.id } %>
-          <h3><%= 100 - challenge.opponent.votes.count %>%</h3>
+          <h3><%= vote_percentage_share(challenge.challenger, challenge) %>%</h3>
         </div>
       </div>
 
