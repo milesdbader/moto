@@ -43,7 +43,6 @@ class Challenge < ApplicationRecord
       first_vote = opponent.votes.index { |v| v.user == user }
     end
     !first_vote.nil?
-
     # if this challenger's votes has one from the user, set voted to true
     # if this opponent's votes has one from the user, set voted to true
   end
