@@ -20,7 +20,7 @@
   .rails-default-error-page div.dialog {
     width: 95%;
     max-width: 33em;
-    margin: 4em auto 0;
+    margin: 0 auto;
   }
 
   .rails-default-error-page div.dialog > div {
@@ -56,16 +56,24 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .centered {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>Oops! The cook has left the kitchen.</h1>
+  <div class="centered">
+    <div class="dialog">
+      <div>
+        <h1>Oops! The cook has left the kitchen.</h1>
+      </div>
+      <p>Not to worry, we're working to resolve the issue in time for a delicious dinner.</p>
     </div>
-    <p>Not to worry, we're working to resolve the issue in time for a delicious dinner.</p>
   </div>
 </body>
 </html>
