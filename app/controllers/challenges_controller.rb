@@ -9,6 +9,7 @@ class ChallengesController < ApplicationController
 
   def new
     @user = current_user
+    randomize_ingredients
   end
 
   def show
@@ -72,15 +73,19 @@ class ChallengesController < ApplicationController
   end
 
   def randomizer
-    @protein = Ingredient.all.where(category: 'protein').sample
-    @grain = Ingredient.all.where(category: 'grain').sample
-    @vegetable = Ingredient.all.where(category: 'vegetable').sample
-    @dairy = Ingredient.all.where(category: 'dairy').sample
+    randomize_ingredients
   end
 
   private
 
   def set_challenge
     @challenge = Challenge.find(params[:id])
+  end
+
+  def randomize_ingredients
+    @protein = Ingredient.where(category: 'protein').sample
+    @grain = Ingredient.all.where(category: 'grain').sample
+    @vegetable = Ingredient.all.where(category: 'vegetable').sample
+    @dairy = Ingredient.all.where(category: 'dairy').sample
   end
 end

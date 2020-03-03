@@ -21,7 +21,7 @@
       <h2 style='flex-grow: 1;'class="my-5"><strong>vs<strong></h2>
         <div class="mx-2 opponent-wrap">
           <h5 id="opponent" data-user=''>Opponent</h5>
-          <img src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
+          <img id="opposing-photo" src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
         </div>
       </div>
       <div class="new-one">
@@ -62,7 +62,10 @@
 
       <div class="container justify-content-center my-3" id="ingredients" style="display: none;">
         <button class="btn purple-btn"> <button>
-        <h2>Ingredients:</h2>
+        <h2 class="ing-title">Ingredients:</h2>
+          <%= form_tag randomizer_path, remote: true do %>
+            <%= image_submit_tag('random.png', id: "shuffle") %>
+          <% end %>
           <div class="ingredient-container">
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/dtrwqimx6/image/upload/v1583077961/xccy4qysekpjwcea1wg0.jpg)">
               <% @protein = Ingredient.all.where(category: 'protein').sample%>
@@ -103,9 +106,10 @@
 
       function displayName(opponent) {
         let otherGuy = document.getElementById("opponent");
-
+        let otherGuyPhoto = document.getElementById("opposing-photo")
         otherGuy.innerHTML = opponent.username;
-        otherGuy.dataset.user =  opponent.id
+        otherGuy.dataset.user =  opponent.id;
+        // otherGuyPhoto.innerHTML = ;
       }
 
       let searchButton = document.querySelector('#search-users');
@@ -160,7 +164,7 @@
         let button = document.getElementById('classic');
         let recipes = document.getElementById("recipes");
         let ingredients = document.getElementById("ingredients");
-        mode = button.checked ? 'classic' : 'creative';
+        let mode = button.checked ? 'classic' : 'creative';
         let wrap = document.querySelector('#yaniv')
         if (mode == 'classic') {
           ingredients.style.display = "none"
