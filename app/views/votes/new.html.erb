@@ -200,7 +200,7 @@
 </nav>
 </div>
 
-<%= link_to "submit vote", challenge_votes_path, method: :post, class: "sneaky-btn-returns", style: "display: none;" %>
+<%= link_to "submit vote", challenge_votes_path, method: :post, remote: true, class: "sneaky-btn-returns", style: "display: none;" %>
 
 
 <script>
