@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: %i[show destroy accepted]
+  before_action :set_cache_headers, only: :index
 
   def index
     @user = current_user
@@ -9,6 +10,8 @@ class ChallengesController < ApplicationController
 
   def new
     @user = current_user
+    randomize_ingredients
+    reciper
   end
 
   def show
@@ -65,9 +68,17 @@ class ChallengesController < ApplicationController
     end
   end
 
+  def reciper
+    @recipe = Recipe.all.sample
+  end
+
   def destroy
     @challenge.destroy
     redirect_to challenges_path
+  end
+
+  def randomizer
+    randomize_ingredients
   end
 
   private
@@ -82,5 +93,12 @@ class ChallengesController < ApplicationController
 
   def set_challenge
     @challenge = Challenge.find(params[:id])
+  end
+
+  def randomize_ingredients
+    @protein = Ingredient.where(category: 'protein').sample
+    @grain = Ingredient.all.where(category: 'grain').sample
+    @vegetable = Ingredient.all.where(category: 'vegetable').sample
+    @dairy = Ingredient.all.where(category: 'dairy').sample
   end
 end

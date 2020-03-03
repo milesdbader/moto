@@ -77,7 +77,7 @@
           <% else %>
 
           <div class="row justify-content-center" id="classic-image">
-            <%= image_tag("food5.jpg", height: 300, width: 300) %>
+            <%#= image_tag("food5.jpg", height: 300, width: 300) %>
 
           </div>
           <div class="row">
@@ -126,10 +126,11 @@
       <div class="checkmark-icon">
        <input type='radio' id='challenger-vote' checked='' name='radio'>
        <label for='challenger-vote'><i class="far fa-check-circle"></i></label>
-      </div>
-      <div class="btn btn-purple" id="ninja-submit2" style="display: none;">
-        Submit Vote
-      </div>
+     </div>
+     <div class="btn btn-purple" id="ninja-submit" style="display: none;">
+      Submit Vote
+    </div>
+
     </div>
   <% end %>
 </div><!-- /page-user-one -->
@@ -169,7 +170,7 @@
       <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
     </div>
   </div>
-  <div class="btn btn-purple" id="ninja-submit" style="display: none;">
+  <div class="btn btn-purple" id="ninja-submit2" style="display: none;">
     Submit Vote
   </div>
   <% end %>
@@ -208,8 +209,8 @@
   let vote = document.querySelector('.checkmark-icon > input')
   let vote2 = document.querySelector('.checkmark-icon2 > input')
   let target = document.querySelector('.sneaky-btn-returns')
-  ninjaSubmit = document.querySelector('#ninja-submit')
-  ninjaSubmit2 = document.querySelector('#ninja-submit2')
+  let ninjaSubmit = document.querySelector('#ninja-submit')
+  let ninjaSubmit2 = document.querySelector('#ninja-submit2')
 
 
   vote.addEventListener('click', () => {
@@ -231,17 +232,17 @@
 
   let handleVote = (result) => {
     console.log(result)
-    let opponentSumbitter = document.querySelector('#ninja-submit');
-    let challengerSumbitter = document.querySelector('#ninja-submit2');
-    let sneakySubmit = document.querySelector('sneaky-btn-returns');
-    let player = <%=@opponent.id%>
+    let opponentSumbitter = document.querySelector('#ninja-submit2');
+    let challengerSumbitter = document.querySelector('#ninja-submit');
+    let player;
     if (result.id == 'challenger-vote') {
       opponentSumbitter.style.display = "none"
       challengerSumbitter.style.display = "block"
-      let player = <%=@challenger.id%>
-    } else {
+      player = <%=@challenger.id%>
+    } else if (result.id == 'opponent-vote'){
       challengerSumbitter.style.display = "none"
       opponentSumbitter.style.display = "block"
+      player = <%=@opponent.id%>
     }
     let ninja = `/challenges/${<%=@challenge.id%>}/votes?player=${player}`
     target.href = ninja;
