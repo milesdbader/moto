@@ -1,7 +1,9 @@
 
 <div class="container">
   <div class="row title-wrap">
-    <a href="http://localhost:3000/challenges"><i class="fas fa-chevron-left back"></i></a>
+    <%= link_to challenges_path do %>
+      <i class="fas fa-chevron-left back"></i>
+    <% end %>
     <h1 class="purple-text">New Challenge</h1>
   </div>
   <br>
