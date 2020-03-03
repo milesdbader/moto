@@ -37,9 +37,6 @@ class ChallengesController < ApplicationController
     @challenge.expiration = Time.now + 259200
     if @challenge.save
       redirect_to root_path
-    else
-      raise
-      # uhhh what goes here??
     end
   end
 
@@ -64,7 +61,6 @@ class ChallengesController < ApplicationController
       @player = @challenge.opponent
     end
   end
-
 
   def destroy
     @challenge.destroy
