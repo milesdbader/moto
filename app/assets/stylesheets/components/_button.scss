@@ -33,3 +33,21 @@
   background: $dark-purple;
   color: white;
 }
+
+.login-btn {
+  input {
+    color: rgba(255,255,255,0.9) !important;
+    font-size: 18px !important;
+  }
+
+  display: flex;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $purple;
+  transition: background 0.3s ease;
+  &:hover, &:active, &:focus {
+    background: $alisa-purple;
+    color: white;
+  }
+}

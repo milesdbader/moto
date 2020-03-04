@@ -1,20 +1,27 @@
 .combined-players-wrap{
+  display: flex;
+  justify-content: center;
+  margin: auto;
     h2{
     font-family: Pacifico;
     font-size: 35px;
-    margin-right: 45px;
     color: $purple;
     }
 }
 
 .title-wrap{
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 5px;
+  margin: auto;
+  margin-top: 8px;
+  a {
+    padding-left: 18px;
+    margin-right: -14px;
+  }
 
-  h1{
-    padding-top: 5px;
-    margin-left: -20px;
+  h2{
+    text-align: center;
+    margin: auto;
+    // margin-left: -20px;
   }
 }
 
@@ -23,25 +30,36 @@
   padding-top: 15px;
 }
 
-.opponent-wrap{
+.opponent-wrap {
+  width: 150px;
   display: flex !important;
   flex-direction: column-reverse !important;
   padding-top: 30px;
-
-    h5 {
-    font-size: 20px;
+  align-items: center;
+  margin-bottom: -14px;
+    p {
+    font-size: 18px;
+    margin: 8px 0;
   }
 }
 
-.challenger{
+.challenger {
+  width: 150px;
   display: flex !important;
   flex-direction: column;
-  padding-left: 20px;
-
-  h5 {
-    font-size: 20px;
+  align-items: center;
+  margin-top: -14px;
+  p {
+    font-size: 18px;
+    margin: 8px 0;
   }
 }
+
+.vs {
+  margin: 42.5px 0 54.5px 0;
+  font-weight: bold;
+}
+
 
 .ingredient-container {
   padding-bottom: 50px;
@@ -145,7 +163,8 @@
 
 // search bar autocomplete
 .challenge-search-wrap{
-  margin-top: 26px;
+  margin-left: 36px;
+  margin-top: 16px;
   input[type=text]:focus, textarea:focus {
     border-radius: 12px 0 0 12px;
   }

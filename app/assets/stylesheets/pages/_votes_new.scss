@@ -3,14 +3,20 @@ html, body {
 }
 
 .vote-image {
-  width: 100vw;
+  width: 90%;
   max-width: 500px;
-  height: 350px;
+  border-radius: 20px;
+  border: 1px solid lightgrey;
+  margin: 0 12px;
+  margin-bottom: 12px;
+  height: 290px;
+  object-fit: cover;
 }
 
 .page-new-vote {
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
+  overflow: scroll;
 }
 
 .light-bulb-icon {
@@ -73,11 +79,11 @@ html, body {
 
 .comment-row {
   background-color: #EEEEEE;
-  width: 85%;
+  width: 90%;
   border-radius: 6px;
   display: flex;
-  margin-top: 20px;
-  padding: 8px;
+  margin-top: 8px;
+  padding: 2px;
   text-align: center;
 
   p {
