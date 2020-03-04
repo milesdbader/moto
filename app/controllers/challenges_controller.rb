@@ -51,8 +51,11 @@ class ChallengesController < ApplicationController
     if opponent.blank?
       render json: {ok: false}
     else
-      opponent = opponent.format_for_challenge
-      render json: {ok: true, user: opponent}
+      attributes = opponent.attributes
+      if opponent.photo.attached?
+        attributes[:photo] = Cloudinary::Utils.cloudinary_url(opponent.photo.key)
+      end
+      render json: {ok: true, user: attributes}
     end
   end
 
