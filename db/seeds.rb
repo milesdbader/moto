@@ -54,7 +54,7 @@ eyal.photo.attach(io: image1, filename: 'seed')
 tamara = User.new(
   email: 'tara_art@live.com',
   password: '123456789',
-  username: 'tara_art'
+  username: 'tamara'
 )
 image2 = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582649798/djrvmuhn41pxpdcsqekd.jpg')
 tamara.photo.attach(io: image2, filename: 'seed')
