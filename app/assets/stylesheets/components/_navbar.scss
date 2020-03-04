@@ -10,3 +10,12 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+#nav-challenge-info-tab.active {
+  img {
+    // filter: invert(1) sepia(1) brightness(0.5) saturate(12) hue-rotate(-45deg);
+    filter: invert(38%) sepia(76%) saturate(757%) hue-rotate(323deg) brightness(95%) contrast(74%);
+    height: 70px;
+    width: 70px;
+  }
+}

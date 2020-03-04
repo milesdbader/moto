@@ -52,3 +52,12 @@
     color: white;
   }
 }
+
+.swal-button {
+  &:focus {
+    box-shadow: none;
+  }
+  &:active, &:hover {
+    background-color: $dark-purple !important;
+  }
+}

@@ -175,8 +175,17 @@ html, body {
 }
 
 .vote-nav-option.active {
-  border: 2px solid $alisa-purple !important;
-  border-bottom: 0 solid black !important;
-  border-radius: 8px;
+  // border: 2px solid $alisa-purple !important;
+  // border-bottom: 0 solid black !important;
+  // border-radius: 8px;
+  .voting-avatar {
+    border: 4px solid $purple;
+    width: 80px;
+    height: 80px;
+  }
 }
+
+.nav-tabs .vote-nav-option {
+    border: none;
+  }
 

@@ -183,7 +183,9 @@
         <a class="vote-nav-option nav-item nav-link" id="nav-player-1-tab" data-toggle="tab"
         href="#nav-player-1" role="tab"
         aria-controls="nav-player-1">
-        <%= cl_image_tag @challenger.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
+        <div class="d-flex justify-content-center align-items-center" style="height: 80px; width: 80px;">
+          <%= cl_image_tag @challenger.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
+        </div>
         </a>
         <a class="vote-nav-option nav-item nav-link active" id="nav-challenge-info-tab" data-toggle="tab"
         href="#nav-challenge-info" role="tab"
@@ -193,7 +195,9 @@
         <a class="vote-nav-option nav-item nav-link" id="nav-player-2-tab" data-toggle="tab"
         href="#nav-player-2" role="tab"
         aria-controls="nav-player-2">
-        <%= cl_image_tag @opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
+        <div class="d-flex justify-content-center align-items-center" style="height: 80px; width: 80px;">
+          <%= cl_image_tag @opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
+        </div>
         </a>
       </div>
     </div>
