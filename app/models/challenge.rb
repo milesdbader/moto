@@ -60,4 +60,12 @@ class Challenge < ApplicationRecord
   def vote_count
     self.challenger.votes.count + self.opponent.votes.count
   end
+
+  def winner
+    if self.challenger.votes.count > self.opponent.votes.count
+      self.challenger.user
+    elsif self.challenger.votes.count < self.opponent.votes.count
+      self.opponent.user
+    end
+  end
 end
