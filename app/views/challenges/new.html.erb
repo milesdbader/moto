@@ -2,34 +2,39 @@
 <div class="container">
   <div class="row title-wrap">
     <%= link_to challenges_path do %>
-      <i class="fas fa-chevron-left back"></i>
+      <i class="fas fa-chevron-left back" id="back"></i>
     <% end %>
-    <h1 class="purple-text">New Challenge</h1>
+    <h1 class="purple-text"><strong>New Challenge</strong></h1>
   </div>
   <br>
-  <div class="d-flex justify-content-center combined-players-wrap">
+  <div class="d-flex justify-content-space-around combined-players-wrap">
     <div class="challenger" class="">
-      <h5><%= @user.username %></h5>
+      <p><strong><%= @user.username %></strong></p>
       <%= cl_image_tag @user.photo.key, alt: "Profiloto",
       width: 80,
       height: 80,
       gravity: "face",
       crop: "thumb",
       cloud_name: "dtrwqimx6",
-      class: 'dash-avatar'
-        %>
+      class: 'dash-avatar' %>
 
+    </div>
+    <h2 class="my-5 ml-5"><strong>vs<strong></h2>
+    <div class="mx-2 opponent-wrap">
+      <p id="opponent" data-user=''>Opponent</p>
+        <div class="c-avatar text-center">
+         <!--  <h3 id="question"><strong>?</strong></h3> -->
+          <img src="https://res.cloudinary.com/dtrwqimx6/image/upload/v1583255519/Screenshot_from_2020-03-03_19-11-40_aor2lc.png" alt="">
       </div>
-      <h2 style='flex-grow: 1;'class="my-5"><strong>vs<strong></h2>
-        <div class="mx-2 opponent-wrap">
-          <h5 id="opponent" data-user=''>Opponent</h5>
-          <img id="opposing-photo" src="https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2019/professional_woman_headshot.jpg?itok=3itzxHXh" alt="" class="avatar">
-        </div>
-      </div>
-      <div class="new-one">
+    </div>
+  </div>
+      <div class="row new-one">
         <div class="numberCircle"><strong>1.</strong></div>
         <div class='mt-2'>
           <h3>Choose your Opponent</h3>
+        </div>
+          <div class='mt-4 align-items-center'>
+    
           <div class='challenge-search-wrap'>
             <%= text_field_tag(:search, params[:search], placeholder: 'Search by username', id: 'search-input') %>
             <%= button_tag(type: 'submit', id: 'search-users') do %>
@@ -39,7 +44,8 @@
 
             </ul>
           </div>
-        </div>
+          </div>
+
       </div>
       <div class="new-two">
         <div class='d-flex challenge-step justify-content-center'>
@@ -47,19 +53,21 @@
           <h3>Choose your Mode</h3>
         </div>
 
+        <br>
+
         <div class="row justify-content-center" id="modes">
           <div class="radio-toolbar d-flex">
             <div class="justify-content-center text-center">
               <input hidden='true' type="radio" id="classic" name="RadioFruit" value="classicStuff">
               <label for="classic">
-                <i class="fas fa-utensils"></i>
+                  <%= image_tag("c.cutlery.png") %>
               </label>
               <h5><strong>Classic</strong></h5>
             </div>
             <div class="justify-content-center text-center">
               <input hidden='true' type="radio" id="creative" name="RadioFruit" value="creativeStuff">
               <label for="creative">
-                <i class="fas fa-lightbulb"></i>
+                <%= image_tag("c.lightbulb.png") %>
               </label>
               <h5><strong>Creative</strong></h5>
             </div>
@@ -96,8 +104,8 @@
       <!-- </div> -->
 
       <div class="container justify-content-center my-3" id="recipes" style="display: none;">
-        <h2>Recipe</h2>
-          <div class="eyalxxxxthebest5454">
+        <h3><strong>Your Recipe:</strong></h3>
+        <div class="eyalxxxxthebest5454">
         <% @recipe = Recipe.all.sample%>
         <h4 id="recipe" data-id="<%= @recipe.id%>"><strong><%= @recipe.name%></strong> </h4>
         <div class='challenge-image-container'>
@@ -162,8 +170,12 @@
 
 
       function displayName(opponent) {
-        let otherGuy = document.getElementById("opponent");
-        let otherGuyPhoto = document.getElementById("opposing-photo")
+        let otherGuy = document.querySelector("#opponent");
+        let imageWrap = document.querySelector('.c-avatar')
+        let image = imageWrap.querySelector('img');
+        if(image) image.src = opponent.photo;
+
+        // imageWrap.append(image);
         otherGuy.innerHTML = opponent.username;
         otherGuy.dataset.user =  opponent.id;
         // otherGuyPhoto.innerHTML = ;
@@ -176,8 +188,10 @@
         fetch('/take_user' + '?q=' + query.value)
         .then(res => res.json())
         .then((data) =>  {
+
           if(data.ok){
-            displayName(data.user[0])
+            console.log(data);
+            displayName(data.user)
           }
         });
       })
@@ -230,8 +244,14 @@
           recipes.style.display = "none"
           ingredients.style.display = "block";
         }
+      window.scrollTo(scrollOptions);
       }
 
+      scrollOptions = {
+          left: 0,
+          top: 500,
+          behavior: 'smooth'
+      }
 
 
 

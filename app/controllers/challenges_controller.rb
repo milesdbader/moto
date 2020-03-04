@@ -47,10 +47,11 @@ class ChallengesController < ApplicationController
   end
 
   def take_user
-    opponent = handle_search_query
-    if opponent.empty?
+    opponent = User.find_by(username: params['q'])
+    if opponent.blank?
       render json: {ok: false}
     else
+      opponent = opponent.format_for_challenge
       render json: {ok: true, user: opponent}
     end
   end

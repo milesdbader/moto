@@ -58,4 +58,15 @@ class User < ApplicationRecord
   def next_votable_challenge
     self.votable_challenges.first
   end
+
+  def format_for_challenge
+    Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
+    helper = Rails.application.routes.url_helpers
+    all_attributes = self.attributes
+    if self.photo.attached?
+      all_attributes[:photo] = helper.url_for(self.photo)
+    end
+
+     return all_attributes
+  end
 end

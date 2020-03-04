@@ -75,16 +75,14 @@
           </div>
           <div class="row ingredient-underline-row"></div>
           <% else %>
-
-          <div class="row justify-content-center" id="classic-image">
-            <%#= image_tag("food5.jpg", height: 300, width: 300) %>
-
-          </div>
-          <div class="row">
-            <div class="col d-flex justify-content-center mt-3">
-              <h4><strong> Grilled Eggplant With Feta </strong></h4>
+            <div class="row justify-content-center" id="vote-classic-image">
+              <img src="<%= Recipe.find(@challenge.recipe_id).image_url %>" alt="">
             </div>
-          </div>
+            <div class="row">
+              <div class="col d-flex justify-content-center mt-3">
+                <h4 class="text-center"><strong> <%= Recipe.find(@challenge.recipe_id).name %> </strong></h4>
+              </div>
+            </div>
           <% end %>
         </div><!-- /ingredients -->
       </div>
