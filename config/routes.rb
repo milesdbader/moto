@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   patch 'challenges/:id', to: "challenges#accepted", as: :accept
   get 'take_user', to: "challenges#take_user", as: :take_user
+  get 'search_users', to: "challenges#search_users", as: :search_users
   post 'randomizer', to: "challenges#randomizer", as: :randomizer
   post 'reciper', to: "challenges#reciper", as: :reciper
   resources :players, only: [:create, :edit, :update]
