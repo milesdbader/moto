@@ -1,14 +1,14 @@
 
-<div class="container">
+<div class="container" style='height: 100vh !important;'>
   <div class="row title-wrap">
     <%= link_to challenges_path do %>
       <i class="fas fa-chevron-left back" id="back"></i>
     <% end %>
-    <h1 class="purple-text"><strong>New Challenge</strong></h1>
+    <h2 class="purple-text"><strong>New Challenge</strong></h2>
   </div>
   <br>
-  <div class="d-flex justify-content-space-around combined-players-wrap">
-    <div class="challenger" class="">
+  <div class="combined-players-wrap">
+    <div class="challenger">
       <p><strong><%= @user.username %></strong></p>
       <%= cl_image_tag @user.photo.key, alt: "Profiloto",
       width: 80,
@@ -19,22 +19,21 @@
       class: 'dash-avatar' %>
 
     </div>
-    <h2 class="my-5 ml-5"><strong>vs<strong></h2>
-    <div class="mx-2 opponent-wrap">
+    <h2 class="vs">vs</h2>
+    <div class="opponent-wrap text-center">
       <p id="opponent" data-user=''>Opponent</p>
-        <div class="c-avatar text-center">
+        <div class="c-avatar">
          <!--  <h3 id="question"><strong>?</strong></h3> -->
           <img src="https://res.cloudinary.com/dtrwqimx6/image/upload/v1583255519/Screenshot_from_2020-03-03_19-11-40_aor2lc.png" alt="">
       </div>
     </div>
   </div>
       <div class="row new-one">
-        <div class="numberCircle"><strong>1.</strong></div>
+        <div class="numberCircle"><strong>1</strong></div>
         <div class='mt-2'>
           <h3>Choose your Opponent</h3>
         </div>
-          <div class='mt-4 align-items-center'>
-
+          <div class='align-items-center'>
           <div class='challenge-search-wrap'>
             <%= text_field_tag(:search, params[:search], placeholder: 'Search by username', id: 'search-input') %>
             <%= button_tag(type: 'submit', id: 'search-users') do %>
@@ -49,11 +48,9 @@
       </div>
       <div class="new-two">
         <div class='d-flex challenge-step justify-content-center'>
-          <div class="numberCircle"><strong>2.</strong></div>
+          <div class="numberCircle"><strong>2</strong></div>
           <h3>Choose your Mode</h3>
         </div>
-
-        <br>
 
         <div class="row justify-content-center" id="modes">
           <div class="radio-toolbar d-flex">

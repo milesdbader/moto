@@ -1,7 +1,6 @@
-<!-- <div class="container"> -->
-    <%= link_to challenges_path do %>
-    <i class="fas fa-chevron-left"></i>
-    <% end %>
+  <%= link_to challenges_path do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
 
     <div class="tab-content page-new-vote" id="nav-tabContent">
      <!-- PAGE ONE: CHALLENGE INFO -->
@@ -17,15 +16,17 @@
           <% else %>
           <p>Vote on your favourite dish <i class="far fa-check-circle" id="check"></i></p>
           <% end %>
-
-
-
         </div>
-        <div class="row">
-          <div class="col d-flex justify-content-center mt-3">
-            <h2><strong><%= @challenge.mode.capitalize %> Mode</strong></h2>
-          </div>
+
+        <div class="row justify-content-center">
+          <% if @challenge.mode == "creative" %>
+            <%= image_tag("lightbulb.png", size: "24x24",  class: "mt-1 mr-1") %>
+          <% else %>
+            <%= image_tag("cutlery.png", size: "24x24",  class: "mt-2 mr-1") %>
+          <% end %>
+          <h2><strong> <%= @challenge.mode.capitalize %> Mode </strong></h2>
         </div>
+
         <div class="row">
           <div class="col d-flex justify-content-center mt-3 vote-intro">
             <h3>Challenge:</h3>
@@ -94,22 +95,21 @@
         <div class="row justify-content-center">
           <div class="d-flex justify-content-center">
 
-
             <% if @challenge.challenger.photo.attached? %>
-            <%= cl_image_tag @challenge.challenger.photo.key, class: 'vote-image', height: 300, width: 300, crop: :fill %>
+            <%= cl_image_tag @challenge.challenger.photo.key, class: 'vote-image' %>
             <% else %>
-            <%= image_tag("prep2.jpg", class: 'vote-image',  height: 300, width: 300) %>
+            <%= image_tag("prep2.jpg", class: 'vote-image') %>
 
             <% end %>
 
           </div>
         </div>
         <div class="text-center">
-          <h2 text-center><%= @challenger.title %></h2>
+          <h4><strong><%= @challenger.title %></strong></h4>
         </div>
         <div class="row justify-content-center">
           <div class="row justify-content-center comment-row">
-            <div class="d-flex col-12 justify-content-center text-center">
+            <div class="d-flex col-12 justify-content-center text-center comm">
              <% if @challenger.caption.nil? %>
              <p>Waiting for <%= @challenger.user.username %> to upload...</p>
              <% else %>
@@ -131,72 +131,73 @@
 
     </div>
   <% end %>
-</div><!-- /page-user-one -->
+  </div><!-- /page-user-one -->
 
-<!-- PAGE USER TWO -->
-<div class="tab-pane fade page-user-two" id="nav-player-2">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="d-flex justify-content-center">
-        <% if @opponent.photo.attached? %>
-        <%= cl_image_tag @opponent.photo.key, class: 'vote-image', height: 500, width: 370, crop: :fill  %>
-        <% else %>
-        <%= image_tag("prep2.jpg", class: 'vote-image', height: 500, width: 370) %>
-        <% end %>
-      </div>
-    </div>
-    <div class="text-center">
-      <h2><%= @opponent.title %></h2>
-    </div>
-    <div class="row justify-content-center">
-      <div class="row justify-content-center comment-row">
-        <div class="d-flex col-12 justify-content-center">
-          <% if @opponent.caption.nil? %>
-          <p>Waiting for <%= @opponent.user.username %> to upload...</p>
+  <!-- PAGE USER TWO -->
+  <div class="tab-pane fade page-user-two" id="nav-player-2">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="d-flex justify-content-center">
+
+          <% if @opponent.photo.attached? %>
+          <%= cl_image_tag @opponent.photo.key, class: 'vote-image'  %>
           <% else %>
-          <p><%= @opponent.caption %></p>
+          <%= image_tag("prep2.jpg", class: 'vote-image' ) %>
           <% end %>
         </div>
       </div>
+      <div class="text-center">
+        <h4><strong><%= @opponent.title %></strong></h4>
+      </div>
+      <div class="row justify-content-center">
+        <div class="row justify-content-center comment-row">
+          <div class="d-flex col-12 justify-content-center comm">
+            <% if @opponent.caption.nil? %>
+            <p>Waiting for <%= @opponent.user.username %> to upload...</p>
+            <% else %>
+            <p><%= @opponent.caption %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <% if (current_user != @challenge.challenger.user && current_user != @challenge.opponent.user) && @challenge.has_he_voted?(current_user) == false %>
-  <div class="justify-content-center checkmark-row text-center">
-    <div class="checkmark-icon2">
-      <input type='radio' id='opponent-vote' checked='checked' name='radio'>
-      <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
+    <% if (current_user != @challenge.challenger.user && current_user != @challenge.opponent.user) && @challenge.has_he_voted?(current_user) == false %>
+    <div class="justify-content-center checkmark-row text-center">
+      <div class="checkmark-icon2">
+        <input type='radio' id='opponent-vote' checked='checked' name='radio'>
+        <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
+      </div>
     </div>
-  </div>
-  <div class="btn btn-purple" id="ninja-submit2" style="display: none;">
-    Submit Vote
-  </div>
-  <% end %>
-</div><!-- /page-user-two -->
-<!-- </div> -->
+    <div class="btn btn-purple" id="ninja-submit2" style="display: none;">
+      Submit Vote
+    </div>
+    <% end %>
+  </div><!-- /page-user-two -->
+  <!-- </div> -->
 
-<!-- NAV FOOTER -->
-<nav>
-  <div class="row justify-content-center">
-    <div class="nav nav-tabs creative-vote-footer" role="tablist">
-      <a class="nav-item nav-link" id="nav-player-1-tab" data-toggle="tab"
-      href="#nav-player-1" role="tab"
-      aria-controls="nav-player-1">
-      <%= cl_image_tag @challenger.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
-      </a>
-      <a class="nav-item nav-link active" id="nav-challenge-info-tab" data-toggle="tab"
-      href="#nav-challenge-info" role="tab"
-      aria-controls="nav-challenge-info" aria-selected="true">
-      <%= image_tag("chef_hat3.svg", class: 'mt-3', size: "70x70") %>
-      </a>
-      <a class="nav-item nav-link" id="nav-player-2-tab" data-toggle="tab"
-      href="#nav-player-2" role="tab"
-      aria-controls="nav-player-2">
-      <%= cl_image_tag @opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
-      </a>
+  <!-- NAV FOOTER -->
+  <nav>
+    <div class="row justify-content-center">
+      <div class="nav nav-tabs creative-vote-footer" role="tablist">
+        <a class="nav-item nav-link" id="nav-player-1-tab" data-toggle="tab"
+        href="#nav-player-1" role="tab"
+        aria-controls="nav-player-1">
+        <%= cl_image_tag @challenger.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
+        </a>
+        <a class="nav-item nav-link active" id="nav-challenge-info-tab" data-toggle="tab"
+        href="#nav-challenge-info" role="tab"
+        aria-controls="nav-challenge-info" aria-selected="true">
+        <%= image_tag("chef_hat3.svg", size: "60x60") %>
+        </a>
+        <a class="nav-item nav-link" id="nav-player-2-tab" data-toggle="tab"
+        href="#nav-player-2" role="tab"
+        aria-controls="nav-player-2">
+        <%= cl_image_tag @opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
+        </a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </div>
 
 <%= link_to "submit vote", challenge_votes_path, method: :post, remote: true, class: "sneaky-btn-returns", style: "display: none;" %>

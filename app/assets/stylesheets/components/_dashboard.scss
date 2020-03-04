@@ -44,6 +44,7 @@
 .challenge-roller-box h2 {
   margin-top: 16px;
   font-size: 20px;
+  text-decoration: none;
 }
 
 .card-list {
@@ -54,6 +55,12 @@
   display: flex;
   border-radius: 8px;
   // background-color: #e5e5e5;
+}
+
+.card-list {
+  a:hover, a:active, a:focus {
+    text-decoration: none;
+  }
 }
 
 .dash-challenge-card {
@@ -72,7 +79,6 @@
       margin: 0;
       color: $dark-purple;
     }
-
   }
 }
 

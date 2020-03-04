@@ -8,7 +8,7 @@
 
 
 .radio-toolbar {
-  margin: 10px;
+  margin: 6px;
 }
 
 .radio-toolbar input[type="radio"] {
@@ -24,9 +24,10 @@
     font-family: sans-serif, Arial;
     font-size: 16px;
     border-radius: 4px;
+    margin-bottom: 4px;
     img {
       font-size: 6em;
-      width: 145px;
+      width: 135px;
       line-height: 140px;
       border-radius: 50%;
       text-align: center;
