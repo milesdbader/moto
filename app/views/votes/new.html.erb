@@ -180,17 +180,17 @@
   <nav>
     <div class="row justify-content-center">
       <div class="nav nav-tabs creative-vote-footer" role="tablist">
-        <a class="nav-item nav-link" id="nav-player-1-tab" data-toggle="tab"
+        <a class="vote-nav-option nav-item nav-link" id="nav-player-1-tab" data-toggle="tab"
         href="#nav-player-1" role="tab"
         aria-controls="nav-player-1">
         <%= cl_image_tag @challenger.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
         </a>
-        <a class="nav-item nav-link active" id="nav-challenge-info-tab" data-toggle="tab"
+        <a class="vote-nav-option nav-item nav-link active" id="nav-challenge-info-tab" data-toggle="tab"
         href="#nav-challenge-info" role="tab"
         aria-controls="nav-challenge-info" aria-selected="true">
         <%= image_tag("chef_hat3.svg", size: "60x60") %>
         </a>
-        <a class="nav-item nav-link" id="nav-player-2-tab" data-toggle="tab"
+        <a class="vote-nav-option nav-item nav-link" id="nav-player-2-tab" data-toggle="tab"
         href="#nav-player-2" role="tab"
         aria-controls="nav-player-2">
         <%= cl_image_tag @opponent.user.photo.key, class: 'voting-avatar', height: 100, width: 100, crop: :fill %>
