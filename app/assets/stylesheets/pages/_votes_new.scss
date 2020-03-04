@@ -158,7 +158,7 @@ html, body {
 
   #nav-tabContent {
     max-width: 100vw;
-    max-height: 570px;
+    max-height: calc(100vh - 130px);
     overflow: scroll;
   }
 
