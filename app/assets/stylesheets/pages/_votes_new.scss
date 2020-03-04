@@ -190,6 +190,10 @@ html, body {
   }
 
 .stop-overlap {
-  height: calc(100vh - 245px) !important;
+  height: calc(100vh - 145px) !important;
   overflow: scroll !important;
+}
+
+.nav-tabs .nav-link.active {
+  background: transparent;
 }
