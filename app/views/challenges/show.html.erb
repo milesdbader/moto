@@ -5,126 +5,221 @@
     <i class="fas fa-chevron-left"></i>
   <%  end %>
 
-<div class="row justify-content-center">
-  <% if @challenge.mode == "creative" %>
-    <%= image_tag("lightbulb.png", size: "24x24",  class: "mt-1 mr-1") %>
-  <% else %>
-    <%= image_tag("cutlery.png", size: "24x24",  class: "mt-2 mr-1") %>
-  <% end %>
-  <h2><strong> <%= @challenge.mode.capitalize %> Mode </strong></h2>
-</div>
+  <div class="row justify-content-center">
+    <% if @challenge.mode == "creative" %>
+      <%= image_tag("lightbulb.png", size: "24x24",  class: "mt-1 mr-1") %>
+    <% else %>
+      <%= image_tag("cutlery.png", size: "24x24",  class: "mt-2 mr-1") %>
+    <% end %>
+    <h2><strong> <%= @challenge.mode.capitalize %> Mode </strong></h2>
+  </div>
 
 <!-- <br> -->
-
-<div class="row text-center">
-  <div class="container my-6">
-    <div id="clockdiv">
-      <div>
-        <span class="days"></span>
-        <div class="smalltext">Days</div>
-      </div>
-      <div>
-        <span class="hours"></span>
-        <div class="smalltext">Hours</div>
-      </div>
-      <div>
-        <span class="minutes"></span>
-        <div class="smalltext">Minutes</div>
-      </div>
-      <div>
-        <span class="seconds"></span>
-        <div class="smalltext">Seconds</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- <br> -->
-
-<div class="container">
-  <div class="row text-center mt-3">
-    <div class="col-12">
-      <% opp = the_other_guy(@challenge, current_user) %>
-      <h4> Beat <%= opp.username %>! </h4>
-    </div>
-  </div>
-</div>
-
-<div class="row text-center">
-  <%= cl_image_tag opp.photo.key, alt: "Profiloto",
-      width: 120,
-      height: 120,
-      crop: "fill",
-      cloud_name: "dtrwqimx6",
-      class: 'challenge-avatar mx-auto d-block'
-  %>
-</div>
-
-<div><!-- ingredients -->
-  <% if @challenge.mode == "creative" %>
-    <div class="row c-ingredient-row">
-      <div class="col-2 ingredient-icon">
-        <i class="fas fa-wine-bottle"></i>
-      </div>
-      <div class="col-8 c-ingredient-name">
-        <%= @challenge.ingredients[0].name  %>
-      </div>
-      <div class="col-2 ingredient-space-filler"></div>
-    </div><!-- /ingredient-row -->
-    <div class="row c-ingredient-underline-row"></div>
-
-    <div class="row c-ingredient-row">
-      <div class="col-2 c-ingredient-icon">
-        <i class="fas fa-fish"></i>
-      </div>
-      <div class="col-8 c-ingredient-name">
-        <%= @challenge.ingredients[1].name  %>
-      </div>
-      <div class="col-2 ingredient-space-filler"></div>
-    </div><!-- /ingredient-row -->
-    <div class="row c-ingredient-underline-row"></div>
-
-    <div class="row c-ingredient-row">
-      <div class="col-2 c-ingredient-icon">
-        <i class="fas fa-carrot"></i>
-      </div>
-      <div class="col-8 c-ingredient-name">
-        <%= @challenge.ingredients[2].name  %>
-      </div>
-      <div class="col-2 ingredient-space-filler"></div>
-    </div>
-    <div class="row c-ingredient-underline-row"></div>
-
-    <div class="row c-ingredient-row">
-      <div class="col-2 c-ingredient-icon">
-        <i class="fas fa-wine-bottle"></i>      </div>
-        <div class="col-8 c-ingredient-name">
-          <%= @challenge.ingredients[3].name  %>
+  <% if @challenge.completed? || @challenge.accepted == false %>
+    <div class="container">
+      <div class="row text-center mt-4">
+        <% if @challenge.accepted %>
+        <div class="col-12">
+          <% opp = the_other_guy(@challenge, current_user) %>
+          <h4> You played <%= opp.username %> </h4>
         </div>
-        <div class="col-2 ingredient-space-filler"></div>
-      </div>
-      <div class="row c-ingredient-underline-row"></div>
-    </div>
-   <% else %>
-    <div class="row">
-      <div class="col d-flex justify-content-center mt-3">
-        <h4 class="text-center"><strong> <%= Recipe.find(@challenge.recipe_id).name %> </strong></h4>
+        <% end %>
       </div>
     </div>
-    <div class="row justify-content-center" id="classic-image">
-      <img src="<%= Recipe.find(@challenge.recipe_id).image_url %>" alt="">
+   <% if @challenge.completed? || @challenge.accepted %>
+    <div class="row text-center mt-3">
+      <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+          width: 120,
+          height: 120,
+          crop: "fill",
+          cloud_name: "dtrwqimx6",
+          class: 'challenge-avatar mx-auto d-block'
+      %>
     </div>
-   <% end %>
+    <% end %>
 
+    <div><!-- ingredients -->
+      <% if @challenge.mode == "creative" %>
+
+      <br>
+      <br>
+
+        <div class="row c-ingredient-row">
+          <div class="col-2 ingredient-icon">
+            <i class="fas fa-wine-bottle"></i>
+          </div>
+          <div class="col-8 c-ingredient-name">
+            <%= @challenge.ingredients[0].name  %>
+          </div>
+          <div class="col-2 ingredient-space-filler"></div>
+        </div><!-- /ingredient-row -->
+        <div class="row c-ingredient-underline-row"></div>
+
+        <div class="row c-ingredient-row">
+          <div class="col-2 c-ingredient-icon">
+            <i class="fas fa-fish"></i>
+          </div>
+          <div class="col-8 c-ingredient-name">
+            <%= @challenge.ingredients[1].name  %>
+          </div>
+          <div class="col-2 ingredient-space-filler"></div>
+        </div><!-- /ingredient-row -->
+        <div class="row c-ingredient-underline-row"></div>
+
+        <div class="row c-ingredient-row">
+          <div class="col-2 c-ingredient-icon">
+            <i class="fas fa-carrot"></i>
+          </div>
+          <div class="col-8 c-ingredient-name">
+            <%= @challenge.ingredients[2].name  %>
+          </div>
+          <div class="col-2 ingredient-space-filler"></div>
+        </div>
+        <div class="row c-ingredient-underline-row"></div>
+
+        <div class="row c-ingredient-row">
+          <div class="col-2 c-ingredient-icon">
+            <i class="fas fa-wine-bottle"></i>      </div>
+            <div class="col-8 c-ingredient-name">
+              <%= @challenge.ingredients[3].name  %>
+            </div>
+            <div class="col-2 ingredient-space-filler"></div>
+          </div>
+          <div class="row c-ingredient-underline-row"></div>
+        </div>
+       <% else %>
+        <div class="row">
+          <div class="col d-flex justify-content-center mt-3">
+            <h4 class="text-center"><strong> <%= Recipe.find(@challenge.recipe_id).name %> </strong></h4>
+          </div>
+        </div>
+        <div class="row justify-content-center" id="classic-image">
+          <img src="<%= Recipe.find(@challenge.recipe_id).image_url %>" alt="">
+        </div>
+       <% end %>
+
+
+  <% else %>
+
+
+    <div class="row text-center">
+      <div class="container my-6">
+        <div id="clockdiv">
+          <div>
+            <span class="days"></span>
+            <div class="smalltext">Days</div>
+          </div>
+          <div>
+            <span class="hours"></span>
+            <div class="smalltext">Hours</div>
+          </div>
+          <div>
+            <span class="minutes"></span>
+            <div class="smalltext">Minutes</div>
+          </div>
+          <div>
+            <span class="seconds"></span>
+            <div class="smalltext">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <br> -->
+
+    <div class="container">
+      <div class="row text-center mt-3">
+        <div class="col-12">
+          <% opp = the_other_guy(@challenge, current_user) %>
+          <h4> Beat <%= opp.username %>! </h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+          width: 120,
+          height: 120,
+          crop: "fill",
+          cloud_name: "dtrwqimx6",
+          class: 'challenge-avatar mx-auto d-block'
+      %>
+    </div>
+
+    <div><!-- ingredients -->
+      <% if @challenge.mode == "creative" %>
+        <div class="row c-ingredient-row">
+          <div class="col-2 ingredient-icon">
+            <i class="fas fa-wine-bottle"></i>
+          </div>
+          <div class="col-8 c-ingredient-name">
+            <%= @challenge.ingredients[0].name  %>
+          </div>
+          <div class="col-2 ingredient-space-filler"></div>
+        </div><!-- /ingredient-row -->
+        <div class="row c-ingredient-underline-row"></div>
+
+        <div class="row c-ingredient-row">
+          <div class="col-2 c-ingredient-icon">
+            <i class="fas fa-fish"></i>
+          </div>
+          <div class="col-8 c-ingredient-name">
+            <%= @challenge.ingredients[1].name  %>
+          </div>
+          <div class="col-2 ingredient-space-filler"></div>
+        </div><!-- /ingredient-row -->
+        <div class="row c-ingredient-underline-row"></div>
+
+        <div class="row c-ingredient-row">
+          <div class="col-2 c-ingredient-icon">
+            <i class="fas fa-carrot"></i>
+          </div>
+          <div class="col-8 c-ingredient-name">
+            <%= @challenge.ingredients[2].name  %>
+          </div>
+          <div class="col-2 ingredient-space-filler"></div>
+        </div>
+        <div class="row c-ingredient-underline-row"></div>
+
+        <div class="row c-ingredient-row">
+          <div class="col-2 c-ingredient-icon">
+            <i class="fas fa-wine-bottle"></i>      </div>
+            <div class="col-8 c-ingredient-name">
+              <%= @challenge.ingredients[3].name  %>
+            </div>
+            <div class="col-2 ingredient-space-filler"></div>
+          </div>
+          <div class="row c-ingredient-underline-row"></div>
+        </div>
+       <% else %>
+        <div class="row">
+          <div class="col d-flex justify-content-center mt-3">
+            <h4 class="text-center"><strong> <%= Recipe.find(@challenge.recipe_id).name %> </strong></h4>
+          </div>
+        </div>
+        <div class="row justify-content-center" id="classic-image">
+          <img src="<%= Recipe.find(@challenge.recipe_id).image_url %>" alt="">
+        </div>
+       <% end %>
+  <% end %>
 </div>
-
 
 <br>
 <br>
 
-<div class="row justify-content-center">
-  <%= link_to 'Finished - Ready To Serve!', challenge_serve_path(@challenge), class:'btn c-btn-purple' %>
-</div>
+  <% if @challenge.completed? %>
+    <div class="row justify-content-center">
+      <%= link_to 'Back To Profile', profile_path(@challenge), class:'btn c-btn-purple' %>
+    </div>
+  <% elsif @challenge.accepted %>
+    <div class="row justify-content-center">
+      <%= link_to 'Ready To Serve?', challenge_serve_path(@challenge), class:'btn c-btn-purple' %>
+    </div>
+  <% else %>
+    <div class="row text-center m-4">
+    <p><strong>THIS CHALLENGE HAS NOT BEEN ACCEPTED YET</strong><i class="far fa-clock ml-1"></i></p>
+    </div>
+  <% end %>
 </div>
 
 <script>
@@ -168,6 +263,11 @@
     let timeinterval = setInterval(updateClock, 1000);
   }
 
-  let deadline = new Date(<%= (@challenge.expiration).strftime('%Q') %>);
+  <% if @challenge.accepted? %>
+    let deadline = new Date(<%= (@challenge.expiration).strftime('%Q') %>);
+  <% else %>
+    let deadline = new Date();
+  <% end %>
+
   initializeClock('clockdiv', deadline);
 </script>
