@@ -55,55 +55,55 @@
                     </div>
                   <% end %>
 
-                <div style="margin-right: 16px;">
-                  <div class="dash-challenge-card" style="margin: 0 0 4px 0 !important;">
-                    <div>
-                      <div class="d-flex flex-row">
-                        <%= cl_image_tag opp.photo.key, alt: "Profiloto",
-                            width: 30,
-                            height: 30,
-                            crop: "fill",
-                            cloud_name: "dtrwqimx6",
-                            class: 'dash-avatar',
-                            style: 'margin-right: 4px'
-                        %>
-                        <p><%= opp.username %></p>
+                  <div style="margin-right: 16px;">
+                    <div class="dash-challenge-card" style="margin: 0 0 4px 0 !important;">
+                      <div>
+                        <div class="d-flex flex-row">
+                          <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+                              width: 30,
+                              height: 30,
+                              crop: "fill",
+                              cloud_name: "dtrwqimx6",
+                              class: 'dash-avatar',
+                              style: 'margin-right: 4px'
+                          %>
+                          <p><%= opp.username %></p>
+                        </div>
+
+                        <% if opp.id == challenge.challenger.user.id %>
+                          <p class="pending-card-status">challenges you</p>
+                        <% else %>
+                          <p class="pending-card-status">is deciding</p>
+                        <% end %>
+
+                        <% if challenge.mode == 'creative' %>
+                          <div class="d-flex flex-row">
+                            <%= image_tag 'lightbulb.png', class: "pending-card-icon" %>
+                            <p class="pending-card-mode">Creative <br> Mode</p>
+                          </div>
+                        <% else %>
+                          <div class="d-flex flex-row">
+                            <%= image_tag 'cutlery.png', class: "pending-cutlery-icon pending-card-icon" %>
+                            <p class="pending-card-mode">Classic <br> Mode</p>
+                          </div>
+                        <% end %>
+
+
                       </div>
-
-                      <% if opp.id == challenge.challenger.user.id %>
-                        <p class="pending-card-status">challenges you</p>
-                      <% else %>
-                        <p class="pending-card-status">is deciding</p>
-                      <% end %>
-
-                      <% if challenge.mode == 'creative' %>
-                        <div class="d-flex flex-row">
-                          <%= image_tag 'lightbulb.png', class: "pending-card-icon" %>
-                          <p class="pending-card-mode">Creative <br> Mode</p>
-                        </div>
-                      <% else %>
-                        <div class="d-flex flex-row">
-                          <%= image_tag 'cutlery.png', class: "pending-cutlery-icon pending-card-icon" %>
-                          <p class="pending-card-mode">Classic <br> Mode</p>
-                        </div>
-                      <% end %>
-
-
                     </div>
+                <% end%>
+                    <% if opp.id == challenge.challenger.user.id %>
+                      <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-between" style="min-width: 62px">
+                          <!-- added the stuff below -->
+
+                          <i class="far fa-check-circle icon-clicker check-box-icon" id="check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
+                          <i class="far fa-times-circle icon-clicker btn-challenge-cancel" data-challenge-id="<%= challenge.id %>"></i>
+                          <%= link_to "", challenge_path(challenge), class: "reject-link",  method: :delete %>
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
-                  <% if opp.id == challenge.challenger.user.id %>
-                    <div class="d-flex justify-content-center">
-                      <div class="d-flex justify-content-between" style="min-width: 62px">
-                        <!-- added the stuff below -->
-
-                        <i class="far fa-check-circle icon-clicker check-box-icon" id="check-box-icon" data-challenge-id="<%= challenge.id %>"></i>
-                        <i class="far fa-times-circle icon-clicker btn-challenge-cancel" data-challenge-id="<%= challenge.id %>"></i>
-                        <%= link_to "", challenge_path(challenge), class: "reject-link",  method: :delete %>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              <% end%>
               <% end%>
 
             </div>
