@@ -190,6 +190,7 @@ Challenge.build!(tamara, miles, accepted: false, mode: 'creative', protein: Ingr
 Challenge.build!(david, tamara, accepted: false, mode: 'classic', recipe_id: Recipe.find_by(name: "Simple Pumpkin Soup").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
 Challenge.build!(miles, tamara, accepted: false, mode: 'creative', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
 
+
 Challenge.build!(martha, eyal,  accepted: false, mode: 'classic', recipe_id: Recipe.find_by(name: "Easy Tofu Pad Thai").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
 Challenge.build!(martha, eyal, accepted: false, mode: 'classic', recipe_id: Recipe.find_by(name: "Grilled Fish Tacos with Pineapple Cabbage Slaw (30 Minutes!)").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
 

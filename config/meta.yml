@@ -1,0 +1,4 @@
+meta_product_name: "Moto"
+meta_title: "Moto - Cook Something"
+meta_description: "Challenge your friends to cookoffs! Post your mouthwatering results."
+meta_image: "cover.png" # should exist in `app/assets/images/`

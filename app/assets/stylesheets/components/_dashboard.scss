@@ -110,3 +110,21 @@
 .dim-opacity {
   opacity: 0.8;
 }
+
+.pending-card-status {
+  bottom: 8px;
+  position: relative;
+  left: 13px;
+  color: gray !important;
+  font-size: 13px;
+}
+
+.pending-card-icon {
+  height: 48px;
+}
+
+.pending-card-mode {
+  line-height: 15px;
+  position: relative;
+  top: 3px;
+}

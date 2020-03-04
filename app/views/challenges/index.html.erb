@@ -70,10 +70,23 @@
                       </div>
 
                       <% if opp.id == challenge.challenger.user.id %>
-                        <p>challenges you</p>
+                        <p class="pending-card-status">challenges you</p>
                       <% else %>
-                        <p>is deciding</p>
+                        <p class="pending-card-status">is deciding</p>
                       <% end %>
+
+                      <% if challenge.mode == 'creative' %>
+                        <div class="d-flex flex-row">
+                          <%= image_tag 'lightbulb.png', class: "pending-card-icon" %>
+                          <p class="pending-card-mode">Creative <br> Mode</p>
+                        </div>
+                      <% else %>
+                        <div class="d-flex flex-row">
+                          <%= image_tag 'cutlery.png', class: "pending-card-icon" %>
+                          <p class="pending-card-mode">Classic <br> Mode</p>
+                        </div>
+                      <% end %>
+
 
                     </div>
                   </div>

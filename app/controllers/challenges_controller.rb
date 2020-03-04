@@ -51,8 +51,11 @@ class ChallengesController < ApplicationController
     if opponent.blank?
       render json: {ok: false}
     else
-      opponent = opponent.format_for_challenge
-      render json: {ok: true, user: opponent}
+      attributes = opponent.attributes
+      if opponent.photo.attached?
+        attributes[:photo] = Cloudinary::Utils.cloudinary_url(opponent.photo.key)
+      end
+      render json: {ok: true, user: attributes}
     end
   end
 
@@ -82,15 +85,17 @@ class ChallengesController < ApplicationController
     randomize_ingredients
   end
 
+  def search_users
+    opponents = User.where('username ILIKE ?', "#{params['q']}%")
+    if opponents.empty?
+      render json: {ok: false}
+    else
+      render json: {ok: true, users: opponents}
+    end
+
+  end
   private
 
-  def handle_search_query
-    if params['q']
-      User.where(username: params['q'])
-    else
-      User.where("username ILIKE :q ", q: "#{params['auto']}%")
-    end
-  end
 
   def set_challenge
     @challenge = Challenge.find(params[:id])

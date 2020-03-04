@@ -38,7 +38,13 @@ class User < ApplicationRecord
       '(challenger.image_url IS NULL OR opponent.image_url IS NULL)
       AND (challenges.expiration IS NOT NULL AND challenges.expiration > NOW())
       AND challenges.accepted = true'
-    ).select { |challenge| !(challenge.challenger.photo.attached? && challenge.opponent.photo.attached?)}
+    ).reject do |challenge|
+      if challenge.challenger.user == self
+        challenge.challenger.photo.attached?
+      else
+        challenge.opponent.photo.attached?
+      end
+    end
 
   end
 
@@ -57,16 +63,5 @@ class User < ApplicationRecord
 
   def next_votable_challenge
     self.votable_challenges.first
-  end
-
-  def format_for_challenge
-    Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
-    helper = Rails.application.routes.url_helpers
-    all_attributes = self.attributes
-    if self.photo.attached?
-      all_attributes[:photo] = helper.url_for(self.photo)
-    end
-
-     return all_attributes
   end
 end

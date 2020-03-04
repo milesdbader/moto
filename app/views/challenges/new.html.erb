@@ -34,7 +34,7 @@
           <h3>Choose your Opponent</h3>
         </div>
           <div class='mt-4 align-items-center'>
-    
+
           <div class='challenge-search-wrap'>
             <%= text_field_tag(:search, params[:search], placeholder: 'Search by username', id: 'search-input') %>
             <%= button_tag(type: 'submit', id: 'search-users') do %>
@@ -148,11 +148,11 @@
             list.innerHTML = '';
             return;
           }
-          fetch('/take_user' + '?auto=' + e.currentTarget.value)
+          fetch('/search_users' + '?q=' + e.currentTarget.value)
           .then(res => res.json())
           .then((data )=> {
             if(data.ok){
-              formatUsers(data.user, list)
+              formatUsers(data.users, list)
             }else{
               list.innerHTML = '';
             }
