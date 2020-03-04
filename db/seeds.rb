@@ -194,100 +194,131 @@ Challenge.build!(miles, tamara, accepted: false, mode: 'creative', protein: Ingr
 Challenge.build!(martha, eyal,  accepted: false, mode: 'classic', recipe_id: Recipe.find_by(name: "Easy Tofu Pad Thai").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
 Challenge.build!(martha, eyal, accepted: false, mode: 'classic', recipe_id: Recipe.find_by(name: "Grilled Fish Tacos with Pineapple Cabbage Slaw (30 Minutes!)").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
 
+puts "generating completed challenges:"
 # completed TACO CHALLENGE
-Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "Grilled Fish Tacos with Pineapple Cabbage Slaw (30 Minutes!)").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+c1 = Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "Grilled Fish Tacos with Pineapple Cabbage Slaw (30 Minutes!)").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583316882/fishtaco3_gkni5i.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583315713/fishtaco2_f9f0xd.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "You know where your vote is going.", title: "Fish + Taco = YUM")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "Is there anything better than tacos, though? This one was fun to make!", title: "Fish Taco")
+print "1, "
 
 # spinach omelette
-Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 06), mode: 'creative', protein: Ingredient.find_by(name: 'Egg'), grain: Ingredient.find_by(name: 'Wheat flour'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Parsely'), voting_end: Time.now + 6000000)
+c2 = Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 06), mode: 'creative', protein: Ingredient.find_by(name: 'Egg'), grain: Ingredient.find_by(name: 'Wheat flour'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Parsely'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583325203/egg1_cmy9fz.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583325202/egg2_rnbcnh.png')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredients, but at least it's delicious!", title: "One Badass Breaky")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
-Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST FRENCH TOAST")
+Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST OMELETTE")
+print "2, "
 
 
 # chicken bowl
-Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 10), mode: 'creative', protein: Ingredient.find_by(name: 'Chicken'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream'), vegetable: Ingredient.find_by(name: 'Corn'), voting_end: Time.now + 6000000)
+c3 = Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 10), mode: 'creative', protein: Ingredient.find_by(name: 'Chicken'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream'), vegetable: Ingredient.find_by(name: 'Corn'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583320702/cbowl1_dgmrsg.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583320701/cbowl2_xpp28j.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
-Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredients, but at least it's delicious!", title: "One Badass Breaky")
+Challenge.all.last.challenger.update!(caption: "This might be the most Califonian dish I've ever made", title: "Quinoa Bowl w Avocado!!")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
-Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST FRENCH TOAST")
-
+Challenge.all.last.opponent.update!(caption: "Just barely made this before the time expired", title: "Bowl Shit")
+print "3, "
 
 # completed Caramelized Shiitake Mushroom Risotto
-Challenge.build!(calvin, tamara, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "Caramelized Shiitake Mushroom Risotto").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+c4 = Challenge.build!(calvin, tamara, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "Caramelized Shiitake Mushroom Risotto").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583316047/mrisotto2_ovbp4o.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583316049/mrisotto1_defkov.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "Risotto for the royals. Served this up and my girl couldn't believe how good it was!", title: "Mushroom Risotto")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
-Challenge.all.last.opponent.update!(caption: "This was my first Risotto. I was a little nervous about the outcome but I'm pleasantly surprised. Added a little vino for taste.", title: "Mushroom Riso 🍄🍄")
+Challenge.all.last.opponent.update!(caption: "This was my first Risotto. I was a little nervous about the outcome but I'm pleasantly surprised. Added a little vino for taste.", title: "Mushroom Riso🍄🍄o")
+print "4, "
+
 
 # 30-Minute Potato Cauliflower Red Lentil Curry
-Challenge.build!(tamara, tristan, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "30-Minute Potato Cauliflower Red Lentil Curry").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+c5 = Challenge.build!(tamara, tristan, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "30-Minute Potato Cauliflower Red Lentil Curry").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583315706/redlentil2_llpyag.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583319281/redlentil3_fwgygv.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "Called my mama up for this one!", title: "Lentilicious")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "All I can say is you WISH you were in my kitchen while I was serving this up 😏", title: "Dank Ass Curry")
-
+print "5, "
 
 # Perfect Roasted Potatoes
-Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 03), mode: 'classic', recipe_id: Recipe.find_by(name: "Perfect Roasted Potatoes").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+c6 = Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 03), mode: 'classic', recipe_id: Recipe.find_by(name: "Perfect Roasted Potatoes").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583063746/x0g1koetqaja1ztbujue.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583063727/y5r213vcgfpsa9ksxrxv.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "I could hear these sizzling in the oven, yo. Worth a vote!", title: "Fire Potatoes")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "Tastes like heaven, looks like money.", title: "Better than you mama's")
+print "6, "
 
 # BELOW ARE EYAL'S COMPLETED CHALLENGES
 
 # 8-Minute Sweet Potatoes
-Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "8-Minute Sweet Potatoes").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+c7 = Challenge.build!(miles, eyal, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'classic', recipe_id: Recipe.find_by(name: "8-Minute Sweet Potatoes").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583319871/sweetpotato1_skmylg.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583319869/sweetpotato2_dyhlus.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "So simlple, so good.", title: "Sweeeet Potatoes")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "Peeling these was a B word.", title: "Easiest Sweet Potatoes I ever made.")
+print "7, "
 
 # sadwich and french toast
-Challenge.build!(david, eyal, accepted: true, expiration: Time.new(2020, 03, 06), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
+c8 = Challenge.build!(david, eyal, accepted: true, expiration: Time.new(2020, 03, 06), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/vi3nwpxzozuk1zsdwwo1.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803097/tfxxbzfqw9tfx7hj4aug.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredients, but at least it's delicious!", title: "One Badass Breaky")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST FRENCH TOAST")
+print "8, "
 
 # Pasta
-Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 03, 07), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Pasta'), dairy: Ingredient.find_by(name: 'Cream'), vegetable: Ingredient.find_by(name: 'Parsely'), voting_end: Time.now + 6000000)
+c9 = Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 03, 07), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Pasta'), dairy: Ingredient.find_by(name: 'Cream'), vegetable: Ingredient.find_by(name: 'Parsely'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583324069/pasta1_zwk1jz.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583324069/pasta2_xerwvy.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "I did a one pot dish here and slow cooked it to finish :)", title: "Creamy Penne Chicken Pasta")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "I know my chicken looks like bacon but I swear it's legit 😌", title: "Reconstructed Creamy Chicken Carbonara")
+print "9, "
 
 # simple pumpkin soup
-Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 03, 12), mode: 'classic', recipe_id: Recipe.find_by(name: "Simple Pumpkin Soup").id, voting_end: Time.now + 6000000)
+c10 = Challenge.build!(eyal, tamara, accepted: true, expiration: Time.new(2020, 03, 12), mode: 'classic', recipe_id: Recipe.find_by(name: "Simple Pumpkin Soup").id, voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583063746/x0g1koetqaja1ztbujue.jpg')
 opposing_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1583063727/y5r213vcgfpsa9ksxrxv.jpg')
 Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed')
 Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredients, but at least it's delicious!", title: "Pumpernunkle Soup")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "First time making pumpkin soup and I'm preeettty pleased with the results.", title: "PUMKIN 🎃")
+puts "10!!!"
 
 puts "#{Challenge.count} created"
+
+puts 'Generating votes on challenges'
+
+VOTERS = User.all.reject { |user| user == eyal }
+CHALLENGES = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10]
+
+def generate_votes_on_challenges
+  CHALLENGES.each do |challenge|
+    VOTERS.each do |voter|
+      if (voter != challenge.challenger.user) && (voter != challenge.opponent.user)
+        the_player = rand >= 0.5 ? challenge.challenger : challenge.opponent
+        Vote.create!(user: voter, player: the_player)
+      end
+    end
+  end
+end
+
+generate_votes_on_challenges
+
+puts "Votes generated; you now have #{Vote.count} votes"
+
 
