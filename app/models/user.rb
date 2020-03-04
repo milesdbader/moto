@@ -38,7 +38,13 @@ class User < ApplicationRecord
       '(challenger.image_url IS NULL OR opponent.image_url IS NULL)
       AND (challenges.expiration IS NOT NULL AND challenges.expiration > NOW())
       AND challenges.accepted = true'
-    ).select { |challenge| !(challenge.challenger.photo.attached? && challenge.opponent.photo.attached?)}
+    ).reject do |challenge|
+      if challenge.challenger.user == self
+        challenge.challenger.photo.attached?
+      else
+        challenge.opponent.photo.attached?
+      end
+    end
 
   end
 
