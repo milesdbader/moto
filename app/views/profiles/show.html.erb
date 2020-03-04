@@ -65,10 +65,16 @@
       <div class="profile-challenge-images">
         <div class="challenge-mode">
         <% if challenge.mode == "creative" %>
-          <%= image_tag("lightbulb.png", class: "lightbulb") %>
+        <div class="bulb">
+          <%= link_to challenge_path(challenge) do %>
+            <%= image_tag("lightbulb.png", class: "lightbulb") %>
+          <% end %>
+          </div>
         <% else %>
           <div class='fork'>
-            <%= image_tag("cutlery.png") %>
+            <%= link_to challenge_path(challenge) do %>
+              <%= image_tag("cutlery.png") %>
+            <% end %>
           </div>
         <% end %>
         </div>
@@ -83,30 +89,4 @@
       </div>
     </div>
     <% end %>
-
-    <!-- <div class="profile-challenge-result" data-challenge-id="2">
-      <div class="profile-competitors">
-        <div class="mx-3">
-          <%#= cl_image_tag current_user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: 1 } %>
-          <h3>54%</h3>
-        </div>
-
-        <div class="mx-3">
-         <%#= image_tag("beautiful.jpg", alt:"avatar2", class: 'avatar', data: { user_id: 2 }) %>
-          <h3>46%</h3>
-        </div>
-      </div>
-
-      <div class="profile-challenge-images">
-        <%#= image_tag("lightbulb.png", class: "lightbulb") %>
-        <div class='profile-food top-img'
-          style="background-image: url('https://www.oetker.co.uk/Recipe/Recipes/oetker.co.uk/uk-en/baking/image-thumb__3688__RecipeDetailsLightBox/chocolate-victoria-sponge-cake.jpg')"
-          data-user-id="1">
-        </div>
-        <div class='profile-food back-img'
-          style="background-image: url('https://www.landolakes.com/RecipeManagementSystem/media/Recipe-Media-Files/Recipes/Retail/x17/20277-strawberry-ombre-cake-600X600.jpg')"
-          data-user-id="2">
-        </div>
-      </div>
-    </div> -->
 </div>
