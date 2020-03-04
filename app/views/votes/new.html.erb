@@ -4,7 +4,7 @@
 
     <div class="tab-content page-new-vote" id="nav-tabContent">
      <!-- PAGE ONE: CHALLENGE INFO -->
-     <div class="tab-pane fade show active challenge-info" id="nav-challenge-info">
+     <div class="tab-pane fade show active challenge-info stop-overlap" id="nav-challenge-info">
       <div class="container">
         <div class="row justify-content-center" id="vote-intro">
           <!-- <div class="col d-flex justify-content-center">
@@ -90,7 +90,7 @@
     </div>
 
     <!-- PAGE USER ONE -->
-    <div class="tab-pane fade page-user-one" id="nav-player-1">
+    <div class="tab-pane fade page-user-one stop-overlap" id="nav-player-1">
       <div class="container">
         <div class="row justify-content-center">
           <div class="d-flex justify-content-center">
@@ -134,7 +134,7 @@
   </div><!-- /page-user-one -->
 
   <!-- PAGE USER TWO -->
-  <div class="tab-pane fade page-user-two" id="nav-player-2">
+  <div class="tab-pane fade page-user-two stop-overlap" id="nav-player-2">
     <div class="container">
       <div class="row justify-content-center">
         <div class="d-flex justify-content-center">
@@ -163,14 +163,16 @@
     </div>
 
     <% if (current_user != @challenge.challenger.user && current_user != @challenge.opponent.user) && @challenge.has_he_voted?(current_user) == false %>
-    <div class="justify-content-center checkmark-row text-center">
-      <div class="checkmark-icon2">
-        <input type='radio' id='opponent-vote' checked='checked' name='radio'>
-        <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
+    <div>
+      <div class="justify-content-center checkmark-row text-center">
+        <div class="checkmark-icon2">
+          <input type='radio' id='opponent-vote' checked='checked' name='radio'>
+          <label for='opponent-vote'><i class="far fa-check-circle"></i></label>
+        </div>
       </div>
-    </div>
-    <div class="btn btn-purple" id="ninja-submit2" style="display: none;">
-      Submit Vote
+      <div class="btn btn-purple" id="ninja-submit2" style="display: none;">
+        Submit Vote
+      </div>
     </div>
     <% end %>
   </div><!-- /page-user-two -->
