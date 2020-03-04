@@ -9,7 +9,7 @@ html, body {
   border: 1px solid lightgrey;
   margin: 0 12px;
   margin-bottom: 12px;
-  height: 290px;
+  height: 286px;
   object-fit: cover;
 }
 
@@ -90,8 +90,12 @@ html, body {
     margin: 0;  }
   }
 
+  .comm {
+    padding: 4px;
+  }
+
   .checkmark-row {
-    font-size: 60px;
+    font-size: 45px;
     color: $purple;
     text-align: -webkit-center;
     // margin-bottom: 400px;
