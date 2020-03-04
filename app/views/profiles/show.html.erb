@@ -21,8 +21,8 @@
     <div class="profile-stats">
       <ul>
         <li><span class="profile-stat-count"><%= @completed_challenges.count %></span> challenges</li>
-        <li><span class="profile-stat-count">21</span> won</li>
-        <li><span class="profile-stat-count">22</span> lost</li>
+        <li><span class="profile-stat-count"><%= @wins = (@completed_challenges.select {|challenge| challenge.winner == current_user}).count %></span>won</li>
+        <li><span class="profile-stat-count"><%= @completed_challenges.count - @wins%></span> lost</li>
       </ul>
     </div>
   </header>
