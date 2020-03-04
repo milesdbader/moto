@@ -177,7 +177,7 @@ Challenge.build!(tamara, eyal, accepted: true, expiration: Time.new(2020, 03, 07
 # these ones are pending
 Challenge.build!(tamara, miles, accepted: false, mode: 'creative', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
 Challenge.build!(david, tamara, accepted: false, mode: 'classic', recipe_id: Recipe.find_by(name: "Simple Pumpkin Soup").id, protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'))
-Challenge.build!(miles, tamara, accepted: false, mode: 'classic', protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
+Challenge.build!(miles, tamara, accepted: false, mode: 'classic', recipe_id: Recipe.all[12].id, protein: Ingredient.find_by(name: 'Tuna'), grain: Ingredient.find_by(name: 'Almonds'), dairy: Ingredient.find_by(name: 'Butter'), vegetable: Ingredient.find_by(name: 'Kale'))
 
 Challenge.build!(miles, david, accepted: true, expiration: Time.new(2020, 03, 02), mode: 'creative', protein: Ingredient.find_by(name: 'Turkey'), grain: Ingredient.find_by(name: 'Quinoa'), dairy: Ingredient.find_by(name: 'Cream cheese'), vegetable: Ingredient.find_by(name: 'Spinach'), voting_end: Time.now + 6000000)
 challenging_dish = open('https://res.cloudinary.com/dtrwqimx6/image/upload/v1582803104/vi3nwpxzozuk1zsdwwo1.jpg')
@@ -218,6 +218,5 @@ Challenge.all.last.challenger.photo.attach(io: challenging_dish, filename: 'seed
 Challenge.all.last.challenger.update!(caption: "Yes, I didn't use the ingredients, but at least it's delicious!", title: "One Badass Breaky")
 Challenge.all.last.opponent.photo.attach(io: opposing_dish, filename: 'seed')
 Challenge.all.last.opponent.update!(caption: "I used all of the ingredients in this dish and borrowed my sister's camera to make it look nice. Please vote for me!", title: "GREATEST FRENCH TOAST")
-
 puts "#{Challenge.count} created"
 
