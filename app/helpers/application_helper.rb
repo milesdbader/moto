@@ -13,14 +13,18 @@ module ApplicationHelper
         crop: "fill",
         cloud_name: "dtrwqimx6",
         class: attributes[:class],
-        style: attributes[:style]
+        style: attributes[:style],
+        alt: attributes[:alt],
+        data: attributes[:data]
     else
       # import missing_avatar
       image_tag "missing_avatar.png",
         width: attributes[:size],
         height: attributes[:size],
         class: attributes[:class],
-        style: attributes[:style]
+        style: attributes[:style],
+        alt: attributes[:alt],
+        data: attributes[:data]
     end
   end
 end
