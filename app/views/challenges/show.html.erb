@@ -28,13 +28,14 @@
     </div>
    <% if @challenge.completed? || @challenge.accepted %>
     <div class="row text-center mt-3">
-      <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+      <%#= cl_image_tag opp.photo.key, alt: "Profiloto",
           width: 120,
           height: 120,
           crop: "fill",
           cloud_name: "dtrwqimx6",
           class: 'challenge-avatar mx-auto d-block'
       %>
+      <%= display_avatar opp, size: 120, class: 'challenge-avatar mx-auto d-block' %>
     </div>
     <% end %>
 
@@ -137,13 +138,14 @@
     </div>
 
     <div class="row text-center">
-      <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+      <%#= cl_image_tag opp.photo.key, alt: "Profiloto",
           width: 120,
           height: 120,
           crop: "fill",
           cloud_name: "dtrwqimx6",
           class: 'challenge-avatar mx-auto d-block'
       %>
+      <%= display_avatar opp, size: 120, class: 'challenge-avatar mx-auto d-block' %>
     </div>
 
     <div><!-- ingredients -->

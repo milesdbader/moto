@@ -2,11 +2,15 @@
   <h1 id="vote-result-header"><%= challenge.mode.capitalize %> Mode Results</h1>
   <div class="player-result challenger-player">
     <div class="id-line">
-      <%= cl_image_tag challenge.challenger.user.photo.key, alt: "Challenger Avatar",
+      <%#= cl_image_tag challenge.challenger.user.photo.key, alt: "Challenger Avatar",
           width: 32,
           height: 32,
           crop: "fill",
           cloud_name: "dtrwqimx6",
+          class: "vote-result-avatar"
+      %>
+      <%= display_avatar challenge.challenger.user,
+          size: 32,
           class: "vote-result-avatar"
       %>
       <p><%= challenge.challenger.user.username %></p>
@@ -38,11 +42,15 @@
     </div>
     <div class="id-line">
       <p><%= challenge.opponent.user.username %></p>
-      <%= cl_image_tag challenge.opponent.user.photo.key, alt: "Opponent Avatar",
+      <%#= cl_image_tag challenge.opponent.user.photo.key, alt: "Opponent Avatar",
           width: 32,
           height: 32,
           crop: "fill",
           cloud_name: "dtrwqimx6",
+          class: "vote-result-avatar"
+      %>
+      <%= display_avatar challenge.opponent.user,
+          size: 32,
           class: "vote-result-avatar"
       %>
     </div>

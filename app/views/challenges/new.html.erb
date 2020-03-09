@@ -10,13 +10,14 @@
   <div class="combined-players-wrap">
     <div class="challenger">
       <p><strong><%= @user.username %></strong></p>
-      <%= cl_image_tag @user.photo.key, alt: "Profiloto",
+      <%#= cl_image_tag @user.photo.key, alt: "Profiloto",
       width: 80,
       height: 80,
       gravity: "face",
       crop: "thumb",
       cloud_name: "dtrwqimx6",
       class: 'dash-avatar' %>
+      <%= display_avatar @user, size: 80, class: 'dash-avatar' %>
 
     </div>
     <h2 class="vs">vs</h2>
@@ -170,7 +171,11 @@
         let otherGuy = document.querySelector("#opponent");
         let imageWrap = document.querySelector('.c-avatar')
         let image = imageWrap.querySelector('img');
-        if(image) image.src = opponent.photo;
+        let opponentPhoto = opponent.photo;
+        if(!opponent.photo) {
+          opponentPhoto = "<%= asset_path 'missing_avatar.png' %>"
+        }
+        if(image) image.src = opponentPhoto;
 
         // imageWrap.append(image);
         otherGuy.innerHTML = opponent.username;

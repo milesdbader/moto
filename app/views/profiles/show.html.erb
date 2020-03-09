@@ -8,7 +8,8 @@
     </div>
   <header>
     <div class="profile">
-      <%= cl_image_tag current_user.photo.key %>
+      <%#= cl_image_tag current_user.photo.key %>
+      <%= display_avatar current_user %>
       <h1><%= current_user.username %></h1>
     </div>
 
@@ -47,7 +48,8 @@
     <div class="profile-challenge-result" data-challenge-id="<%= challenge.id %>">
       <div class="profile-competitors">
         <div class="mx-3">
-          <%= cl_image_tag challenge.opponent.user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: challenge.opponent.user.id } %>
+          <%#= cl_image_tag challenge.opponent.user.photo.key, alt:"avatar1", class: 'avatar prof-active', data: { user_id: challenge.opponent.user.id } %>
+          <%= display_avatar challenge.opponent.user, alt:"avatar1", class: 'avatar prof-active', data: { user_id: challenge.opponent.user.id } %>
             <%if challenge.opponent.votes.count == 0 %>
               <h3>0%</h3>
             <%else%>
@@ -57,7 +59,8 @@
         </div>
 
         <div class="mx-3">
-          <%= cl_image_tag challenge.challenger.user.photo.key, alt:"avatar1", class: 'avatar', data: { user_id: challenge.challenger.user.id } %>
+          <%#= cl_image_tag challenge.challenger.user.photo.key, alt:"avatar1", class: 'avatar', data: { user_id: challenge.challenger.user.id } %>
+          <%= display_avatar challenge.challenger.user, alt:"avatar1", class: 'avatar', data: { user_id: challenge.challenger.user.id } %>
           <h3><%= vote_percentage_share(challenge.challenger, challenge) %>%</h3>
         </div>
       </div>
