@@ -22,13 +22,14 @@
                   <div class="dash-challenge-card">
                     <div>
                       <p><%= opp.username %></p>
-                      <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+                      <%#= cl_image_tag opp.photo.key, alt: "Profiloto",
                           width: 50,
                           height: 50,
                           crop: "fill",
                           cloud_name: "dtrwqimx6",
                           class: 'dash-avatar'
                       %>
+                      <%= display_avatar opp, size: 50, class: 'dash-avatar' %>
                       <p><%= remaining_time_string(challenge) %></p>
                     </div>
                   </div>
@@ -59,7 +60,7 @@
                     <div class="dash-challenge-card" style="margin: 0 0 4px 0 !important;">
                       <div>
                         <div class="d-flex flex-row">
-                          <%= cl_image_tag opp.photo.key, alt: "Profiloto",
+                          <%#= cl_image_tag opp.photo.key, alt: "Profiloto",
                               width: 30,
                               height: 30,
                               crop: "fill",
@@ -67,6 +68,7 @@
                               class: 'dash-avatar',
                               style: 'margin-right: 4px'
                           %>
+                          <%= display_avatar opp, size: 30, class: 'dash-avatar', style: 'margin-right: 4px' %>
                           <p><%= opp.username %></p>
                         </div>
 
@@ -132,13 +134,14 @@
       <% end %>
 
       <%= link_to profile_path(current_user.id) do %>
-        <%= cl_image_tag @user.photo.key, alt: "Profiloto",
+        <%#= cl_image_tag @user.photo.key, alt: "Profiloto",
             width: 60,
             height: 60,
             crop: "fill",
             cloud_name: "dtrwqimx6",
             class: 'dash-avatar'
         %>
+        <%= display_avatar current_user, size: 60, class: 'dash-avatar' %>
       <% end %>
 
     </div>
