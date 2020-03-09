@@ -9,15 +9,14 @@ class PlayersController < ApplicationController
   end
 
   def update
-    # raise
     if @player.update(player_params)
+      if @challenge.completed?
+        @challenge.voting_end = Time.now + 259200
+        @challenge.save
+      end
       redirect_to new_challenge_vote_path(@challenge)
     else
       render :new
-    end
-
-    if @challenge.completed?
-      @challenge.voting_end = Time.now + 259200
     end
   end
 
